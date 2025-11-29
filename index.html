@@ -9,7 +9,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-        /* Basic reset */
+        :root {
+            --bg-color: #f4f4f4;
+            --text-color: #111;
+            --accent-color: #ff0000;
+            --resume-color: #ff6347;
+            --link-bg: #e0e0e0;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f0f0f;
+            --text-color: #fff;
+            --accent-color: #00ffff;
+            --resume-color: #ff6347;
+            --link-bg: #1e1e1e;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -18,39 +33,59 @@
         }
 
         body {
-            background: #0f0f0f;
-            color: #fff;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             display: flex;
-            justify-content: center;
+            justify-content: flex-start; /* move elements higher */
             align-items: center;
             min-height: 100vh;
-            text-align: center;
             flex-direction: column;
+            gap: 30px;
+            padding-top: 80px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        /* Header: Logo + Title */
+        .header {
+            display: flex;
+            align-items: center;
             gap: 25px;
         }
 
-        img.logo {
-            width: 140px;
-            border-radius: 15px;
+        .header img.logo {
+            height: 120px;
+            width: 120px;
+            border-radius: 20px;
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        img.logo:hover {
+        .header img.logo:hover {
             transform: rotate(-5deg) scale(1.05);
-            box-shadow: 0 0 20px #00ffff;
+            box-shadow: 0 0 25px var(--accent-color);
         }
 
-        h1 {
-            font-size: 3rem;
-            letter-spacing: 2px;
-            background: linear-gradient(90deg, #00ffff, #ff00ff);
+        /* RGB Gradient Title */
+        .header h1 {
+            font-size: 4rem;
+            background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet, red);
+            background-size: 400% 100%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: gradientShift 8s linear infinite;
+            margin: 0;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .designations {
-            font-size: 1.1rem;
-            color: #aaa;
+            font-size: 1.3rem;
+            color: var(--text-color);
+            opacity: 0.85;
             letter-spacing: 1px;
         }
 
@@ -58,52 +93,73 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 14px;
         }
 
         .links a {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             text-decoration: none;
-            color: #fff;
-            background-color: #1e1e1e;
-            padding: 8px 18px;
-            border-radius: 8px;
+            color: var(--text-color);
+            background-color: var(--link-bg);
+            padding: 10px 20px;
+            border-radius: 10px;
             transition: all 0.3s;
             font-weight: 500;
         }
 
         .links a:hover {
             transform: translateY(-3px);
-            box-shadow: 0 0 12px #00ffff;
-            background-color: #00ffff;
-            color: #0f0f0f;
+            box-shadow: 0 0 14px var(--accent-color);
+            background-color: var(--accent-color);
+            color: var(--bg-color);
         }
 
-        /* Different style for Resume */
         .links a.resume {
-            background-color: #ff6347;
+            background-color: var(--resume-color);
             color: #fff;
         }
 
         .links a.resume:hover {
             background-color: #ff4500;
-            box-shadow: 0 0 12px #ff6347;
+            box-shadow: 0 0 14px var(--resume-color);
             color: #fff;
         }
 
         .links i {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Theme toggle button */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #0077ff; /* brighter visible color */
+            color: #fff;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background-color: #005bb5;
         }
     </style>
 </head>
-<body>
-    <!-- Logo -->
-    <img src="images/logo.png" alt="MUNUCRAFTS Logo" class="logo">
+<body data-theme="light">
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle">Toggle Theme</button>
 
-    <!-- Title -->
-    <h1>MUNUCRAFTS</h1>
+    <!-- Header -->
+    <div class="header">
+        <img src="images/logo.png" alt="MUNUCRAFTS Logo" class="logo">
+        <h1>MUNUCRAFTS</h1>
+    </div>
 
     <!-- Designations -->
     <div class="designations">
@@ -120,5 +176,19 @@
         <a href="mailto:sarthakmishra520@gmail.com"><i class="fas fa-envelope"></i>Email</a>
         <a href="https://drive.google.com/file/d/1nTlIL2HIKtqSjpGZBsgVzfwGdotriTg5/view?usp=sharing" target="_blank" class="resume"><i class="fas fa-file"></i>Resume</a>
     </div>
+
+    <script>
+        // Theme toggle
+        const toggleButton = document.getElementById('themeToggle');
+        const body = document.body;
+
+        toggleButton.addEventListener('click', () => {
+            if(body.getAttribute('data-theme') === 'light') {
+                body.setAttribute('data-theme', 'dark');
+            } else {
+                body.setAttribute('data-theme', 'light');
+            }
+        });
+    </script>
 </body>
 </html>
