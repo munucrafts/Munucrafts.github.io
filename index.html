@@ -1,9 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Munucrafts</title>
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="images/logo.png" />
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+  :root{
+    --card-bg: rgba(20,22,25,255);
+    --text: #ffffff;
+    --title-gradient: linear-gradient(90deg, #fffb6b, #fff06b, #8be58b, #5bffdf, #8a8bff);
+    --btn-bg: rgba(255,255,255,0.06);
+    --btn-hover-fixed: #00bfff;
+    --resume-color: rgba(120,100,225,1);
+    --card-radius: 10px;
+    --gap: 18px;
+    --container-max: 980px;
+  }
+  /* ... rest of your styles ... */
+</style>
+</head>
+
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
@@ -71,8 +92,8 @@
   }
 
   .logo{
-    height:100px;
-    width:100px;
+    height:80px;
+    width:80px;
     border-radius:16px;
     object-fit:cover;
     transition:0.25s ease;
@@ -84,14 +105,14 @@
   }
 
   .title{
-    font-size:74px;
+    font-size:84px;
     font-weight:800;
     margin:0;
     background:var(--title-gradient);
     -webkit-background-clip:text;
     background-clip:text;
     -webkit-text-fill-color:transparent;
-    letter-spacing:0.5px;
+    letter-spacing:1px;
   }
 
   .designations{
@@ -244,7 +265,7 @@ function animate(){
 
   for(let p of particles){
     ctx.beginPath();
-    ctx.fillStyle = `rgba(0,250,100, 0.7)`;
+    ctx.fillStyle = `rgba(50,200,100, 0.5)`;
     ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
     ctx.fill();
 
