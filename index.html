@@ -1,194 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUNUCRAFTS</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MUNUCRAFTS</title>
 
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-    <style>
-        :root {
-            --bg-color: #f4f4f4;
-            --text-color: #111;
-            --accent-color: #ff0000;
-            --resume-color: #ff6347;
-            --link-bg: #e0e0e0;
-        }
+<style>
+  :root{
+    --card-bg: rgba(20,22,25,0.7);
+    --text: #ffffff;
+    --title-gradient: linear-gradient(90deg, #ff6b6b, #ffb86b, #8be58b, #5bd0df, #8a8bff);
+    --btn-bg: rgba(255,255,255,0.06);
+    --btn-hover-fixed: #00bfff;
+    --resume-color: #ff6b4a;
+    --card-radius: 18px;
+    --gap: 18px;
+    --container-max: 980px;
+  }
 
-        [data-theme="dark"] {
-            --bg-color: #0f0f0f;
-            --text-color: #fff;
-            --accent-color: #00ffff;
-            --resume-color: #ff6347;
-            --link-bg: #1e1e1e;
-        }
+  *{box-sizing:border-box;}
+  html,body{height:100%; margin:0;}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
+  body{
+    background:#0f1113;
+    color:var(--text);
+    font-family:"Segoe UI", Roboto, system-ui, sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+    transition:0.25s ease;
+    overflow:hidden;
+    position:relative;
+  }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            display: flex;
-            justify-content: flex-start; /* move elements higher */
-            align-items: center;
-            min-height: 100vh;
-            flex-direction: column;
-            gap: 30px;
-            padding-top: 80px;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
+  /* Floating particle background */
+  #bgCanvas{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-1;
+  }
 
-        /* Header: Logo + Title */
-        .header {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
+  .card{
+    width:100%;
+    max-width:var(--container-max);
+    background:var(--card-bg);
+    border-radius:var(--card-radius);
+    padding:45px 40px;
+    box-shadow:0 8px 34px rgba(0,0,0,0.55);
+    backdrop-filter:blur(10px);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:var(--gap);
+    position:relative;
+    transition:transform 0.1s ease-out; /* for parallax */
+  }
 
-        .header img.logo {
-            height: 120px;
-            width: 120px;
-            border-radius: 20px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+  .header{
+    display:flex;
+    align-items:center;
+    gap:22px;
+    justify-content:center;
+  }
 
-        .header img.logo:hover {
-            transform: rotate(-5deg) scale(1.05);
-            box-shadow: 0 0 25px var(--accent-color);
-        }
+  .logo{
+    height:120px;
+    width:120px;
+    border-radius:16px;
+    object-fit:cover;
+    transition:0.25s ease;
+    box-shadow:0 5px 16px rgba(0,0,0,0.22);
+  }
 
-        /* RGB Gradient Title */
-        .header h1 {
-            font-size: 4rem;
-            background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet, red);
-            background-size: 400% 100%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientShift 8s linear infinite;
-            margin: 0;
-        }
+  .logo:hover{
+    transform:scale(1.04) rotate(-1.5deg);
+  }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+  .title{
+    font-size:44px;
+    font-weight:800;
+    margin:0;
+    background:var(--title-gradient);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    letter-spacing:0.5px;
+  }
 
-        .designations {
-            font-size: 1.3rem;
-            color: var(--text-color);
-            opacity: 0.85;
-            letter-spacing: 1px;
-        }
+  .designations{
+    font-size:16px;
+    opacity:0.9;
+    text-align:center;
+    max-width:800px;
+  }
 
-        .links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 14px;
-        }
+  .links-wrap{
+    width:100%;
+    display:flex;
+    justify-content:center;
+  }
 
-        .links a {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-            color: var(--text-color);
-            background-color: var(--link-bg);
-            padding: 10px 20px;
-            border-radius: 10px;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
+  .links{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    justify-content:center;
+    overflow-x:auto;
+    padding:5px 4px;
+    scrollbar-width:none;
+  }
+  .links::-webkit-scrollbar{display:none;}
 
-        .links a:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 14px var(--accent-color);
-            background-color: var(--accent-color);
-            color: var(--bg-color);
-        }
+  .btn{
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 16px;
+    background:var(--btn-bg);
+    color:var(--text);
+    border-radius:10px;
+    font-weight:600;
+    white-space:nowrap;
+    transition:0.2s ease;
+    border:1px solid transparent;
+  }
 
-        .links a.resume {
-            background-color: var(--resume-color);
-            color: #fff;
-        }
+  .btn:hover{
+    background:var(--btn-hover-fixed) !important;
+    color:#fff !important;
+    transform:translateY(-3px);
+    box-shadow:0 8px 24px rgba(0,191,255,0.25);
+  }
 
-        .links a.resume:hover {
-            background-color: #ff4500;
-            box-shadow: 0 0 14px var(--resume-color);
-            color: #fff;
-        }
+  .resume{
+    background:var(--resume-color) !important;
+    color:#fff !important;
+  }
 
-        .links i {
-            font-size: 1.2rem;
-        }
-
-        /* Theme toggle button */
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            background-color: #0077ff; /* brighter visible color */
-            color: #fff;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-
-        .theme-toggle:hover {
-            background-color: #005bb5;
-        }
-    </style>
+  .resume:hover{
+    background:#ff4500 !important;
+    box-shadow:0 8px 24px rgba(255,100,70,0.35);
+  }
+</style>
 </head>
-<body data-theme="light">
-    <!-- Theme Toggle Button -->
-    <button class="theme-toggle" id="themeToggle">Toggle Theme</button>
 
-    <!-- Header -->
-    <div class="header">
-        <img src="images/logo.png" alt="MUNUCRAFTS Logo" class="logo">
-        <h1>MUNUCRAFTS</h1>
-    </div>
+<body>
 
-    <!-- Designations -->
-    <div class="designations">
-        GRAPHICS PROGRAMMER | GAME PROGRAMMER | UNREAL ENGINE DEVELOPER
-    </div>
+<canvas id="bgCanvas"></canvas>
 
-    <!-- Social & Resume Links -->
+<div class="card" id="card">
+
+  <div class="header">
+    <img src="images/logo.png" class="logo" alt="logo">
+    <h1 class="title">MUNUCRAFTS</h1>
+  </div>
+
+  <div class="designations">
+    GRAPHICS PROGRAMMER &nbsp;|&nbsp; GAME PROGRAMMER &nbsp;|&nbsp; UNREAL ENGINE DEVELOPER
+  </div>
+
+  <div class="links-wrap">
     <div class="links">
-        <a href="https://github.com/munucrafts" target="_blank"><i class="fab fa-github"></i>GitHub</a>
-        <a href="https://linkedin.com/in/munucrafts" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a>
-        <a href="https://www.youtube.com/@munucrafts" target="_blank"><i class="fab fa-youtube"></i>YouTube</a>
-        <a href="https://munucrafts.itch.io/" target="_blank"><i class="fas fa-gamepad"></i>Itch.io</a>
-        <a href="https://www.shadertoy.com/user/Munucrafts/sort=newest" target="_blank"><i class="fas fa-code"></i>Shadertoy</a>
-        <a href="mailto:sarthakmishra520@gmail.com"><i class="fas fa-envelope"></i>Email</a>
-        <a href="https://drive.google.com/file/d/1nTlIL2HIKtqSjpGZBsgVzfwGdotriTg5/view?usp=sharing" target="_blank" class="resume"><i class="fas fa-file"></i>Resume</a>
+
+      <a class="btn" href="https://github.com/munucrafts" target="_blank">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+
+      <a class="btn" href="https://linkedin.com/in/munucrafts" target="_blank">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+
+      <a class="btn" href="https://www.youtube.com/@munucrafts" target="_blank">
+        <i class="fab fa-youtube"></i> YouTube
+      </a>
+
+      <a class="btn" href="https://munucrafts.itch.io" target="_blank">
+        <i class="fas fa-gamepad"></i> Itch.io
+      </a>
+
+      <a class="btn" href="https://www.shadertoy.com/user/Munucrafts/sort=newest" target="_blank">
+        <i class="fas fa-code"></i> Shadertoy
+      </a>
+
+      <a class="btn" href="mailto:sarthakmishra520@gmail.com">
+        <i class="fas fa-envelope"></i> Email
+      </a>
+
+      <a class="btn resume" href="https://drive.google.com/file/d/1nTlIL2HIKtqSjpGZBsgVzfwGdotriTg5/view?usp=sharing" target="_blank">
+        <i class="fas fa-file"></i> Resume
+      </a>
+
     </div>
+  </div>
 
-    <script>
-        // Theme toggle
-        const toggleButton = document.getElementById('themeToggle');
-        const body = document.body;
+</div>
 
-        toggleButton.addEventListener('click', () => {
-            if(body.getAttribute('data-theme') === 'light') {
-                body.setAttribute('data-theme', 'dark');
-            } else {
-                body.setAttribute('data-theme', 'light');
-            }
-        });
-    </script>
+<script>
+/* -----------------------------------------
+   PARALLAX (mild)
+----------------------------------------- */
+const card = document.getElementById("card");
+document.addEventListener("mousemove", (e)=>{
+  const x = (e.clientX - window.innerWidth/2) / 200;
+  const y = (e.clientY - window.innerHeight/2) / 200;
+  card.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+/* -----------------------------------------
+   FLOATING PARTICLE BACKGROUND
+----------------------------------------- */
+const canvas = document.getElementById("bgCanvas");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+const count = 70;
+
+function resize(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resize);
+resize();
+
+for(let i=0; i<count; i++){
+  particles.push({
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    r: Math.random()*2 + 1,
+    dx: (Math.random()*0.3 - 0.15),
+    dy: (Math.random()*0.3 - 0.15),
+    a: Math.random()*0.4 + 0.1
+  });
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  for(let p of particles){
+    ctx.beginPath();
+    ctx.fillStyle = `rgba(180,255,180,${p.a + 0.2})`;
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+
+    p.x += p.dx;
+    p.y += p.dy;
+
+    if(p.x < 0) p.x = canvas.width;
+    if(p.x > canvas.width) p.x = 0;
+    if(p.y < 0) p.y = canvas.height;
+    if(p.y > canvas.height) p.y = 0;
+  }
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
 </body>
 </html>
