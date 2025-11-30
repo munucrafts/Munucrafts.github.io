@@ -7,16 +7,17 @@
 
 <link rel="icon" type="image/png" href="images/logo.png" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --card-bg: rgba(10, 10, 10, 255);
-  --text: #ffffff;
-  --title-gradient: linear-gradient(90deg, #fffb6b, #fff06b, #8be58b, #5bffdf, #8a8bff);
-  --btn-bg: rgba(255,255,255,0.2);
-  --btn-hover-fixed: #00bfff;
-  --resume-color: rgba(120,100,225,1);
-  --card-radius: 10px;
+  --card-bg: rgba(25,25,30,0.6);
+  --text: #f0f0f0;
+  --title-gradient: linear-gradient(90deg, #ffe07f, #ffb6b6, #aaffd4, #a0e0ff);
+  --btn-bg: rgba(255,255,255,0.08);
+  --btn-hover-fixed: rgba(0, 191, 255,0.9);
+  --resume-color: #805ce6;
+  --card-radius: 16px;
   --gap: 18px;
 }
 
@@ -24,9 +25,9 @@
 html,body{height:100%; margin:0;}
 
 body{
-  background:#0f1113;
+  background:#0b0c0f;
   color:var(--text);
-  font-family:"Segoe UI", Roboto, system-ui, sans-serif;
+  font-family:"Inter", "Segoe UI", Roboto, system-ui, sans-serif;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -44,12 +45,14 @@ body{
 }
 
 .card{
-  width:75vw;
+  width:70vw;
+  max-width:900px;
   height:90vh;
-  background: rgba(35, 35, 35, 0.5);
+  background: var(--card-bg);
   border-radius: var(--card-radius);
   padding:40px 48px;
-  backdrop-filter:blur(10px);
+  backdrop-filter:blur(20px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -71,14 +74,15 @@ body{
   border-radius:16px;
   object-fit:cover;
   transition:0.25s ease;
-  box-shadow:0 5px 16px rgba(0,0,0,0.22);
+  box-shadow:0 5px 20px rgba(0,0,0,0.3);
 }
 
 .logo:hover{
-  transform:scale(1.05);
+  transform:scale(1.07);
 }
 
 .title{
+  font-family:"Poppins", sans-serif;
   font-size:72px;
   font-weight:800;
   margin:0;
@@ -87,14 +91,17 @@ body{
   background-clip:text;
   -webkit-text-fill-color:transparent;
   letter-spacing:2px;
+  text-shadow: 0 3px 12px rgba(0,0,0,0), 0 0 1px rgba(255,255,255,0.2);
 }
 
 .designations{
   font-size:20px;
+  font-weight:500;
   opacity:0.85;
   text-align:center;
   max-width:none;
   line-height:1.45;
+  font-family:"Inter", sans-serif;
 }
 
 .links-wrap{
@@ -115,21 +122,21 @@ body{
   display:flex;
   align-items:center;
   gap:8px;
-  padding:12px 20px;
+  padding:12px 22px;
   background:var(--btn-bg);
   color:var(--text);
-  border-radius:10px;
+  border-radius:12px;
   font-weight:600;
   white-space:nowrap;
-  transition:0.2s ease;
-  border:1px solid transparent;
+  transition:0.25s ease;
+  border:1px solid rgba(255,255,255,0.15);
   font-size:16px;
 }
 
 .btn:hover{
   background:var(--btn-hover-fixed) !important;
   color:#fff !important;
-  transform:translateY(-3px);
+  transform:translateY(-2px);
 }
 
 .resume{
@@ -150,7 +157,7 @@ body{
 }
 
 .software-card{
-  background:rgba(255,255,255,0.05);
+  background:rgba(255,255,255,0.08);
   padding:20px;
   border-radius:12px;
   text-align:center;
@@ -159,7 +166,7 @@ body{
 }
 
 .software-card:hover{
-  background:rgba(0,191,255,0.2);
+  background:rgba(0,191,255,0.15);
 }
 </style>
 </head>
@@ -176,7 +183,7 @@ body{
   </div>
 
   <div class="designations">
-    GRAPHICS PROGRAMMER &nbsp;|&nbsp; GAME PROGRAMMER &nbsp;|&nbsp; UNREAL ENGINE DEVELOPER
+    GRAPHICS & GAME PROGRAMMER &nbsp;|&nbsp; UNREAL ENGINE DEVELOPER
   </div>
 
   <div class="links-wrap">
@@ -225,7 +232,7 @@ document.addEventListener("mousemove", (e)=>{
 const canvas = document.getElementById("bgCanvas");
 const ctx = canvas.getContext("2d");
 let particles = [];
-const count = 120;
+const count = 200;
 
 function resize() {
   canvas.width = window.innerWidth;
@@ -248,18 +255,16 @@ window.addEventListener("resize", resize);
 resize();
 
 function animate() {
-  // Create gradient background
   const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-  gradient.addColorStop(0, "#0f1113");     // top-left
-  gradient.addColorStop(0.5, "#1f1f3f");   // middle
-  gradient.addColorStop(1, "#0f1113");     // bottom-right
-
+  gradient.addColorStop(0, "#000000");
+  gradient.addColorStop(0.5, "#111827");
+  gradient.addColorStop(1, "#1f2037");
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   for (let p of particles) {
     ctx.beginPath();
-    ctx.fillStyle = `rgba(100,150,100,1)`;
+    ctx.fillStyle = `rgba(100,200,255,0.8)`;
     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
     ctx.fill();
 
@@ -277,7 +282,6 @@ function animate() {
 
 animate();
 </script>
-
 
 </body>
 </html>
