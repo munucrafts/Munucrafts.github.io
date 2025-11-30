@@ -11,13 +11,13 @@
 
 <style>
 :root{
-  --card-bg: rgba(25,25,30,0.4);
+  --card-bg: rgba(25,25,30,0.45);
   --text: #f0f0f0;
   --title-gradient: linear-gradient(90deg, #ffe07f, #ffb6b6, #aaffd4, #a0e0ff);
   --btn-bg: rgba(255,255,255,0.08);
   --btn-hover-fixed: rgba(0, 191, 255,0.9);
   --resume-color: #805ce6;
-  --card-radius: 16px;
+  --card-radius: 20px;
   --gap: 18px;
 }
 
@@ -52,13 +52,13 @@ body{
   padding:40px 48px;
   backdrop-filter:blur(50px);
   -webkit-backdrop-filter:blur(92px);
-  box-shadow: 0 0 200px rgba(50,50,50,0.65);
+  box-shadow: 0 0 120px rgba(0,150,255,0.25);
   display:flex;
   flex-direction:column;
   align-items:center;
   gap:25px;
   position:relative;
-  transition:transform 0.1s ease-out;
+  transition:transform 0.15s ease-out;
   overflow:auto;
 }
 
@@ -71,27 +71,37 @@ body{
 .logo{
   height:120px;
   width:120px;
-  border-radius:16px;
+  border-radius:50%;
   object-fit:cover;
-  transition:0.25s ease;
-  box-shadow:0 5px 20px rgba(0,0,0,0.3);
+  transition:0.3s ease, box-shadow 0.3s ease;
+  border: 3px solid white;
+  box-shadow: 0 0 20px rgba(255,255,255,0.6);
 }
 
 .logo:hover{
-  transform:scale(1.07);
+  transform:scale(1.1);
+  box-shadow: 0 0 30px rgba(0,191,255,0.9);
 }
 
 .title{
   font-family:"Poppins", sans-serif;
-  font-size:72px;
-  font-weight:800;
+  font-size:78px;
+  font-weight:900;
   margin:0;
-  background:var(--title-gradient);
-  -webkit-background-clip:text;
-  background-clip:text;
-  -webkit-text-fill-color:transparent;
+  background: linear-gradient(270deg, #ffe07f, #ffb6b6, #aaffd4, #a0e0ff);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   letter-spacing:2px;
-  text-shadow:0 3px 12px rgba(0,0,0,0.6), rgba(255,255,255,0.9);
+  animation: gradientShift 8s ease infinite;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .designations{
@@ -123,17 +133,19 @@ body{
   padding:12px 22px;
   background:var(--btn-bg);
   color:var(--text);
-  border-radius:12px;
+  border-radius:14px;
   font-weight:600;
-  transition:0.25s ease;
-  border:1px solid rgba(255,255,255,.25);
+  transition:0.25s ease, box-shadow 0.25s ease;
+  border:1.5px solid rgba(255,255,255,0.1);
   font-size:16px;
+  box-shadow: 0 4px 10px rgba(0,191,255,0.1);
 }
 
 .btn:hover{
   background:var(--btn-hover-fixed) !important;
   color:#fff !important;
-  transform:translateY(-2px);
+  transform:translateY(-3px);
+  box-shadow: 0 6px 25px rgba(0,191,255,0.4);
 }
 
 .resume{
@@ -156,14 +168,16 @@ body{
 .software-card{
   background:rgba(255,255,255,0.08);
   padding:20px;
-  border-radius:12px;
+  border-radius:14px;
   text-align:center;
   font-size:16px;
-  transition:0.2s ease;
+  transition:0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 15px rgba(0,191,255,0.05);
 }
 
 .software-card:hover{
   background:rgba(0,191,255,0.15);
+  box-shadow: 0 0 25px rgba(0,191,255,0.25);
 }
 </style>
 </head>
@@ -221,15 +235,15 @@ body{
 <script>
 const card = document.getElementById("card");
 document.addEventListener("mousemove", (e)=>{
-  const x = (e.clientX - window.innerWidth/2) / 200;
-  const y = (e.clientY - window.innerHeight/2) / 200;
+  const x = (e.clientX - window.innerWidth/2) / 20;
+  const y = (e.clientY - window.innerHeight/2) / 20;
   card.style.transform = `translate(${x}px, ${y}px)`;
 });
 
 const canvas = document.getElementById("bgCanvas");
 const ctx = canvas.getContext("2d");
 let shapes = [];
-const shapeCount = 100;
+const shapeCount = 120;
 
 function resize() {
   canvas.width = window.innerWidth;
@@ -237,7 +251,7 @@ function resize() {
 
   if (shapes.length === 0) {
     for(let i=0; i<shapeCount; i++){
-      const size = Math.random()*18 + 8;   // smaller shapes
+      const size = Math.random()*16 + 6;
       const sides = Math.floor(Math.random()*3)+3;
       const angleOffset = Math.random()*Math.PI*2;
       shapes.push({
@@ -246,8 +260,8 @@ function resize() {
         size,
         sides,
         angleOffset,
-        dx: (Math.random()*0.25-0.12),
-        dy: (Math.random()*0.25-0.12),
+        dx: (Math.random()*0.15-0.075),
+        dy: (Math.random()*0.15-0.075),
         color: `hsla(${Math.random()*360}, 70%, 60%, 0.8)`
       });
     }
@@ -276,19 +290,19 @@ function animate(){
   gradient.addColorStop(0.5, "#111827");
   gradient.addColorStop(1, "#1f2937");
   ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillRect(0,0,canvas.width,canvas.height);
 
   for(let s of shapes){
-    drawPolygon(s.x, s.y, s.size, s.sides, s.angleOffset, s.color);
-
     s.x += s.dx;
     s.y += s.dy;
-    s.angleOffset += 0.002;
+    s.angleOffset += 0.0025;
 
     if(s.x<-s.size) s.x = canvas.width+s.size;
     if(s.x>canvas.width+s.size) s.x = -s.size;
     if(s.y<-s.size) s.y = canvas.height+s.size;
     if(s.y>canvas.height+s.size) s.y = -s.size;
+
+    drawPolygon(s.x, s.y, s.size, s.sides, s.angleOffset, s.color);
   }
 
   requestAnimationFrame(animate);
