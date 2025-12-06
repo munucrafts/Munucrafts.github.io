@@ -46,25 +46,27 @@ html, body {
   overflow-x: hidden;
 }
 
-
 /* --- MAIN CONTENT CARD --- */
 .main-content{
-  position:relative;
+  position: relative;
   width: 90%;
   max-width: 1100px;
   min-height: 90vh;
   height: auto;
   overflow-y: auto;
-  background: var(--card-visible-bg); 
+  background: var(--card-visible-bg);
   border-radius: 20px;
-  padding: 40px; 
+  padding: 40px;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 10px 80px rgba(0, 0, 0, 0.7); 
-  backdrop-filter: blur(15px); 
+  box-shadow: 0 10px 80px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  z-index: 10; 
-  text-align: left; 
-  transition: box-shadow 0.3s ease; 
+  z-index: 10;
+  text-align: left;
+  transition: box-shadow 0.3s ease;
+
+  /* CENTERING */
+  margin: 40px auto;
 }
 
 /* --- LOGO AND TITLE STYLES --- */
@@ -171,19 +173,18 @@ html, body {
   background:#00C896 !important;
 }
 
-/* --- MOBILE FIXES (THE IMPORTANT PART) --- */
+/* --- MOBILE FIXES --- */
 @media (max-width: 768px) {
-
   body {
     overflow-x: hidden;
   }
 
   .main-content {
-    width: 100%;
-    margin: 0 auto;
+    width: 95%;
+    margin: 20px auto;
     padding: 20px;
-    border-radius: 0;
-    box-shadow: none;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
   }
 
   .header-with-logo {
