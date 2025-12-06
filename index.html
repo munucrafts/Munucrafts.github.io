@@ -10,7 +10,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-/* --- ROOT VARIABLES --- */
 :root{
   --text: #f0f0f0;
   --title-gradient: linear-gradient(90deg,
@@ -31,22 +30,20 @@
   --text-secondary: #aaaaaa;
 }
 
-*{
-  box-sizing:border-box;
-}
+*{ box-sizing:border-box; }
 
 html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100%;
+  margin:0;
+  padding:0;
+  width:100%;
+  min-height:100%;
   color: var(--text-primary);
   background: var(--dark-bg);
   font-family: "Inter", "Segoe UI", Roboto, system-ui, sans-serif;
   overflow-x: hidden;
 }
 
-/* --- MAIN CONTENT CARD --- */
+/* --- MAIN CARD --- */
 .main-content{
   position: relative;
   width: 90%;
@@ -66,7 +63,7 @@ html, body {
   margin: 40px auto;
 }
 
-/* --- LOGO AND TITLE STYLES --- */
+/* --- LOGO AND TITLE --- */
 .header-with-logo{
   display:flex;
   align-items:center;
@@ -109,7 +106,7 @@ html, body {
   100% { background-position: 0% 50%; }
 }
 
-/* Bio Text */
+/* --- BIO --- */
 .bio-text{
   margin-bottom: 30px;
 }
@@ -124,7 +121,7 @@ html, body {
   font-weight: 600;
 }
 
-/* Link Button Styles */
+/* --- BUTTONS --- */
 .links-wrap{
   width:100%;
   display:flex;
@@ -170,7 +167,7 @@ html, body {
   background:#00C896 !important;
 }
 
-/* --- MOBILE FIXES --- */
+/* --- MOBILE RESPONSIVE --- */
 @media (max-width: 768px) {
   .main-content {
     width: 95%;
@@ -180,19 +177,35 @@ html, body {
     box-shadow: 0 5px 20px rgba(0,0,0,0.5);
   }
 
-  .header-with-logo {
-    gap: 15px;
+  .header-with-logo { gap: 12px; }
+
+  .logo {
+    width: 20vw;
+    max-width: 52px;
+    height: auto;
   }
 
-  .logo { width: 52px; height: 52px; }
+  .title {
+    font-size: 10vw;
+    max-font-size: 42px;
+    min-font-size: 28px;
+  }
 
-  .title { font-size: 42px; }
+  .bio-text p {
+    font-size: 4.5vw;
+    max-font-size: 16px;
+    min-font-size: 14px;
+    line-height: 1.45;
+  }
 
-  .bio-text p { font-size: 16px; line-height: 1.45; }
+  .links { gap: 4vw; }
 
-  .links { gap: 10px; }
-
-  .btn { padding: 10px 16px; font-size: 14px; }
+  .btn {
+    padding: 10px 14px;
+    font-size: 3.5vw;
+    max-font-size: 14px;
+    min-font-size: 12px;
+  }
 }
 
 /* --- BACKGROUND CANVAS --- */
@@ -282,7 +295,6 @@ class Polygon {
         this.speedY = (Math.random() - 0.5) * 0.7;
         this.angle = Math.random() * Math.PI * 2;
         this.rotationSpeed = (Math.random() - 0.5) * 0.025;
-
         const colors = [
             'rgba(0,255,255,0.9)',
             'rgba(0,255,128,0.9)',
@@ -293,7 +305,6 @@ class Polygon {
         ];
         this.color = colors[Math.floor(Math.random() * colors.length)];
     }
-
     draw() {
         ctx.save();
         ctx.translate(this.x, this.y);
@@ -310,7 +321,6 @@ class Polygon {
         ctx.fill();
         ctx.restore();
     }
-
     update() {
         this.x += this.speedX;
         this.y += this.speedY;
