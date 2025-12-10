@@ -43,12 +43,16 @@ html, body {
   overflow-x: hidden;
 }
 
-/* --- MAIN CARD --- */
+/* MAIN CARD */
 .main-content{
   position: relative;
   width: 90%;
   max-width: 1100px;
   min-height: 90vh;
+
+  display: flex;               
+  flex-direction: column;    
+
   overflow-y: auto;
   background: var(--card-visible-bg);
   border-radius: 20px;
@@ -63,7 +67,7 @@ html, body {
   margin: 40px auto;
 }
 
-/* --- LOGO AND TITLE --- */
+/* LOGO & TILTLE */
 .header-with-logo{
   display:flex;
   align-items:center;
@@ -107,9 +111,47 @@ html, body {
   100% { background-position: 0% 50%; }
 }
 
+/* --- DESIGNATION --- */
+.desig-text{
+  margin-top: 0px; 
+  margin-bottom: 10px;
+}
+
+.desig-text p {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  margin: 0;
+  padding-left: 0px;
+  padding-bottom: 6px;
+  display: inline-block;
+  color: var(--text-primary);
+  border-bottom: 2px solid;
+  border-image: var(--title-gradient) 1;
+}
+
+/* FOOTER INSIDE CARD */
+.crafted {
+  margin-top: auto;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-secondary);
+  padding-top: 20px;
+}
+
+.crafted a {
+  color: var(--text-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.crafted a:hover {
+  text-decoration: underline;
+}
+
 /* --- BIO --- */
 .bio-text{
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 .bio-text p{
   font-size: 18px;
@@ -188,14 +230,10 @@ html, body {
 
   .title {
     font-size: 10vw;
-    max-font-size: 42px;
-    min-font-size: 28px;
   }
 
   .bio-text p {
     font-size: 4.5vw;
-    max-font-size: 16px;
-    min-font-size: 14px;
     line-height: 1.45;
   }
 
@@ -204,8 +242,6 @@ html, body {
   .btn {
     padding: 10px 14px;
     font-size: 3.5vw;
-    max-font-size: 14px;
-    min-font-size: 12px;
   }
 }
 
@@ -238,9 +274,12 @@ html, body {
     <h1 class="title">MUNUCRAFTS</h1>
   </div>
 
+  <div class="desig-text">
+    <p>GRAPHICS & GAME PROGRAMMER | UNREAL ENGINE DEVELOPER</p>
+  </div>
+
   <div class="bio-text">
-    <p>Hi, I'm Sarthak / Munucrafts. I am into Computer Graphics Programming, Game Programming, and Unreal Engine. I love building Graphics Engines, Renderers, Video Games, and Experimental Projects that explore multi-dimensional skills.</p>
-    <p>I am working on various projects at the moment. Check out my works by clicking on the links below. Feel free to connect with me via email or any of the provided social platforms.</p>
+    <p>Hi, I'm Sarthak / Munucrafts. I am into Computer Graphics Programming, Game Programming, and Unreal Engine. I love building Graphics Engines, Renderers, Video Games, and Experimental Projects. I am working on various projects at the moment. Check out my works from the links below. Feel free to connect with me anytime.</p>
   </div>
 
   <div class="links-wrap">
@@ -268,6 +307,11 @@ html, body {
       </a>
     </div>
   </div>
+
+  <p class="crafted">
+    Crafted with ❤️ by 
+    <a href="https://github.com/munucrafts" target="_blank">Munucrafts</a>
+  </p>
 
 </div>
 
