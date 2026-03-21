@@ -111,23 +111,26 @@ html, body {
   100% { background-position: 0% 50%; }
 }
 
-/* --- DESIGNATION --- */
+/* --- DESIGNATION (ONLY CHANGE) --- */
 .desig-text{
-  margin-top: 0px; 
-  margin-bottom: 10px;
+  margin-top: 6px; 
+  margin-bottom: 16px;
 }
 
 .desig-text p {
-  font-size: 19px;
-  font-weight: 500;
+  font-size: 17px;
+  font-weight: 600;
   letter-spacing: 2px;
   margin: 0;
-  padding-left: 0px;
-  padding-bottom: 6px;
+  padding: 8px 14px;
   display: inline-block;
   color: var(--text-primary);
-  border-bottom: 2px solid;
-  border-image: var(--title-gradient) 1;
+
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.12);
+
+  box-shadow: 0 0 10px rgba(0,191,255,0.15);
 }
 
 /* FOOTER INSIDE CARD */
@@ -149,16 +152,28 @@ html, body {
   text-decoration: underline;
 }
 
-/* --- BIO --- */
+/* --- BIO (ONLY CHANGE) --- */
 .bio-text{
-  margin-bottom: 10px;
+  margin-bottom: 16px;
+  padding: 16px 18px;
+
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
 }
+
 .bio-text p{
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 17px;
+  line-height: 1.7;
   font-weight: 400;
-  margin: 1em 0;
+  margin: 0 0 12px 0;
+  color: var(--text-secondary);
 }
+
+.bio-text p:last-child{
+  margin-bottom: 0;
+}
+
 .bio-text strong{
   color: var(--text-primary);
   font-weight: 600;
@@ -279,9 +294,8 @@ html, body {
   </div>
 
   <div class="bio-text">
-    <p>Hi, I'm Sarthak / Munucrafts. I am into Computer Graphics Programming, Game Programming, and Unreal Engine. I love building Graphics Engines, Renderers, Video Games, and Experimental Projects. 
-
-    <p>I am working on various projects at the moment. Check out my works from the links below. Feel free to connect with me anytime.
+    <p>Hi, I'm Sarthak / Munucrafts. I am into Computer Graphics Programming, Game Programming, and Unreal Engine. I love building Graphics Engines, Renderers, Video Games, and Experimental Projects.</p>
+    <p>I am working on various projects at the moment. Check out my works from the links below. Feel free to connect with me anytime.</p>
   </div>
 
   <div class="links-wrap">
