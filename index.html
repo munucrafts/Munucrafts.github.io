@@ -25,9 +25,9 @@
   --resume-color: #805ce6;
   
   --dark-bg: #0b0c0f;
-  --card-visible-bg: rgba(25, 25, 30, 0.75); 
-  --text-primary: #f0f0f0;
-  --text-secondary: #aaaaaa;
+  --card-visible-bg: rgba(25, 25, 30, 0.95); 
+  --text-primary: #ffffff;
+  --text-secondary: #ffffff;
 }
 
 *{ box-sizing:border-box; }
@@ -55,10 +55,10 @@ html, body {
 
   overflow-y: auto;
   background: var(--card-visible-bg);
-  border-radius: 20px;
+  border-radius: 0px;
   padding: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 10px 80px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 10px 80px rgba(0, 0, 0, 0);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   z-index: 10;
@@ -82,8 +82,8 @@ html, body {
   border-radius:50%;
   object-fit:cover;
   transition:0.3s ease, box-shadow 0.3s ease;
-  border: 3px solid white;
-  box-shadow: 0 0 20px rgba(255,255,255,0.6);
+  border: 2px solid white;
+  box-shadow: 0 0 20px rgba(255,255,255,0.5);
 }
 
 .logo:hover{
@@ -113,7 +113,7 @@ html, body {
 
 /* --- DESIGNATION (ONLY CHANGE) --- */
 .desig-text{
-  margin-top: 6px; 
+  margin-top: 1px; 
   margin-bottom: 16px;
 }
 
@@ -126,11 +126,11 @@ html, body {
   display: inline-block;
   color: var(--text-primary);
 
-  background: rgba(255,255,255,0.05);
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0);
+  border-radius: 0px;
+  border: 1px solid rgba(255,255,255,0.35);
 
-  box-shadow: 0 0 10px rgba(0,191,255,0.15);
+  box-shadow: 0 0 10px rgba(255,255,255,0.0);
 }
 
 /* FOOTER INSIDE CARD */
@@ -157,9 +157,9 @@ html, body {
   margin-bottom: 16px;
   padding: 16px 18px;
 
-  background: rgba(255,255,255,0.03);
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(0,0,0,0);
+  border-radius: 0px;
+  border: 1px solid rgba(255,255,255,0.35);
 }
 
 .bio-text p{
