@@ -98,79 +98,38 @@ html,body{background:var(--bg);color:var(--text);font-family:'Sora',sans-serif;m
 .card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
 .card-title{font-size:15px;font-weight:700;color:var(--text);}
 .card-tag{font-family:'Space Mono',monospace;font-size:10px;padding:3px 8px;border-radius:3px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;}
-.tag-systems{
-  background:#0d2a1a;
-  color:#34d399;
-  border:1px solid #16532a;
+
+/* BASE TAG */
+.card-tag{
+  font-family:'Space Mono',monospace;
+  font-size:10px;          
+  padding:5px 10px;
+  border-radius:4px;
+  font-weight:200;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+
+  color:#ffffff;             
+  background-clip:padding-box;
+
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
-.tag-rendering{
-  background:#0d1a2a;
-  color:#60a5fa;
-  border:1px solid #1e3a5f;
-}
+/* TAG COLORS  */
 
-.tag-tools{
-  background:#1a0d2a;
-  color:#c084fc;
-  border:1px solid #5b2a8a;
-}
+.tag-systems{ background:#16261d; border:1px solid #2e5a3f; }
+.tag-rendering{ background:#16202c; border:1px solid #2e4f73; }
+.tag-tools{ background:#1c1726; border:1px solid #4b3a6b; }
+.tag-engine{ background:#261c14; border:1px solid #6b4326; }
+.tag-experimental{ background:#261722; border:1px solid #6b2a45; }
 
-.tag-engine{
-  background:#2a1a0d;
-  color:#fb923c;
-  border:1px solid #7c3d12;
-}
-
-.tag-experimental{
-  background:#2a0d1a;
-  color:#f472b6;
-  border:1px solid #831843;
-}
-
-/* NEW — ALL DISTINCT */
-
-/* GRAPHICS (cyan) */
-.tag-graphics{
-  background:#0d252a;
-  color:#22d3ee;
-  border:1px solid #155e75;
-}
-
-/* SOFTWARE RASTERIZER (lime) */
-.tag-rasterizer{
-  background:#1f2a0d;
-  color:#a3e635;
-  border:1px solid #4d7c0f;
-}
-
-/* RENDERER (indigo) */
-.tag-renderer{
-  background:#111827;
-  color:#818cf8;
-  border:1px solid #3730a3;
-}
-
-/* GAME ENGINE (orange-red) */
-.tag-game-engine{
-  background:#2a140d;
-  color:#f97316;
-  border:1px solid #9a3412;
-}
-
-/* GRAPHICS ENGINE (blue-violet) */
-.tag-graphics-engine{
-  background:#1a172a;
-  color:#8b5cf6;
-  border:1px solid #4c1d95;
-}
-
-/* UNREAL ENGINE (yellow) */
-.tag-unreal{
-  background:#2a260d;
-  color:#facc15;
-  border:1px solid #854d0e;
-}
+.tag-graphics{ background:#172a2f; border:1px solid #2f5f66; }
+.tag-rasterizer{ background:#222a14; border:1px solid #556b2f; }
+.tag-renderer{ background:#1a1d2a; border:1px solid #3c4370; }
+.tag-game-engine{ background:#2a1a12; border:1px solid #7a3f1d; }
+.tag-graphics-engine{ background:#201a2c; border:1px solid #4a3f7a; }
+.tag-unreal{ background:#2a260f; border:1px solid #7a6a1d; }
 
 .card-desc{font-size:13px;color:var(--muted);line-height:1.55;}
 .card-preview{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:.25s;}
@@ -181,7 +140,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Sora',sans-serif;m
 /* POPUP MODAL - ON GRID CLICK*/
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:1000;padding:20px;overflow-y:auto;backdrop-filter:blur(4px);}
 .overlay.open{display:flex;align-items:flex-start;justify-content:center;}
-.modal{background:var(--surface);border:1px solid var(--border);border-radius:14px;width:100%;max-width:660px;overflow:hidden;margin:auto;}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:0px;width:100%;max-width:660px;overflow:hidden;margin:auto;}
 .modal-hero{width:100%;height:200px;background:var(--surface2);position:relative;overflow:hidden;}
 .modal-hero .grid-lines{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:24px 24px;}
 .modal-hero .hero-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:56px;color:var(--accent);opacity:.5;}
@@ -328,111 +287,143 @@ frame();
 // DATA
 const PROJECTS = [
   {
-    id:'kofu',
-    title:'Kofu Engine',
-    tag:'Graphics Engine',
-    tagClass:'tag-graphics-engine',
-    icon:'fa-solid fa-cube',
-    subtitle:'OpenGL Powered Graphics Engine',
-    desc:'Kofu Engine is an OpenGL-powered real-time rendering graphics engine built in C++, focusing on low-level rendering systems and extensibility.',
-    features:[
-      {icon:'fa-solid fa-cube',text:'OpenGL rendering pipeline'},
-      {icon:'fa-solid fa-layer-group',text:'Scene & entity system'},
-      {icon:'fa-solid fa-lightbulb',text:'Lighting & shading'},
-      {icon:'fa-solid fa-gears',text:'Engine architecture'},
+    id: 'kofu',
+    title: 'Kofu Engine',
+    tag: 'Graphics Engine',
+    tagClass: 'tag-graphics-engine',
+    icon: 'fa-solid fa-cube',
+    subtitle: 'OpenGL Powered Graphics Engine',
+    desc: 'Kofu Engine is an OpenGL-powered real-time rendering graphics engine built in C++, focusing on low-level rendering systems and engine architecture.',
+
+    features: [
+      { icon: 'fa-solid fa-cube', text: 'OpenGL rendering pipeline' },
+      { icon: 'fa-solid fa-window-maximize', text: 'GLFW windowing + GLAD (OpenGL 4.6)' },
+      { icon: 'fa-solid fa-layer-group', text: 'VBO, VAO, EBO, FBO abstractions' },
+      { icon: 'fa-solid fa-cubes', text: 'Static meshes, instancing, skybox, lights' },
+      { icon: 'fa-solid fa-eye', text: 'LIT / UNLIT / DEPTH / NORMAL modes' },
+      { icon: 'fa-solid fa-wand-magic-sparkles', text: 'MSAA anti-aliasing' },
+      { icon: 'fa-solid fa-file-code', text: 'GLTF + stb_image asset pipeline' },
+      { icon: 'fa-solid fa-lightbulb', text: 'Directional, point, spot lights + shadows' },
+      { icon: 'fa-solid fa-camera', text: 'Perspective camera with WASDQE controls' },
+      { icon: 'fa-solid fa-sliders', text: 'Dear ImGui editor panels + gizmos' },
+      { icon: 'fa-solid fa-volume-high', text: 'OpenAL audio system' }
     ],
-    chips:['C++','OpenGL','Rendering','Engine Dev'],
-    link:'https://github.com/munucrafts/Kofu-Engine'
+
+    chips: ['C++', 'OpenGL', 'Rendering', 'Graphics', 'Engine Dev'],
+    link: 'https://github.com/munucrafts/Kofu-Engine'
   },
 
   {
-    id:'raster',
-    title:'Rocken Raster',
-    tag:'Software Rasterizer',
-    tagClass:'tag-rasterizer',
-    icon:'fa-solid fa-draw-polygon',
-    subtitle:'CPU Software Rasterizer · C++',
-    desc:'A CPU-based software rasterizer implementing the full graphics pipeline including clipping, perspective-correct interpolation, depth buffering, and multithreaded tile rendering.',
-    features:[
-      {icon:'fa-solid fa-draw-polygon',text:'Triangle rasterization'},
-      {icon:'fa-solid fa-scissors',text:'View-space clipping'},
-      {icon:'fa-solid fa-layer-group',text:'Depth buffering'},
-      {icon:'fa-solid fa-bolt',text:'Multithreaded rendering'},
+    id: 'raster',
+    title: 'Rocken Raster',
+    tag: 'Software Rasterizer',
+    tagClass: 'tag-rasterizer',
+    icon: 'fa-solid fa-draw-polygon',
+    subtitle: 'CPU Software Rasterizer Written in C++',
+    desc: 'A CPU-based software rasterizer implementing the full graphics pipeline including rasterization, culling, projection, and baking etc.',
+
+    features: [
+      { icon: 'fa-solid fa-draw-polygon', text: 'Triangle rasterization' },
+      { icon: 'fa-solid fa-scissors', text: 'Clip-space & backface culling' },
+      { icon: 'fa-solid fa-bolt', text: 'Multithreaded tile rendering' },
+      { icon: 'fa-solid fa-camera', text: 'Full camera controls (move, pan, zoom)' },
+      { icon: 'fa-solid fa-layer-group', text: 'Depth buffering' },
+      { icon: 'fa-solid fa-palette', text: 'Material system (texture + color)' },
+      { icon: 'fa-solid fa-sun', text: 'Directional lighting' },
+      { icon: 'fa-solid fa-cloud', text: 'Exponential fog' },
+      { icon: 'fa-solid fa-code-branch', text: 'Transform + projection baking' },
+      { icon: 'fa-solid fa-music', text: 'OpenAL audio system' }
     ],
-    chips:['C++','SIMD','Rasterization','Multithreading'],
-    link:'https://github.com/munucrafts/Rocken-Raster'
+
+    chips: ['C++', 'Software Rasterization', 'Rendering', 'Graphics'],
+    link: 'https://github.com/munucrafts/Rocken-Raster'
   },
 
   {
-    id:'rayzer',
-    title:'Rayzer',
-    tag:'Renderer',
-    tagClass:'tag-renderer',
-    icon:'fa-solid fa-lightbulb',
-    subtitle:'Ray Tracing Renderer · C++',
-    desc:'A ray tracing renderer exploring physically-based rendering concepts including ray-object intersections, lighting models, and recursive ray tracing.',
-    features:[
-      {icon:'fa-solid fa-lightbulb',text:'Ray tracing pipeline'},
-      {icon:'fa-solid fa-circle',text:'Ray-object intersection'},
-      {icon:'fa-solid fa-sun',text:'Lighting & shading'},
-      {icon:'fa-solid fa-repeat',text:'Recursive rays'},
+    id: 'rayzer',
+    title: 'Rayzer',
+    tag: 'Ray Tracer',
+    tagClass: 'tag-renderer',
+    icon: 'fa-solid fa-lightbulb',
+    subtitle: 'Ray Tracing Renderer Written in C++',
+    desc: 'A CPU-based ray tracer exploring ray tracing fundamentals including intersections, reflections, materials, and recursive light transport.',
+
+    features: [
+      { icon: 'fa-solid fa-lightbulb', text: 'Ray tracing pipeline' },
+      { icon: 'fa-solid fa-circle', text: 'Ray-object intersection' },
+      { icon: 'fa-solid fa-arrows-spin', text: 'Recursive ray bouncing' },
+      { icon: 'fa-solid fa-fill-drip', text: 'Material system (roughness, emission)' },
+      { icon: 'fa-solid fa-layer-group', text: 'Accumulation buffer' },
+      { icon: 'fa-solid fa-shuffle', text: 'Randomized scattering' },
+      { icon: 'fa-solid fa-cloud', text: 'Background blending' }
     ],
-    chips:['C++','Ray Tracing','Rendering'],
-    link:'https://github.com/munucrafts/Rayzer'
+
+    chips: ['C++', 'Ray Tracing', 'Path Tracing', 'Rendering'],
+    link: 'https://github.com/munucrafts/Rayzer'
   },
 
   {
-    id:'archviz',
-    title:'UE ArchViz Multiplayer',
-    tag:'Unreal Engine',
-    tagClass:'tag-unreal',
-    icon:'fa-solid fa-building',
-    subtitle:'Multiplayer ArchViz · Unreal Engine 5',
-    desc:'A multiplayer architectural visualization project built in Unreal Engine, enabling collaborative walkthroughs with networking support.',
-    features:[
-      {icon:'fa-solid fa-users',text:'Multiplayer support'},
-      {icon:'fa-solid fa-building',text:'ArchViz environment'},
-      {icon:'fa-solid fa-network-wired',text:'Networking systems'},
-      {icon:'fa-solid fa-gamepad',text:'Interactive navigation'},
+    id: 'archviz',
+    title: 'UE ArchViz Multiplayer',
+    tag: 'Unreal Engine',
+    tagClass: 'tag-unreal',
+    icon: 'fa-solid fa-building',
+    subtitle: 'Session Based Multiplayer Architectural Visualization.',
+    desc: 'A multiplayer architectural visualization project enabling collaborative walkthroughs with customizable environments for Unreal Engine 5.4 and above.',
+
+    features: [
+      { icon: 'fa-solid fa-users', text: 'Multiplayer sessions + lobby system' },
+      { icon: 'fa-solid fa-user', text: 'First-person & orbital pawns' },
+      { icon: 'fa-solid fa-sliders', text: 'UI control system' },
+      { icon: 'fa-solid fa-palette', text: 'Material configurators' },
+      { icon: 'fa-solid fa-layer-group', text: 'Streaming level modifiers' },
+      { icon: 'fa-solid fa-car', text: 'Spline-based car system' },
+      { icon: 'fa-solid fa-sun', text: 'Day-night cycle' },
+      { icon: 'fa-solid fa-network-wired', text: 'Replicated movement + avatars' }
     ],
-    chips:['UE5','Multiplayer','C++','Blueprint'],
-    link:'https://github.com/munucrafts/UE-ArchViz-Multiplayer'
+
+    chips: ['Unreal Engine', 'Multiplayer', 'C++', 'Blueprints'],
+    link: 'https://github.com/munucrafts/UE-ArchViz-Multiplayer'
   },
 
   {
-    id:'thumbnails',
-    title:'UE Thumbnail Extractor',
-    tag:'Tools',
-    tagClass:'tag-tools',
-    icon:'fa-solid fa-image',
-    subtitle:'Asset Thumbnail Extraction · Unreal Engine',
-    desc:'A tool to extract Unreal Engine asset thumbnails as PNG images and process them for external usage, including background removal workflows.',
-    features:[
-      {icon:'fa-solid fa-image',text:'Thumbnail extraction'},
-      {icon:'fa-solid fa-file-export',text:'PNG export'},
-      {icon:'fa-solid fa-wand-magic-sparkles',text:'Background removal'},
-      {icon:'fa-solid fa-toolbox',text:'Editor integration'},
+    id: 'thumbnails',
+    title: 'UE Thumbnail Extractor',
+    tag: 'UE Tools',
+    tagClass: 'tag-tools',
+    icon: 'fa-solid fa-image',
+    subtitle: 'Asset Thumbnail Extraction in Unreal Engine',
+    desc: 'A plugin to extract Unreal Engine 5.3 and above asset thumbnails as PNGs and remove their background using Python and Rembg.',
+
+    features: [
+      { icon: 'fa-solid fa-image', text: 'Thumbnail extraction' },
+      { icon: 'fa-solid fa-file-export', text: 'PNG export' },
+      { icon: 'fa-solid fa-wand-magic-sparkles', text: 'Background removal pipeline' },
+      { icon: 'fa-solid fa-toolbox', text: 'Editor integration' }
     ],
-    chips:['UE5','C++','Tools','Pipeline'],
-    link:'https://github.com/munucrafts/CPP-UE-GetThumbnails'
+
+    chips: ['Unreal Engine', 'C++', 'Python', 'Rembg','Tools', 'Blueprints'],
+    link: 'https://github.com/munucrafts/CPP-UE-GetThumbnails'
   },
 
   {
-    id:'hoverboard',
-    title:'UE Hoverboard System',
-    tag:'Game Engine',
-    tagClass:'tag-game-engine',
-    icon:'fa-solid fa-person-running',
-    subtitle:'Gameplay System · Unreal Engine',
-    desc:'A hoverboard gameplay system implemented in Unreal Engine featuring custom movement mechanics, physics handling, and player controls.',
-    features:[
-      {icon:'fa-solid fa-person-running',text:'Custom movement system'},
-      {icon:'fa-solid fa-wind',text:'Physics-based motion'},
-      {icon:'fa-solid fa-gamepad',text:'Player controls'},
-      {icon:'fa-solid fa-gears',text:'Gameplay systems'},
+    id: 'hoverboard',
+    title: 'UE Hoverboard System',
+    tag: 'Gameplay',
+    tagClass: 'tag-game-engine',
+    icon: 'fa-solid fa-person-running',
+    subtitle: 'Hoverboard Gameplay System in Unreal Engine',
+    desc: 'A hoverboard gameplay system with custom hoverboard physics, movement, jump, boost, and more player controls.',
+
+    features: [
+      { icon: 'fa-solid fa-person-running', text: 'Custom movement system' },
+      { icon: 'fa-solid fa-wind', text: 'Tick based hoverboard physics' },
+      { icon: 'fa-solid fa-gamepad', text: 'Player controls' },
+      { icon: 'fa-solid fa-gears', text: 'Gameplay framework' }
     ],
-    chips:['UE5','C++','Gameplay','Physics'],
-    link:'https://github.com/munucrafts/CPP-UE-Hoverboard'
+
+    chips: ['Unreal Engine', 'Gameplay', 'C++', 'Physics'],
+    link: 'https://github.com/munucrafts/CPP-UE-Hoverboard'
   }
 ];
 
