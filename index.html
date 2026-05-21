@@ -76,7 +76,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Sora',sans-serif;m
 
 /* LINKS */
 .links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;}
-.btn{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:6px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-family:'Space Mono',monospace;font-size:12px;text-decoration:none;transition:.2s;cursor:pointer;}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:0px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-family:'Space Mono',monospace;font-size:12px;text-decoration:none;transition:.2s;cursor:pointer;}
 .btn:hover{border-color:var(--accent);color:var(--accent);}
 .btn i{font-size:14px;}
 
@@ -102,14 +102,14 @@ html,body{background:var(--bg);color:var(--text);font-family:'Sora',sans-serif;m
 .card-body{padding:16px;}
 .card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
 .card-title{font-size:15px;font-weight:700;color:var(--text);}
-.card-tag{font-family:'Space Mono',monospace;font-size:10px;padding:3px 8px;border-radius:3px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;}
+.card-tag{font-family:'Space Mono',monospace;font-size:10px;padding:3px 8px;border-radius:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;}
 
 /* BASE TAG */
 .card-tag{
   font-family:'Space Mono',monospace;
   font-size:10px;          
   padding:5px 10px;
-  border-radius:4px;
+  border-radius:10px;
   font-weight:200;
   letter-spacing:.06em;
   text-transform:uppercase;
@@ -140,17 +140,17 @@ html,body{background:var(--bg);color:var(--text);font-family:'Sora',sans-serif;m
 .card-preview{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:.25s;}
 
 .card-footer{padding:10px 16px;border-top:1px solid var(--border);display:flex;gap:6px;flex-wrap:wrap;}
-.chip{font-family:'Space Mono',monospace;font-size:10px;padding:3px 8px;border-radius:3px;background:var(--surface2);border:1px solid var(--border);color:var(--muted);}
+.chip{font-family:'Space Mono',monospace;font-size:10px;padding:3px 8px;border-radius:10px;background:var(--surface2);border:1px solid var(--border);color:var(--muted);}
 
 /* POPUP MODAL - ON GRID CLICK*/
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:1000;padding:20px;overflow-y:auto;backdrop-filter:blur(4px);}
 .overlay.open{display:flex;align-items:flex-start;justify-content:center;}
-.modal{background:var(--surface);border:1px solid var(--border);border-radius:0px;width:100%;max-width:660px;overflow:hidden;margin:auto;}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:10px;width:100%;max-width:660px;overflow:hidden;margin:auto;}
 .modal-hero{width:100%;height:200px;background:var(--surface2);position:relative;overflow:hidden;}
 .modal-hero .grid-lines{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:24px 24px;}
 .modal-hero .hero-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:56px;color:var(--accent);opacity:.5;}
 .modal-hero-tag{position:absolute;top:14px;left:14px;}
-.modal-close{position:absolute;top:14px;right:14px;width:30px;height:30px;background:rgba(0,0,0,.6);border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text);font-size:16px;}
+.modal-close{position:absolute;top:14px;right:14px;width:30px;height:30px;background:rgba(0,0,0,.6);border:1px solid var(--border);border-radius:0px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text);font-size:16px;}
 .modal-close:hover{border-color:var(--accent);}
 
 .modal-body{padding:24px;}
@@ -231,7 +231,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Sora',sans-serif;m
     <div class="section-header">
       <span class="section-label">Projects</span>
       <div class="section-line"></div>
-      <span class="section-count" id="proj-count">04 entries</span>
+      <span class="section-count" id="proj-count">04 Entries</span>
     </div>
 
     <div class="grid" id="grid"></div>
@@ -432,7 +432,7 @@ const PROJECTS = [
   }
 ];
 
-document.getElementById('proj-count').textContent=`0${PROJECTS.length} entries`;
+document.getElementById('proj-count').textContent=`0${PROJECTS.length} Entries`;
 
 function tagHTML(tagClass,tag){
   return `<span class="card-tag ${tagClass}">${tag}</span>`;
@@ -491,3 +491,22 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 </script>
 </body>
 </html>
+
+<footer style="
+  margin-top:60px;
+  padding:20px 0 40px;
+  border-top:1px solid #2a3a50;
+  text-align:center;
+  font-family:'Space Mono',monospace;
+  font-size:12px;
+  color:#b8c7e0;
+  opacity:0.75;
+">
+  <p style="margin:0;">
+    Munucrafts · All rights reserved · 
+    <a href="https://github.com/munucrafts" target="_blank"
+       style="color:#00e6ff; text-decoration:none;">
+      View more on GitHub
+    </a>
+  </p>
+</footer>
