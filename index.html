@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Hi, I'm Munucrafts.</title>
 
-  <!-- FAVICON -->
   <link rel="icon" type="image/png" href="images/logo.png">
   <link rel="apple-touch-icon" href="images/logo.png">
 
@@ -22,46 +21,32 @@
     }
 
     :root {
-      /* BACKGROUNDS */
       --bg: #05070d;
       --surface: #0a0f16;
       --surface2: #0f1622;
-
-      /* BORDERS */
       --border: #2a3a50;
-
-      /* ACCENTS */
       --accent: #00e6ff;
       --accent2: #9b5cff;
-
-      /* TEXT */
       --text: #ffffff;
       --muted: #e6e6e6;
-
-      /* STATES */
       --card-hover: #182233;
     }
 
-    html,
-    body {
+    html, body {
       background: var(--bg);
       color: var(--text);
       font-family: 'Sora', sans-serif;
       min-height: 100vh;
     }
 
-    /* CANVAS BG */
     #bg {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       z-index: 0;
       opacity: 1.0;
     }
 
-    /* LAYOUT */
     .site {
       position: relative;
       z-index: 1;
@@ -70,7 +55,6 @@
       padding: 40px 24px 80px;
     }
 
-    /* HEADER */
     .header {
       display: flex;
       align-items: center;
@@ -78,44 +62,6 @@
       padding-bottom: 36px;
       border-bottom: 1px solid var(--border);
       margin-bottom: 24px;
-    }
-
-    .logo-wrap {
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .logo-hex {
-      width: 78px;
-      height: 78px;
-    }
-
-    .logo-hex polygon {
-      fill: var(--surface2);
-      stroke: var(--accent);
-      stroke-width: 1.5;
-    }
-
-    .logo-inner {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #0d1117 0%, #1a2744 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .logo-inner span {
-      font-family: 'Space Mono', monospace;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: .05em;
     }
 
     .header-text {}
@@ -140,7 +86,7 @@
     .version-tag {
       font-family: 'Space Mono', mono;
       font-size: 13px;
-      opacity: 0.7
+      opacity: 0.7;
     }
 
     .designation {
@@ -158,12 +104,10 @@
       font-size: 15px;
       color: var(--text);
       opacity: .9;
-
       margin-top: 12px;
       line-height: 1.7;
     }
 
-    /* LINKS */
     .links {
       display: flex;
       flex-wrap: wrap;
@@ -192,12 +136,8 @@
       color: var(--accent);
     }
 
-    .btn i {
-      font-size: 14px;
-    }
+    .btn i { font-size: 14px; }
 
-
-    /* PROJECTS SECTION HEADING */
     .section-header {
       display: flex;
       align-items: center;
@@ -225,7 +165,6 @@
       color: var(--muted);
     }
 
-    /* PROJECT GRID */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -248,9 +187,7 @@
       transform: translateY(-3px);
     }
 
-    .card:hover .card-preview {
-      opacity: 1.0;
-    }
+    .card:hover .card-preview { opacity: 1.0; }
 
     .card-img {
       width: 100%;
@@ -271,9 +208,7 @@
       overflow: hidden;
     }
 
-    .card-body {
-      padding: 16px;
-    }
+    .card-body { padding: 16px; }
 
     .card-top {
       display: flex;
@@ -289,17 +224,6 @@
     }
 
     .card-tag {
-      font-family: 'Space Mono', monospace;
-      font-size: 10px;
-      padding: 3px 8px;
-      border-radius: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .05em;
-    }
-
-    /* BASE TAG */
-    .card-tag {
       font-family: 'Space Mono', Mono;
       font-size: 10px;
       padding: 5px 10px;
@@ -307,70 +231,23 @@
       font-weight: 100;
       letter-spacing: .06em;
       text-transform: uppercase;
-
       color: #ffffff;
       background-clip: padding-box;
-
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* TAG COLORS  */
-
-    .tag-systems {
-      background: #16261d;
-      border: 1px solid #2e5a3f;
-    }
-
-    .tag-rendering {
-      background: #16202c;
-      border: 1px solid #2e4f73;
-    }
-
-    .tag-tools {
-      background: #1c1726;
-      border: 1px solid #4b3a6b;
-    }
-
-    .tag-engine {
-      background: #261c14;
-      border: 1px solid #6b4326;
-    }
-
-    .tag-experimental {
-      background: #261722;
-      border: 1px solid #6b2a45;
-    }
-
-    .tag-graphics {
-      background: #172a2f;
-      border: 1px solid #2f5f66;
-    }
-
-    .tag-rasterizer {
-      background: #222a14;
-      border: 1px solid #556b2f;
-    }
-
-    .tag-renderer {
-      background: #1a1d2a;
-      border: 1px solid #3c4370;
-    }
-
-    .tag-game-engine {
-      background: #2a1a12;
-      border: 1px solid #7a3f1d;
-    }
-
-    .tag-graphics-engine {
-      background: #201a2c;
-      border: 1px solid #4a3f7a;
-    }
-
-    .tag-unreal {
-      background: #2a260f;
-      border: 1px solid #7a6a1d;
-    }
+    .tag-systems    { background:#16261d; border:1px solid #2e5a3f; }
+    .tag-rendering  { background:#16202c; border:1px solid #2e4f73; }
+    .tag-tools      { background:#1c1726; border:1px solid #4b3a6b; }
+    .tag-engine     { background:#261c14; border:1px solid #6b4326; }
+    .tag-experimental { background:#261722; border:1px solid #6b2a45; }
+    .tag-graphics   { background:#172a2f; border:1px solid #2f5f66; }
+    .tag-rasterizer { background:#222a14; border:1px solid #556b2f; }
+    .tag-renderer   { background:#1a1d2a; border:1px solid #3c4370; }
+    .tag-game-engine { background:#2a1a12; border:1px solid #7a3f1d; }
+    .tag-graphics-engine { background:#201a2c; border:1px solid #4a3f7a; }
+    .tag-unreal     { background:#2a260f; border:1px solid #7a6a1d; }
 
     .card-desc {
       font-size: 14px;
@@ -380,9 +257,7 @@
 
     .card-preview {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 0; left: 0; right: 0;
       height: 3px;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
       opacity: 0;
@@ -407,12 +282,12 @@
       color: var(--muted);
     }
 
-    /* POPUP MODAL - ON GRID CLICK*/
+    /* ── MODAL ── */
     .overlay {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, .85);
+      background: rgba(0,0,0,.85);
       z-index: 1000;
       padding: 20px;
       overflow-y: auto;
@@ -435,17 +310,42 @@
       margin: auto;
     }
 
-    .modal-hero {
-      width: 100%;
-      height: 200px;
-      background: var(--surface2);
+    /* ── CAROUSEL ── */
+    .modal-carousel {
       position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: #000;
       overflow: hidden;
     }
 
-    .modal-hero .hero-icon {
-      position: absolute;
-      inset: 0;
+    .carousel-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+
+    .carousel-slide {
+      flex: 0 0 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      opacity: 1;
+    }
+
+    /* fallback icon slide */
+    .carousel-slide.icon-slide {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -454,10 +354,83 @@
       opacity: .5;
     }
 
+    /* nav arrows */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 36px;
+      background: rgba(5, 7, 13, 0.72);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: border-color .2s, color .2s, opacity .2s;
+      user-select: none;
+    }
+
+    .carousel-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .carousel-btn.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .carousel-prev { left: 10px; }
+    .carousel-next { right: 10px; }
+
+    /* dots */
+    .carousel-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 10;
+    }
+
+    .carousel-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      border: 1px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+
+    .carousel-dot.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: scale(1.3);
+    }
+
+    /* counter */
+    .carousel-counter {
+      position: absolute;
+      bottom: 10px;
+      right: 12px;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: rgba(255,255,255,0.5);
+      z-index: 10;
+    }
+
+    /* tag overlay on hero */
     .modal-hero-tag {
       position: absolute;
       top: 14px;
       left: 14px;
+      z-index: 10;
     }
 
     .modal-close {
@@ -466,7 +439,7 @@
       right: 14px;
       width: 30px;
       height: 30px;
-      background: rgba(0, 0, 0, .6);
+      background: rgba(0,0,0,.6);
       border: 1px solid var(--border);
       border-radius: 0px;
       display: flex;
@@ -475,15 +448,12 @@
       cursor: pointer;
       color: var(--text);
       font-size: 16px;
+      z-index: 10;
     }
 
-    .modal-close:hover {
-      border-color: var(--accent);
-    }
+    .modal-close:hover { border-color: var(--accent); }
 
-    .modal-body {
-      padding: 24px;
-    }
+    .modal-body { padding: 24px; }
 
     .modal-title {
       font-size: 22px;
@@ -501,7 +471,7 @@
     .modal-desc {
       font-size: 14px;
       line-height: 1.7;
-      color: rgba(232, 237, 245, .8);
+      color: rgba(232,237,245,.8);
       margin-bottom: 20px;
     }
 
@@ -531,22 +501,10 @@
       gap: 10px;
     }
 
-    .feat-item i {
-      color: var(--accent);
-      font-size: 15px;
-      flex-shrink: 0;
-    }
+    .feat-item i { color: var(--accent); font-size: 15px; flex-shrink: 0; }
+    .feat-item span { font-size: 12.5px; color: var(--text); opacity: .85; }
 
-    .feat-item span {
-      font-size: 12.5px;
-      color: var(--text);
-      opacity: .85;
-    }
-
-    .modal-actions {
-      display: flex;
-      gap: 10px;
-    }
+    .modal-actions { display: flex; gap: 10px; }
 
     .btn-primary {
       background: var(--accent);
@@ -555,26 +513,13 @@
       font-weight: 700;
     }
 
-    .btn-primary:hover {
-      background: #00b8db;
-      color: #080a0f;
-    }
+    .btn-primary:hover { background: #00b8db; color: #080a0f; }
 
-    /* RESPONSIVE */
     @media(max-width:600px) {
-      .header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-      }
-
-      .feat-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .site-title {
-        font-size: 28px;
-      }
+      .header { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .feat-grid { grid-template-columns: 1fr; }
+      .site-title { font-size: 28px; }
+      .modal-carousel { aspect-ratio: 4 / 3; }
     }
   </style>
 </head>
@@ -585,30 +530,19 @@
 
   <div class="site">
 
-    <!-- HEADER -->
     <header class="header">
-      <!-- <div class="logo-wrap">
-      <svg class="logo-hex" viewBox="0 0 78 78">
-        <polygon points="39,4 72,21 72,57 39,74 6,57 6,21"/>
-      </svg>
-      <div class="logo-inner">
-        <span>MC</span>
-      </div>
-    </div> -->
-
       <div class="header-text">
         <div class="name-row">
           <h1 class="site-title">MUNUCRAFTS</h1>
           <span class="version-tag">v2.0</span>
         </div>
         <p class="designation">Graphics & Game Programmer · Unreal Engine Developer</p>
-        <p class="bio">Hi, I’m Sarthak, also known as Munucrafts. I’m into Computer Graphics Programming, Game
+        <p class="bio">Hi, I'm Sarthak, also known as Munucrafts. I'm into Computer Graphics Programming, Game
           Programming, and Unreal Engine. I love building graphics engines, renderers, video games, and experimental
-          projects. I’m currently working on several projects. Feel free to check them out using the links below. You’re
+          projects. I'm currently working on several projects. Feel free to check them out using the links below. You're
           welcome to connect with me anytime.</p>
         <div class="links">
-          <a class="btn resume"
-            href="https://drive.google.com/file/d/1nTlIL2HIKtqSjpGZBsgVzfwGdotriTg5/view?usp=sharing" target="_blank">
+          <a class="btn resume" href="https://drive.google.com/file/d/1nTlIL2HIKtqSjpGZBsgVzfwGdotriTg5/view?usp=sharing" target="_blank">
             <i class="fas fa-file"></i> Resume
           </a>
           <a class="btn" href="mailto:sarthakmishra520@gmail.com">
@@ -633,29 +567,36 @@
       </div>
     </header>
 
-    <!-- PROJECTS -->
     <section>
       <div class="section-header">
         <span class="section-label">Projects</span>
         <div class="section-line"></div>
         <span class="section-count" id="proj-count">04 Entries</span>
       </div>
-
       <div class="grid" id="grid"></div>
     </section>
 
   </div>
 
-  <!-- POPUP MODAL OVERLAY -->
+  <!-- MODAL -->
   <div class="overlay" id="overlay" onclick="handleOverlayClick(event)">
     <div class="modal" id="modal">
-      <div class="modal-hero">
-        <div class="grid-lines"></div>
-        <img id="m-image" class="modal-hero-img" />
-        <div class="hero-icon" id="m-icon"></div>
+
+      <!-- CAROUSEL -->
+      <div class="modal-carousel" id="m-carousel">
+        <div class="carousel-track" id="m-track"></div>
+        <button class="carousel-btn carousel-prev" id="m-prev" onclick="carouselStep(-1)">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="carousel-btn carousel-next" id="m-next" onclick="carouselStep(1)">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <div class="carousel-dots" id="m-dots"></div>
+        <div class="carousel-counter" id="m-counter"></div>
         <div class="modal-hero-tag" id="m-tag-wrap"></div>
         <div class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></div>
       </div>
+
       <div class="modal-body">
         <h2 class="modal-title" id="m-title"></h2>
         <p class="modal-sub" id="m-sub"></p>
@@ -667,282 +608,365 @@
           <div style="display:flex;gap:6px;flex-wrap:wrap;" id="m-chips"></div>
         </div>
         <div class="modal-actions">
-          <a class="btn btn-primary" id="m-link" href="#" target="_blank"><i class="fa-brands fa-github"></i> View
-            Code</a>
+          <a class="btn btn-primary" id="m-link" href="#" target="_blank">
+            <i class="fa-brands fa-github"></i> View Code
+          </a>
           <button class="btn" onclick="closeModal()">Close</button>
         </div>
       </div>
     </div>
   </div>
 
+  <footer style="
+    position:relative;z-index:1;
+    margin-top:0px;
+    padding:20px 0 40px;
+    border-top:1px solid #2a3a50;
+    text-align:center;
+    font-family:'Space Mono',monospace;
+    font-size:12px;
+    color:#b8c7e0;
+    opacity:0.75;
+  ">
+    <p style="margin:0;">
+      Munucrafts · All rights reserved ·
+      <a href="https://github.com/munucrafts" target="_blank" style="color:#00e6ff;text-decoration:none;">
+        View more on GitHub
+      </a>
+    </p>
+  </footer>
+
   <script>
-    // BG CANVAS
-const c=document.getElementById('bg'),cx=c.getContext('2d');
-let W,H,pts=[];
-function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;pts=[];for(let i=0;i<60;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4});}
-window.addEventListener('resize',resize);resize();
-function frame(){
-  cx.clearRect(0,0,W,H);
-  pts.forEach(p=>{
-    p.x+=p.vx;p.y+=p.vy;
-    if(p.x<0||p.x>W)p.vx*=-1;
-    if(p.y<0||p.y>H)p.vy*=-1;
-    cx.beginPath();cx.arc(p.x,p.y,1.5,0,Math.PI*2);
-    cx.fillStyle='rgba(0,212,255,0.5)';cx.fill();
-  });
-  pts.forEach((a,i)=>pts.slice(i+1).forEach(b=>{
-    const d=Math.hypot(a.x-b.x,a.y-b.y);
-    if(d<120){cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);cx.strokeStyle=`rgba(0,212,255,${0.25*(1-d/120)})`;cx.lineWidth=.5;cx.stroke();}
-  }));
-  requestAnimationFrame(frame);
-}
-frame();
+    /* ── BG CANVAS ── */
+    const c = document.getElementById('bg'), cx = c.getContext('2d');
+    let W, H, pts = [];
+    function resize() {
+      W = c.width = window.innerWidth;
+      H = c.height = window.innerHeight;
+      pts = [];
+      for (let i = 0; i < 60; i++)
+        pts.push({ x: Math.random()*W, y: Math.random()*H, vx:(Math.random()-.5)*.4, vy:(Math.random()-.5)*.4 });
+    }
+    window.addEventListener('resize', resize); resize();
+    function frame() {
+      cx.clearRect(0,0,W,H);
+      pts.forEach(p => {
+        p.x+=p.vx; p.y+=p.vy;
+        if(p.x<0||p.x>W) p.vx*=-1;
+        if(p.y<0||p.y>H) p.vy*=-1;
+        cx.beginPath(); cx.arc(p.x,p.y,1.5,0,Math.PI*2);
+        cx.fillStyle='rgba(0,212,255,0.5)'; cx.fill();
+      });
+      pts.forEach((a,i) => pts.slice(i+1).forEach(b => {
+        const d = Math.hypot(a.x-b.x, a.y-b.y);
+        if(d<120) {
+          cx.beginPath(); cx.moveTo(a.x,a.y); cx.lineTo(b.x,b.y);
+          cx.strokeStyle=`rgba(0,212,255,${0.25*(1-d/120)})`; cx.lineWidth=.5; cx.stroke();
+        }
+      }));
+      requestAnimationFrame(frame);
+    }
+    frame();
 
-// DATA
-const PROJECTS = [
-  {
-    id: 'kofu',
-    title: 'Kofu Engine',
-    image: 'images/kofu.png',
-    tag: 'Graphics Engine',
-    tagClass: 'tag-graphics-engine',
-    icon: 'fa-solid fa-cube',
-    subtitle: 'OpenGL Powered Graphics Engine',
-    desc: 'Kofu Engine is an OpenGL-powered real-time rendering graphics engine built in C++, focusing on low-level rendering systems and engine architecture.',
+    /* ── PROJECT DATA ──
+       Each project now has an `images` array (can be 1 or many).
+       The first image is still used as the card thumbnail.
+    ── */
+    const PROJECTS = [
+      {
+        id: 'kofu',
+        title: 'Kofu Engine',
+        images: [
+          'images/kofu.png',
+          'images/kofu2.png',
+          'images/kofu3.png'
+        ],
+        tag: 'Graphics Engine',
+        tagClass: 'tag-graphics-engine',
+        icon: 'fa-solid fa-cube',
+        subtitle: 'OpenGL Powered Graphics Engine',
+        desc: 'Kofu Engine is an OpenGL-powered real-time rendering graphics engine built in C++, focusing on low-level rendering systems and engine architecture.',
+        features: [
+          { icon:'fa-solid fa-cube',              text:'OpenGL rendering pipeline' },
+          { icon:'fa-solid fa-window-maximize',   text:'GLFW windowing + GLAD (OpenGL 4.6)' },
+          { icon:'fa-solid fa-layer-group',        text:'VBO, VAO, EBO, FBO abstractions' },
+          { icon:'fa-solid fa-cubes',              text:'Static meshes, instancing, skybox, lights' },
+          { icon:'fa-solid fa-eye',                text:'LIT / UNLIT / DEPTH / NORMAL modes' },
+          { icon:'fa-solid fa-wand-magic-sparkles',text:'MSAA anti-aliasing' },
+          { icon:'fa-solid fa-file-code',          text:'GLTF + stb_image asset pipeline' },
+          { icon:'fa-solid fa-lightbulb',          text:'Directional, point, spot lights + shadows' },
+          { icon:'fa-solid fa-camera',             text:'Perspective camera with WASDQE controls' },
+          { icon:'fa-solid fa-sliders',            text:'Dear ImGui editor panels + gizmos' },
+          { icon:'fa-solid fa-volume-high',        text:'OpenAL audio system' }
+        ],
+        chips: ['C++', 'OpenGL', 'Rendering', 'Graphics', 'Engine Dev'],
+        link: 'https://github.com/munucrafts/Kofu-Engine'
+      },
 
-    features: [
-      { icon: 'fa-solid fa-cube', text: 'OpenGL rendering pipeline' },
-      { icon: 'fa-solid fa-window-maximize', text: 'GLFW windowing + GLAD (OpenGL 4.6)' },
-      { icon: 'fa-solid fa-layer-group', text: 'VBO, VAO, EBO, FBO abstractions' },
-      { icon: 'fa-solid fa-cubes', text: 'Static meshes, instancing, skybox, lights' },
-      { icon: 'fa-solid fa-eye', text: 'LIT / UNLIT / DEPTH / NORMAL modes' },
-      { icon: 'fa-solid fa-wand-magic-sparkles', text: 'MSAA anti-aliasing' },
-      { icon: 'fa-solid fa-file-code', text: 'GLTF + stb_image asset pipeline' },
-      { icon: 'fa-solid fa-lightbulb', text: 'Directional, point, spot lights + shadows' },
-      { icon: 'fa-solid fa-camera', text: 'Perspective camera with WASDQE controls' },
-      { icon: 'fa-solid fa-sliders', text: 'Dear ImGui editor panels + gizmos' },
-      { icon: 'fa-solid fa-volume-high', text: 'OpenAL audio system' }
-    ],
+      {
+        id: 'raster',
+        title: 'Rocken Raster',
+        images: [
+          'images/rocken.png',
+          'images/rocken2.png'
+        ],
+        tag: 'Software Rasterizer',
+        tagClass: 'tag-rasterizer',
+        icon: 'fa-solid fa-draw-polygon',
+        subtitle: 'CPU Software Rasterizer Written in C++',
+        desc: 'A CPU-based software rasterizer implementing the full graphics pipeline including rasterization, culling, projection, and baking etc.',
+        features: [
+          { icon:'fa-solid fa-draw-polygon', text:'Triangle rasterization' },
+          { icon:'fa-solid fa-scissors',     text:'Clip-space & backface culling' },
+          { icon:'fa-solid fa-bolt',         text:'Multithreaded tile rendering' },
+          { icon:'fa-solid fa-camera',       text:'Full camera controls (move, pan, zoom)' },
+          { icon:'fa-solid fa-layer-group',  text:'Depth buffering' },
+          { icon:'fa-solid fa-palette',      text:'Material system (texture + color)' },
+          { icon:'fa-solid fa-sun',          text:'Directional lighting' },
+          { icon:'fa-solid fa-cloud',        text:'Exponential fog' },
+          { icon:'fa-solid fa-code-branch',  text:'Transform + projection baking' },
+          { icon:'fa-solid fa-music',        text:'OpenAL audio system' }
+        ],
+        chips: ['C++', 'Software Rasterization', 'Rendering', 'Graphics'],
+        link: 'https://github.com/munucrafts/Rocken-Raster'
+      },
 
-    chips: ['C++', 'OpenGL', 'Rendering', 'Graphics', 'Engine Dev'],
-    link: 'https://github.com/munucrafts/Kofu-Engine'
-  },
+      {
+        id: 'rayzer',
+        title: 'Rayzer',
+        images: [
+          'images/rayzer.png',
+          'images/rayzer2.png'
+        ],
+        tag: 'Ray Tracer',
+        tagClass: 'tag-renderer',
+        icon: 'fa-solid fa-lightbulb',
+        subtitle: 'Ray Tracing Renderer Written in C++',
+        desc: 'A CPU-based ray tracer exploring ray tracing fundamentals including intersections, reflections, materials, and recursive light transport.',
+        features: [
+          { icon:'fa-solid fa-lightbulb',   text:'Ray tracing pipeline' },
+          { icon:'fa-solid fa-circle',      text:'Ray-object intersection' },
+          { icon:'fa-solid fa-arrows-spin', text:'Recursive ray bouncing' },
+          { icon:'fa-solid fa-fill-drip',   text:'Material system (roughness, emission)' },
+          { icon:'fa-solid fa-layer-group', text:'Accumulation buffer' },
+          { icon:'fa-solid fa-shuffle',     text:'Randomized scattering' },
+          { icon:'fa-solid fa-cloud',       text:'Background blending' }
+        ],
+        chips: ['C++', 'Ray Tracing', 'Path Tracing', 'Rendering'],
+        link: 'https://github.com/munucrafts/Rayzer'
+      },
 
-  {
-    id: 'raster',
-    title: 'Rocken Raster',
-    image: 'images/rocken.png',
-    tag: 'Software Rasterizer',
-    tagClass: 'tag-rasterizer',
-    icon: 'fa-solid fa-draw-polygon',
-    subtitle: 'CPU Software Rasterizer Written in C++',
-    desc: 'A CPU-based software rasterizer implementing the full graphics pipeline including rasterization, culling, projection, and baking etc.',
+      {
+        id: 'archviz',
+        title: 'UE ArchViz Multiplayer',
+        images: [
+          'images/archviz-multi.png',
+          'images/archviz-multi2.png',
+          'images/archviz-multi3.png'
+        ],
+        tag: 'Unreal Engine',
+        tagClass: 'tag-unreal',
+        icon: 'fa-solid fa-building',
+        subtitle: 'Session Based Multiplayer Architectural Visualization.',
+        desc: 'A multiplayer architectural visualization project enabling collaborative walkthroughs with customizable environments for Unreal Engine 5.4 and above.',
+        features: [
+          { icon:'fa-solid fa-users',         text:'Multiplayer sessions + lobby system' },
+          { icon:'fa-solid fa-user',          text:'First-person & orbital pawns' },
+          { icon:'fa-solid fa-sliders',       text:'UI control system' },
+          { icon:'fa-solid fa-palette',       text:'Material configurators' },
+          { icon:'fa-solid fa-layer-group',   text:'Streaming level modifiers' },
+          { icon:'fa-solid fa-car',           text:'Spline-based car system' },
+          { icon:'fa-solid fa-sun',           text:'Day-night cycle' },
+          { icon:'fa-solid fa-network-wired', text:'Replicated movement + avatars' }
+        ],
+        chips: ['Unreal Engine', 'Multiplayer', 'C++', 'Blueprints'],
+        link: 'https://github.com/munucrafts/UE-ArchViz-Multiplayer'
+      },
 
-    features: [
-      { icon: 'fa-solid fa-draw-polygon', text: 'Triangle rasterization' },
-      { icon: 'fa-solid fa-scissors', text: 'Clip-space & backface culling' },
-      { icon: 'fa-solid fa-bolt', text: 'Multithreaded tile rendering' },
-      { icon: 'fa-solid fa-camera', text: 'Full camera controls (move, pan, zoom)' },
-      { icon: 'fa-solid fa-layer-group', text: 'Depth buffering' },
-      { icon: 'fa-solid fa-palette', text: 'Material system (texture + color)' },
-      { icon: 'fa-solid fa-sun', text: 'Directional lighting' },
-      { icon: 'fa-solid fa-cloud', text: 'Exponential fog' },
-      { icon: 'fa-solid fa-code-branch', text: 'Transform + projection baking' },
-      { icon: 'fa-solid fa-music', text: 'OpenAL audio system' }
-    ],
+      {
+        id: 'thumbnails',
+        title: 'UE Thumbnail Extractor',
+        images: [
+          'images/thumbnail-extractor.png'
+        ],
+        tag: 'UE Tools',
+        tagClass: 'tag-tools',
+        icon: 'fa-solid fa-image',
+        subtitle: 'Asset Thumbnail Extraction in Unreal Engine',
+        desc: 'A plugin to extract Unreal Engine 5.3 and above asset thumbnails as PNGs and remove their background using Python and Rembg.',
+        features: [
+          { icon:'fa-solid fa-image',              text:'Thumbnail extraction' },
+          { icon:'fa-solid fa-file-export',        text:'PNG export' },
+          { icon:'fa-solid fa-wand-magic-sparkles',text:'Background removal pipeline' },
+          { icon:'fa-solid fa-toolbox',            text:'Editor integration' }
+        ],
+        chips: ['Unreal Engine', 'C++', 'Python', 'Rembg', 'Tools', 'Blueprints'],
+        link: 'https://github.com/munucrafts/CPP-UE-GetThumbnails'
+      },
 
-    chips: ['C++', 'Software Rasterization', 'Rendering', 'Graphics'],
-    link: 'https://github.com/munucrafts/Rocken-Raster'
-  },
+      {
+        id: 'hoverboard',
+        title: 'UE Hoverboard System',
+        images: [
+          'images/hoverboard.png',
+          'images/hoverboard2.png'
+        ],
+        tag: 'Gameplay',
+        tagClass: 'tag-game-engine',
+        icon: 'fa-solid fa-person-running',
+        subtitle: 'Hoverboard Gameplay System in Unreal Engine',
+        desc: 'A hoverboard gameplay system with custom hoverboard physics, movement, jump, boost, and more player controls.',
+        features: [
+          { icon:'fa-solid fa-person-running', text:'Custom movement system' },
+          { icon:'fa-solid fa-wind',           text:'Tick based hoverboard physics' },
+          { icon:'fa-solid fa-gamepad',        text:'Player controls' },
+          { icon:'fa-solid fa-gears',          text:'Gameplay framework' }
+        ],
+        chips: ['Unreal Engine', 'Gameplay', 'C++', 'Physics'],
+        link: 'https://github.com/munucrafts/CPP-UE-Hoverboard'
+      }
+    ];
 
-  {
-    id: 'rayzer',
-    title: 'Rayzer',
-    image: 'images/rayzer.png',
-    tag: 'Ray Tracer',
-    tagClass: 'tag-renderer',
-    icon: 'fa-solid fa-lightbulb',
-    subtitle: 'Ray Tracing Renderer Written in C++',
-    desc: 'A CPU-based ray tracer exploring ray tracing fundamentals including intersections, reflections, materials, and recursive light transport.',
+    document.getElementById('proj-count').textContent = `0${PROJECTS.length} Entries`;
 
-    features: [
-      { icon: 'fa-solid fa-lightbulb', text: 'Ray tracing pipeline' },
-      { icon: 'fa-solid fa-circle', text: 'Ray-object intersection' },
-      { icon: 'fa-solid fa-arrows-spin', text: 'Recursive ray bouncing' },
-      { icon: 'fa-solid fa-fill-drip', text: 'Material system (roughness, emission)' },
-      { icon: 'fa-solid fa-layer-group', text: 'Accumulation buffer' },
-      { icon: 'fa-solid fa-shuffle', text: 'Randomized scattering' },
-      { icon: 'fa-solid fa-cloud', text: 'Background blending' }
-    ],
-
-    chips: ['C++', 'Ray Tracing', 'Path Tracing', 'Rendering'],
-    link: 'https://github.com/munucrafts/Rayzer'
-  },
-
-  {
-    id: 'archviz',
-    title: 'UE ArchViz Multiplayer',
-    image: 'images/archviz-multi.png',
-    tag: 'Unreal Engine',
-    tagClass: 'tag-unreal',
-    icon: 'fa-solid fa-building',
-    subtitle: 'Session Based Multiplayer Architectural Visualization.',
-    desc: 'A multiplayer architectural visualization project enabling collaborative walkthroughs with customizable environments for Unreal Engine 5.4 and above.',
-
-    features: [
-      { icon: 'fa-solid fa-users', text: 'Multiplayer sessions + lobby system' },
-      { icon: 'fa-solid fa-user', text: 'First-person & orbital pawns' },
-      { icon: 'fa-solid fa-sliders', text: 'UI control system' },
-      { icon: 'fa-solid fa-palette', text: 'Material configurators' },
-      { icon: 'fa-solid fa-layer-group', text: 'Streaming level modifiers' },
-      { icon: 'fa-solid fa-car', text: 'Spline-based car system' },
-      { icon: 'fa-solid fa-sun', text: 'Day-night cycle' },
-      { icon: 'fa-solid fa-network-wired', text: 'Replicated movement + avatars' }
-    ],
-
-    chips: ['Unreal Engine', 'Multiplayer', 'C++', 'Blueprints'],
-    link: 'https://github.com/munucrafts/UE-ArchViz-Multiplayer'
-  },
-
-  {
-    id: 'thumbnails',
-    title: 'UE Thumbnail Extractor',
-    image: 'images/thumbnail-extractor.png',
-    tag: 'UE Tools',
-    tagClass: 'tag-tools',
-    icon: 'fa-solid fa-image',
-    subtitle: 'Asset Thumbnail Extraction in Unreal Engine',
-    desc: 'A plugin to extract Unreal Engine 5.3 and above asset thumbnails as PNGs and remove their background using Python and Rembg.',
-
-    features: [
-      { icon: 'fa-solid fa-image', text: 'Thumbnail extraction' },
-      { icon: 'fa-solid fa-file-export', text: 'PNG export' },
-      { icon: 'fa-solid fa-wand-magic-sparkles', text: 'Background removal pipeline' },
-      { icon: 'fa-solid fa-toolbox', text: 'Editor integration' }
-    ],
-
-    chips: ['Unreal Engine', 'C++', 'Python', 'Rembg','Tools', 'Blueprints'],
-    link: 'https://github.com/munucrafts/CPP-UE-GetThumbnails'
-  },
-
-  {
-    id: 'hoverboard',
-    title: 'UE Hoverboard System',
-    image: 'images/hoverboard.png',
-    tag: 'Gameplay',
-    tagClass: 'tag-game-engine',
-    icon: 'fa-solid fa-person-running',
-    subtitle: 'Hoverboard Gameplay System in Unreal Engine',
-    desc: 'A hoverboard gameplay system with custom hoverboard physics, movement, jump, boost, and more player controls.',
-
-    features: [
-      { icon: 'fa-solid fa-person-running', text: 'Custom movement system' },
-      { icon: 'fa-solid fa-wind', text: 'Tick based hoverboard physics' },
-      { icon: 'fa-solid fa-gamepad', text: 'Player controls' },
-      { icon: 'fa-solid fa-gears', text: 'Gameplay framework' }
-    ],
-
-    chips: ['Unreal Engine', 'Gameplay', 'C++', 'Physics'],
-    link: 'https://github.com/munucrafts/CPP-UE-Hoverboard'
-  }
-];
-
-document.getElementById('proj-count').textContent=`0${PROJECTS.length} Entries`;
-
-function tagHTML(tagClass,tag){
-  return `<span class="card-tag ${tagClass}">${tag}</span>`;
-}
-
-// BUILD GRID
-const grid = document.getElementById('grid');
-
-PROJECTS.forEach(p => {
-  const card = document.createElement('div');
-  card.className = 'card';
-
-  card.innerHTML = `
-    ${
-      p.image
-        ? `<img src="${p.image}" class="card-img" />`
-        : `<div class="card-img-placeholder">
-             <i class="${p.icon} icon-big"></i>
-           </div>`
+    function tagHTML(tagClass, tag) {
+      return `<span class="card-tag ${tagClass}">${tag}</span>`;
     }
 
-    <div class="card-body">
-      <div class="card-top">
-        <h3 class="card-title">${p.title}</h3>
-        ${tagHTML(p.tagClass, p.tag)}
-      </div>
-      <p class="card-desc">${p.desc.slice(0, 90)}…</p>
-    </div>
+    /* ── BUILD GRID ── */
+    const grid = document.getElementById('grid');
+    PROJECTS.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      const thumb = (p.images && p.images.length)
+        ? `<img src="${p.images[0]}" class="card-img" />`
+        : `<div class="card-img-placeholder"><i class="${p.icon} icon-big"></i></div>`;
 
-    <div class="card-footer">
-      ${p.chips.map(ch => `<span class="chip">${ch}</span>`).join('')}
-    </div>
+      card.innerHTML = `
+        ${thumb}
+        <div class="card-body">
+          <div class="card-top">
+            <h3 class="card-title">${p.title}</h3>
+            ${tagHTML(p.tagClass, p.tag)}
+          </div>
+          <p class="card-desc">${p.desc.slice(0,90)}…</p>
+        </div>
+        <div class="card-footer">
+          ${p.chips.map(ch => `<span class="chip">${ch}</span>`).join('')}
+        </div>
+        <div class="card-preview"></div>
+      `;
+      card.addEventListener('click', () => openModal(p));
+      grid.appendChild(card);
+    });
 
-    <div class="card-preview"></div>
-  `;
+    /* ── CAROUSEL STATE ── */
+    let _carouselIndex = 0;
+    let _carouselTotal = 0;
 
-  card.addEventListener('click', () => openModal(p));
-  grid.appendChild(card);
-});
+    function carouselGoTo(idx) {
+      _carouselIndex = Math.max(0, Math.min(idx, _carouselTotal - 1));
+      document.getElementById('m-track').style.transform = `translateX(-${_carouselIndex * 100}%)`;
 
-// MODAL
-function openModal(p){
-  document.getElementById('m-icon').innerHTML = p.image
-    ? `<img src="${p.image}" style="width:100%; height:100%; object-fit:cover;" />`
-    : `<i class="${p.icon}"></i>`;
+      // arrows
+      document.getElementById('m-prev').classList.toggle('hidden', _carouselIndex === 0);
+      document.getElementById('m-next').classList.toggle('hidden', _carouselIndex === _carouselTotal - 1);
 
-  document.getElementById('m-tag-wrap').innerHTML = tagHTML(p.tagClass, p.tag);
-  document.getElementById('m-title').textContent = p.title;
-  document.getElementById('m-sub').textContent = p.subtitle;
-  document.getElementById('m-desc').textContent = p.desc;
+      // dots
+      document.querySelectorAll('.carousel-dot').forEach((d, i) =>
+        d.classList.toggle('active', i === _carouselIndex)
+      );
 
-  const feats = document.getElementById('m-feats');
-  feats.innerHTML = p.features.map(f =>
-    `<div class="feat-item"><i class="${f.icon}"></i><span>${f.text}</span></div>`
-  ).join('');
+      // counter
+      if (_carouselTotal > 1) {
+        document.getElementById('m-counter').textContent = `${_carouselIndex + 1} / ${_carouselTotal}`;
+      }
+    }
 
-  const chips = document.getElementById('m-chips');
-  chips.innerHTML = p.chips.map(ch =>
-    `<span class="chip">${ch}</span>`
-  ).join('');
+    function carouselStep(dir) {
+      carouselGoTo(_carouselIndex + dir);
+    }
 
-  document.getElementById('m-link').href = p.link;
-  document.getElementById('overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
+    /* ── MODAL ── */
+    function openModal(p) {
+      const images = (p.images && p.images.length) ? p.images : [];
+      _carouselTotal = images.length || 1;
+      _carouselIndex = 0;
 
-function closeModal(){
-  document.getElementById('overlay').classList.remove('open');
-  document.body.style.overflow='';
-}
+      // build slides
+      const track = document.getElementById('m-track');
+      track.style.transition = 'none';
+      track.style.transform = 'translateX(0)';
+      track.innerHTML = images.length
+        ? images.map(src => `
+            <div class="carousel-slide">
+              <img src="${src}" alt="" />
+            </div>`).join('')
+        : `<div class="carousel-slide icon-slide"><i class="${p.icon}"></i></div>`;
 
-function handleOverlayClick(e){
-  if(e.target===document.getElementById('overlay'))closeModal();
-}
+      // force reflow so transition reset takes effect
+      track.getBoundingClientRect();
+      track.style.transition = '';
 
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+      // dots
+      const dotsEl = document.getElementById('m-dots');
+      dotsEl.innerHTML = _carouselTotal > 1
+        ? images.map((_, i) =>
+            `<div class="carousel-dot${i===0?' active':''}" onclick="carouselGoTo(${i})"></div>`
+          ).join('')
+        : '';
+
+      // counter + arrows initial state
+      document.getElementById('m-counter').textContent = _carouselTotal > 1 ? `1 / ${_carouselTotal}` : '';
+      document.getElementById('m-prev').classList.add('hidden');
+      document.getElementById('m-next').classList.toggle('hidden', _carouselTotal <= 1);
+
+      // rest of modal fields
+      document.getElementById('m-tag-wrap').innerHTML = tagHTML(p.tagClass, p.tag);
+      document.getElementById('m-title').textContent  = p.title;
+      document.getElementById('m-sub').textContent    = p.subtitle;
+      document.getElementById('m-desc').textContent   = p.desc;
+
+      document.getElementById('m-feats').innerHTML = p.features.map(f =>
+        `<div class="feat-item"><i class="${f.icon}"></i><span>${f.text}</span></div>`
+      ).join('');
+
+      document.getElementById('m-chips').innerHTML = p.chips.map(ch =>
+        `<span class="chip">${ch}</span>`
+      ).join('');
+
+      document.getElementById('m-link').href = p.link;
+      document.getElementById('overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function handleOverlayClick(e) {
+      if (e.target === document.getElementById('overlay')) closeModal();
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowLeft')  carouselStep(-1);
+      if (e.key === 'ArrowRight') carouselStep(1);
+    });
+
+    /* ── TOUCH / SWIPE on carousel ── */
+    (function () {
+      const carousel = document.getElementById('m-carousel');
+      let startX = null;
+      carousel.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+      carousel.addEventListener('touchend', e => {
+        if (startX === null) return;
+        const dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) carouselStep(dx < 0 ? 1 : -1);
+        startX = null;
+      }, { passive: true });
+    })();
   </script>
 </body>
-
 </html>
-
-<footer style="
-  margin-top:0px;
-  padding:20px 0 40px;
-  border-top:1px solid #2a3a50;
-  text-align:center;
-  font-family:'Space Mono',monospace;
-  font-size:12px;
-  color:#b8c7e0;
-  opacity:0.75;
-">
-  <p style="margin:0;">
-    Munucrafts · All rights reserved ·
-    <a href="https://github.com/munucrafts" target="_blank" style="color:#00e6ff; text-decoration:none;">
-      View more on GitHub
-    </a>
-  </p>
-</footer>
