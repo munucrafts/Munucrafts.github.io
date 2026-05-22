@@ -1,190 +1,593 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Hi, I'm Munucrafts.</title>
-  
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hi, I'm Munucrafts.</title>
+
   <!-- FAVICON -->
-<link rel="icon" type="image/png" href="images/logo.png">
-<link rel="apple-touch-icon" href="images/logo.png">
-  
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@300;400;600;800&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0;}
-:root{
-  /* BACKGROUNDS */
-  --bg:#05070d;
-  --surface:#0a0f16;
-  --surface2:#0f1622;
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="apple-touch-icon" href="images/logo.png">
 
-  /* BORDERS */
-  --border:#2a3a50;
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@300;400;600;800&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  /* ACCENTS */
-  --accent:#00e6ff;
-  --accent2:#9b5cff;
+    :root {
+      /* BACKGROUNDS */
+      --bg: #05070d;
+      --surface: #0a0f16;
+      --surface2: #0f1622;
 
-  /* TEXT */
-  --text:#ffffff;
-  --muted:#e6e6e6;
+      /* BORDERS */
+      --border: #2a3a50;
 
-  /* STATES */
-  --card-hover:#182233;
-}
-html,body{background:var(--bg);color:var(--text);font-family:'Sora',sans-serif;min-height:100vh;}
+      /* ACCENTS */
+      --accent: #00e6ff;
+      --accent2: #9b5cff;
 
-/* CANVAS BG */
-#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;opacity:1.0;}
+      /* TEXT */
+      --text: #ffffff;
+      --muted: #e6e6e6;
 
-/* LAYOUT */
-.site{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:40px 24px 80px;}
+      /* STATES */
+      --card-hover: #182233;
+    }
 
-/* HEADER */
-.header{display:flex;align-items:center;gap:28px;padding-bottom:36px;border-bottom:1px solid var(--border);margin-bottom:24px;}
+    html,
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Sora', sans-serif;
+      min-height: 100vh;
+    }
 
-.logo-wrap{position:relative;flex-shrink:0;}
-.logo-hex{width:78px;height:78px;}
-.logo-hex polygon{fill:var(--surface2);stroke:var(--accent);stroke-width:1.5;}
-.logo-inner{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#0d1117 0%,#1a2744 100%);display:flex;align-items:center;justify-content:center;}
-.logo-inner span{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.05em;}
+    /* CANVAS BG */
+    #bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      opacity: 1.0;
+    }
 
-.header-text{}
-.name-row{display:flex;align-items:baseline;gap:12px;}
-.site-title{font-family:'Sora',sans-serif;font-size:clamp(28px,5vw,46px);font-weight:800;letter-spacing:-.02em;background:linear-gradient(90deg,#e8edf5 0%,var(--accent) 60%,var(--accent2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.version-tag{font-family:'Space Mono',mono;font-size:13px;opacity:0.7}
-.designation{
-  font-size:18px;
-  color:var(--muted);
-  margin-top:6px;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  font-weight:500;
-  padding-bottom:8px;
-  border-bottom:1px solid var(--border);
-}
+    /* LAYOUT */
+    .site {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
 
-.bio{
-  font-size:15px;
-  color:var(--text);
-  opacity:.9;
+    /* HEADER */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
 
-  margin-top:12px;
-  line-height:1.7;
-}
+    .logo-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
 
-/* LINKS */
-.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;}
-.btn{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:0px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-family:'Space Mono',monospace;font-size:14px;text-decoration:none;transition:.2s;cursor:pointer;}
-.btn:hover{border-color:var(--accent);color:var(--accent);}
-.btn i{font-size:14px;}
+    .logo-hex {
+      width: 78px;
+      height: 78px;
+    }
+
+    .logo-hex polygon {
+      fill: var(--surface2);
+      stroke: var(--accent);
+      stroke-width: 1.5;
+    }
+
+    .logo-inner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0d1117 0%, #1a2744 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-inner span {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: .05em;
+    }
+
+    .header-text {}
+
+    .name-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .site-title {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(28px, 5vw, 46px);
+      font-weight: 800;
+      letter-spacing: -.02em;
+      background: linear-gradient(90deg, #e8edf5 0%, var(--accent) 60%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .version-tag {
+      font-family: 'Space Mono', mono;
+      font-size: 13px;
+      opacity: 0.7
+    }
+
+    .designation {
+      font-size: 18px;
+      color: var(--muted);
+      margin-top: 6px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      font-weight: 500;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .bio {
+      font-size: 15px;
+      color: var(--text);
+      opacity: .9;
+
+      margin-top: 12px;
+      line-height: 1.7;
+    }
+
+    /* LINKS */
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      border-radius: 0px;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      color: var(--text);
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      text-decoration: none;
+      transition: .2s;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn i {
+      font-size: 14px;
+    }
 
 
-/* PROJECTS SECTION HEADING */
-.section-header{display:flex;align-items:center;gap:14px;margin-bottom:24px;}
-.section-label{font-family:'Space Mono',monospace;font-size:21px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;}
-.section-line{flex:1;height:1px;background:var(--border);}
-.section-count{font-family:'Space Mono',monospace;font-size:px;color:var(--muted);}
+    /* PROJECTS SECTION HEADING */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
 
-/* PROJECT GRID */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;}
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 21px;
+      color: var(--accent);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
 
-.card{background:var(--surface);border:1px solid var(--border);border-radius:0px;overflow:hidden;cursor:pointer;transition:.25s;position:relative;}
-.card:hover{border-color:var(--accent);background:var(--card-hover);transform:translateY(-3px);}
-.card:hover .card-preview{opacity:1.0;}
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
 
-.card-img{width:100%;height:160px;object-fit:cover;display:block;background:var(--surface2);}
-.card-img-placeholder{width:100%;height:160px;background:var(--surface2);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-.card-img-placeholder .grid-lines{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:20px 20px;}
-.card-img-placeholder .icon-big{font-size:36px;color:var(--accent);position:relative;z-index:1;opacity:.6;}
+    .section-count {
+      font-family: 'Space Mono', monospace;
+      font-size: px;
+      color: var(--muted);
+    }
 
-.card-body{padding:16px;}
-.card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
-.card-title{font-size:15px;font-weight:700;color:var(--text);}
-.card-tag{font-family:'Space Mono',monospace;font-size:10px;padding:3px 8px;border-radius:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;}
+    /* PROJECT GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
+    }
 
-/* BASE TAG */
-.card-tag{
-  font-family:'Space Mono',Mono;
-  font-size:10px;          
-  padding:5px 10px;
-  border-radius:10px;
-  font-weight:100;
-  letter-spacing:.06em;
-  text-transform:uppercase;
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: .25s;
+      position: relative;
+    }
 
-  color:#ffffff;             
-  background-clip:padding-box;
+    .card:hover {
+      border-color: var(--accent);
+      background: var(--card-hover);
+      transform: translateY(-3px);
+    }
 
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-}
+    .card:hover .card-preview {
+      opacity: 1.0;
+    }
 
-/* TAG COLORS  */
+    .card-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+      background: var(--surface2);
+    }
 
-.tag-systems{ background:#16261d; border:1px solid #2e5a3f; }
-.tag-rendering{ background:#16202c; border:1px solid #2e4f73; }
-.tag-tools{ background:#1c1726; border:1px solid #4b3a6b; }
-.tag-engine{ background:#261c14; border:1px solid #6b4326; }
-.tag-experimental{ background:#261722; border:1px solid #6b2a45; }
+    .card-img-placeholder {
+      width: 100%;
+      height: 160px;
+      background: var(--surface2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-.tag-graphics{ background:#172a2f; border:1px solid #2f5f66; }
-.tag-rasterizer{ background:#222a14; border:1px solid #556b2f; }
-.tag-renderer{ background:#1a1d2a; border:1px solid #3c4370; }
-.tag-game-engine{ background:#2a1a12; border:1px solid #7a3f1d; }
-.tag-graphics-engine{ background:#201a2c; border:1px solid #4a3f7a; }
-.tag-unreal{ background:#2a260f; border:1px solid #7a6a1d; }
+    .card-body {
+      padding: 16px;
+    }
 
-.card-desc{font-size:14px;color:var(--muted);line-height:1.55;}
-.card-preview{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:.25s;}
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
 
-.card-footer{padding:10px 16px;border-top:1px solid var(--border);display:flex;gap:6px;flex-wrap:wrap;}
-.chip{font-family:'Space Mono',monospace;font-size:12px;padding:3px 8px;border-radius:10px;background:var(--surface2);border:1px solid var(--border);color:var(--muted);}
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+    }
 
-/* POPUP MODAL - ON GRID CLICK*/
-.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:1000;padding:20px;overflow-y:auto;backdrop-filter:blur(4px);}
-.overlay.open{display:flex;align-items:flex-start;justify-content:center;}
-.modal{background:var(--surface);border:1px solid var(--border);border-radius:0px;width:100%;max-width:660px;overflow:hidden;margin:auto;}
-.modal-hero{width:100%;height:200px;background:var(--surface2);position:relative;overflow:hidden;}
-.modal-hero .grid-lines{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:24px 24px;}
-.modal-hero .hero-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:56px;color:var(--accent);opacity:.5;}
-.modal-hero-tag{position:absolute;top:14px;left:14px;}
-.modal-close{position:absolute;top:14px;right:14px;width:30px;height:30px;background:rgba(0,0,0,.6);border:1px solid var(--border);border-radius:0px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text);font-size:16px;}
-.modal-close:hover{border-color:var(--accent);}
+    .card-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
 
-.modal-body{padding:24px;}
-.modal-title{font-size:22px;font-weight:800;margin-bottom:6px;}
-.modal-sub{font-size:13px;color:var(--muted);margin-bottom:16px;font-family:'Space Mono',monospace;}
-.modal-desc{font-size:14px;line-height:1.7;color:rgba(232,237,245,.8);margin-bottom:20px;}
+    /* BASE TAG */
+    .card-tag {
+      font-family: 'Space Mono', Mono;
+      font-size: 10px;
+      padding: 5px 10px;
+      border-radius: 10px;
+      font-weight: 100;
+      letter-spacing: .06em;
+      text-transform: uppercase;
 
-.feat-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;margin-bottom:10px;}
-.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;}
-.feat-item{background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:10px 12px;display:flex;align-items:center;gap:10px;}
-.feat-item i{color:var(--accent);font-size:15px;flex-shrink:0;}
-.feat-item span{font-size:12.5px;color:var(--text);opacity:.85;}
+      color: #ffffff;
+      background-clip: padding-box;
 
-.modal-actions{display:flex;gap:10px;}
-.btn-primary{background:var(--accent);color:#080a0f;border-color:var(--accent);font-weight:700;}
-.btn-primary:hover{background:#00b8db;color:#080a0f;}
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-/* RESPONSIVE */
-@media(max-width:600px){
-  .header{flex-direction:column;align-items:flex-start;gap:16px;}
-  .feat-grid{grid-template-columns:1fr;}
-  .site-title{font-size:28px;}
-}
-</style>
+    /* TAG COLORS  */
+
+    .tag-systems {
+      background: #16261d;
+      border: 1px solid #2e5a3f;
+    }
+
+    .tag-rendering {
+      background: #16202c;
+      border: 1px solid #2e4f73;
+    }
+
+    .tag-tools {
+      background: #1c1726;
+      border: 1px solid #4b3a6b;
+    }
+
+    .tag-engine {
+      background: #261c14;
+      border: 1px solid #6b4326;
+    }
+
+    .tag-experimental {
+      background: #261722;
+      border: 1px solid #6b2a45;
+    }
+
+    .tag-graphics {
+      background: #172a2f;
+      border: 1px solid #2f5f66;
+    }
+
+    .tag-rasterizer {
+      background: #222a14;
+      border: 1px solid #556b2f;
+    }
+
+    .tag-renderer {
+      background: #1a1d2a;
+      border: 1px solid #3c4370;
+    }
+
+    .tag-game-engine {
+      background: #2a1a12;
+      border: 1px solid #7a3f1d;
+    }
+
+    .tag-graphics-engine {
+      background: #201a2c;
+      border: 1px solid #4a3f7a;
+    }
+
+    .tag-unreal {
+      background: #2a260f;
+      border: 1px solid #7a6a1d;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .card-preview {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0;
+      transition: .25s;
+    }
+
+    .card-footer {
+      padding: 10px 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      padding: 3px 8px;
+      border-radius: 10px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    /* POPUP MODAL - ON GRID CLICK*/
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .85);
+      z-index: 1000;
+      padding: 20px;
+      overflow-y: auto;
+      backdrop-filter: blur(4px);
+    }
+
+    .overlay.open {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0px;
+      width: 100%;
+      max-width: 660px;
+      overflow: hidden;
+      margin: auto;
+    }
+
+    .modal-hero {
+      width: 100%;
+      height: 200px;
+      background: var(--surface2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .modal-hero .hero-icon {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 56px;
+      color: var(--accent);
+      opacity: .5;
+    }
+
+    .modal-hero-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 30px;
+      height: 30px;
+      background: rgba(0, 0, 0, .6);
+      border: 1px solid var(--border);
+      border-radius: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text);
+      font-size: 16px;
+    }
+
+    .modal-close:hover {
+      border-color: var(--accent);
+    }
+
+    .modal-body {
+      padding: 24px;
+    }
+
+    .modal-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .modal-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      font-family: 'Space Mono', monospace;
+    }
+
+    .modal-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(232, 237, 245, .8);
+      margin-bottom: 20px;
+    }
+
+    .feat-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .1em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .feat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .feat-item {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .feat-item i {
+      color: var(--accent);
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .feat-item span {
+      font-size: 12.5px;
+      color: var(--text);
+      opacity: .85;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #080a0f;
+      border-color: var(--accent);
+      font-weight: 700;
+    }
+
+    .btn-primary:hover {
+      background: #00b8db;
+      color: #080a0f;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:600px) {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .feat-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .site-title {
+        font-size: 28px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<canvas id="bg"></canvas>
+  <canvas id="bg"></canvas>
 
-<div class="site">
+  <div class="site">
 
-  <!-- HEADER -->
-  <header class="header">
-    <!-- <div class="logo-wrap">
+    <!-- HEADER -->
+    <header class="header">
+      <!-- <div class="logo-wrap">
       <svg class="logo-hex" viewBox="0 0 78 78">
         <polygon points="39,4 72,21 72,57 39,74 6,57 6,21"/>
       </svg>
@@ -193,81 +596,86 @@ html,body{background:var(--bg);color:var(--text);font-family:'Sora',sans-serif;m
       </div>
     </div> -->
 
-    <div class="header-text">
-      <div class="name-row">
-        <h1 class="site-title">MUNUCRAFTS</h1>
-        <span class="version-tag">v2.0</span>
+      <div class="header-text">
+        <div class="name-row">
+          <h1 class="site-title">MUNUCRAFTS</h1>
+          <span class="version-tag">v2.0</span>
+        </div>
+        <p class="designation">Graphics & Game Programmer · Unreal Engine Developer</p>
+        <p class="bio">Hi, I’m Sarthak, also known as Munucrafts. I’m into Computer Graphics Programming, Game
+          Programming, and Unreal Engine. I love building graphics engines, renderers, video games, and experimental
+          projects. I’m currently working on several projects. Feel free to check them out using the links below. You’re
+          welcome to connect with me anytime.</p>
+        <div class="links">
+          <a class="btn resume"
+            href="https://drive.google.com/file/d/1nTlIL2HIKtqSjpGZBsgVzfwGdotriTg5/view?usp=sharing" target="_blank">
+            <i class="fas fa-file"></i> Resume
+          </a>
+          <a class="btn" href="mailto:sarthakmishra520@gmail.com">
+            <i class="fas fa-envelope"></i> Email
+          </a>
+          <a class="btn" href="https://github.com/munucrafts" target="_blank">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+          <a class="btn" href="https://linkedin.com/in/munucrafts" target="_blank">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+          <a class="btn" href="https://www.youtube.com/@munucrafts" target="_blank">
+            <i class="fab fa-youtube"></i> YouTube
+          </a>
+          <a class="btn" href="https://munucrafts.itch.io" target="_blank">
+            <i class="fas fa-gamepad"></i> Itch.io
+          </a>
+          <a class="btn" href="https://www.shadertoy.com/user/Munucrafts/sort=newest" target="_blank">
+            <i class="fas fa-code"></i> Shadertoy
+          </a>
+        </div>
       </div>
-      <p class="designation">Graphics & Game Programmer · Unreal Engine Developer</p>
-      <p class="bio">Hi, I’m Sarthak, also known as Munucrafts. I’m into Computer Graphics Programming, Game Programming, and Unreal Engine. I love building graphics engines, renderers, video games, and experimental projects. I’m currently working on several projects. Feel free to check them out using the links below. You’re welcome to connect with me anytime.</p>
-      <div class="links">
-        <a class="btn resume" href="https://drive.google.com/file/d/1nTlIL2HIKtqSjpGZBsgVzfwGdotriTg5/view?usp=sharing" target="_blank">
-          <i class="fas fa-file"></i> Resume
-        </a>
-        <a class="btn" href="mailto:sarthakmishra520@gmail.com">
-          <i class="fas fa-envelope"></i> Email
-        </a>
-        <a class="btn" href="https://github.com/munucrafts" target="_blank">
-          <i class="fab fa-github"></i> GitHub
-        </a>
-        <a class="btn" href="https://linkedin.com/in/munucrafts" target="_blank">
-          <i class="fab fa-linkedin"></i> LinkedIn
-        </a>
-        <a class="btn" href="https://www.youtube.com/@munucrafts" target="_blank">
-          <i class="fab fa-youtube"></i> YouTube
-        </a>
-        <a class="btn" href="https://munucrafts.itch.io" target="_blank">
-          <i class="fas fa-gamepad"></i> Itch.io
-        </a>
-        <a class="btn" href="https://www.shadertoy.com/user/Munucrafts/sort=newest" target="_blank">
-          <i class="fas fa-code"></i> Shadertoy
-        </a>
+    </header>
+
+    <!-- PROJECTS -->
+    <section>
+      <div class="section-header">
+        <span class="section-label">Projects</span>
+        <div class="section-line"></div>
+        <span class="section-count" id="proj-count">04 Entries</span>
       </div>
-    </div>
-  </header>
 
-  <!-- PROJECTS -->
-  <section>
-    <div class="section-header">
-      <span class="section-label">Projects</span>
-      <div class="section-line"></div>
-      <span class="section-count" id="proj-count">04 Entries</span>
-    </div>
+      <div class="grid" id="grid"></div>
+    </section>
 
-    <div class="grid" id="grid"></div>
-  </section>
+  </div>
 
-</div>
-
-<!-- POPUP MODAL OVERLAY -->
-<div class="overlay" id="overlay" onclick="handleOverlayClick(event)">
-  <div class="modal" id="modal">
-    <div class="modal-hero">
-      <div class="grid-lines"></div>
-      <div class="hero-icon" id="m-icon"></div>
-      <div class="modal-hero-tag" id="m-tag-wrap"></div>
-      <div class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></div>
-    </div>
-    <div class="modal-body">
-      <h2 class="modal-title" id="m-title"></h2>
-      <p class="modal-sub" id="m-sub"></p>
-      <p class="modal-desc" id="m-desc"></p>
-      <p class="feat-label">Key features</p>
-      <div class="feat-grid" id="m-feats"></div>
-      <div style="margin-bottom:20px;">
-        <p class="feat-label" style="margin-bottom:8px;">Tech stack</p>
-        <div style="display:flex;gap:6px;flex-wrap:wrap;" id="m-chips"></div>
+  <!-- POPUP MODAL OVERLAY -->
+  <div class="overlay" id="overlay" onclick="handleOverlayClick(event)">
+    <div class="modal" id="modal">
+      <div class="modal-hero">
+        <div class="grid-lines"></div>
+        <div class="hero-icon" id="m-icon"></div>
+        <div class="modal-hero-tag" id="m-tag-wrap"></div>
+        <div class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></div>
       </div>
-      <div class="modal-actions">
-        <a class="btn btn-primary" id="m-link" href="#" target="_blank"><i class="fa-brands fa-github"></i> View Code</a>
-        <button class="btn" onclick="closeModal()">Close</button>
+      <div class="modal-body">
+        <h2 class="modal-title" id="m-title"></h2>
+        <p class="modal-sub" id="m-sub"></p>
+        <p class="modal-desc" id="m-desc"></p>
+        <p class="feat-label">Key features</p>
+        <div class="feat-grid" id="m-feats"></div>
+        <div style="margin-bottom:20px;">
+          <p class="feat-label" style="margin-bottom:8px;">Tech stack</p>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;" id="m-chips"></div>
+        </div>
+        <div class="modal-actions">
+          <a class="btn btn-primary" id="m-link" href="#" target="_blank"><i class="fa-brands fa-github"></i> View
+            Code</a>
+          <button class="btn" onclick="closeModal()">Close</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<script>
-// BG CANVAS
+  <script>
+    // BG CANVAS
 const c=document.getElementById('bg'),cx=c.getContext('2d');
 let W,H,pts=[];
 function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;pts=[];for(let i=0;i<60;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4});}
@@ -294,6 +702,7 @@ const PROJECTS = [
   {
     id: 'kofu',
     title: 'Kofu Engine',
+    image: 'images/kofu.png',
     tag: 'Graphics Engine',
     tagClass: 'tag-graphics-engine',
     icon: 'fa-solid fa-cube',
@@ -321,6 +730,7 @@ const PROJECTS = [
   {
     id: 'raster',
     title: 'Rocken Raster',
+    image: 'images/rocken.png',
     tag: 'Software Rasterizer',
     tagClass: 'tag-rasterizer',
     icon: 'fa-solid fa-draw-polygon',
@@ -347,6 +757,7 @@ const PROJECTS = [
   {
     id: 'rayzer',
     title: 'Rayzer',
+    image: 'images/rayzer.png',
     tag: 'Ray Tracer',
     tagClass: 'tag-renderer',
     icon: 'fa-solid fa-lightbulb',
@@ -370,6 +781,7 @@ const PROJECTS = [
   {
     id: 'archviz',
     title: 'UE ArchViz Multiplayer',
+    image: 'images/archviz-multi.png',
     tag: 'Unreal Engine',
     tagClass: 'tag-unreal',
     icon: 'fa-solid fa-building',
@@ -394,6 +806,7 @@ const PROJECTS = [
   {
     id: 'thumbnails',
     title: 'UE Thumbnail Extractor',
+    image: 'images/thumbnail-extractor.png',
     tag: 'UE Tools',
     tagClass: 'tag-tools',
     icon: 'fa-solid fa-image',
@@ -414,6 +827,7 @@ const PROJECTS = [
   {
     id: 'hoverboard',
     title: 'UE Hoverboard System',
+    image: 'images/hoverboard.png',
     tag: 'Gameplay',
     tagClass: 'tag-game-engine',
     icon: 'fa-solid fa-person-running',
@@ -439,43 +853,64 @@ function tagHTML(tagClass,tag){
 }
 
 // BUILD GRID
-const grid=document.getElementById('grid');
-PROJECTS.forEach(p=>{
-  const card=document.createElement('div');
-  card.className='card';
-  card.innerHTML=`
-    <div class="card-img-placeholder">
-      <div class="grid-lines"></div>
-      <i class="${p.icon} icon-big"></i>
-    </div>
+const grid = document.getElementById('grid');
+
+PROJECTS.forEach(p => {
+  const card = document.createElement('div');
+  card.className = 'card';
+
+  card.innerHTML = `
+    ${
+      p.image
+        ? `<img src="${p.image}" class="card-img" />`
+        : `<div class="card-img-placeholder">
+             <i class="${p.icon} icon-big"></i>
+           </div>`
+    }
+
     <div class="card-body">
       <div class="card-top">
         <h3 class="card-title">${p.title}</h3>
-        ${tagHTML(p.tagClass,p.tag)}
+        ${tagHTML(p.tagClass, p.tag)}
       </div>
-      <p class="card-desc">${p.desc.slice(0,90)}…</p>
+      <p class="card-desc">${p.desc.slice(0, 90)}…</p>
     </div>
-    <div class="card-footer">${p.chips.map(ch=>`<span class="chip">${ch}</span>`).join('')}</div>
+
+    <div class="card-footer">
+      ${p.chips.map(ch => `<span class="chip">${ch}</span>`).join('')}
+    </div>
+
     <div class="card-preview"></div>
   `;
-  card.addEventListener('click',()=>openModal(p));
+
+  card.addEventListener('click', () => openModal(p));
   grid.appendChild(card);
 });
 
 // MODAL
 function openModal(p){
-  document.getElementById('m-icon').innerHTML=`<i class="${p.icon}"></i>`;
-  document.getElementById('m-tag-wrap').innerHTML=tagHTML(p.tagClass,p.tag);
-  document.getElementById('m-title').textContent=p.title;
-  document.getElementById('m-sub').textContent=p.subtitle;
-  document.getElementById('m-desc').textContent=p.desc;
-  const feats=document.getElementById('m-feats');
-  feats.innerHTML=p.features.map(f=>`<div class="feat-item"><i class="${f.icon}"></i><span>${f.text}</span></div>`).join('');
-  const chips=document.getElementById('m-chips');
-  chips.innerHTML=p.chips.map(ch=>`<span class="chip">${ch}</span>`).join('');
-  document.getElementById('m-link').href=p.link;
+  document.getElementById('m-icon').innerHTML = p.image
+    ? `<img src="${p.image}" style="width:100%; height:100%; object-fit:cover;" />`
+    : `<i class="${p.icon}"></i>`;
+
+  document.getElementById('m-tag-wrap').innerHTML = tagHTML(p.tagClass, p.tag);
+  document.getElementById('m-title').textContent = p.title;
+  document.getElementById('m-sub').textContent = p.subtitle;
+  document.getElementById('m-desc').textContent = p.desc;
+
+  const feats = document.getElementById('m-feats');
+  feats.innerHTML = p.features.map(f =>
+    `<div class="feat-item"><i class="${f.icon}"></i><span>${f.text}</span></div>`
+  ).join('');
+
+  const chips = document.getElementById('m-chips');
+  chips.innerHTML = p.chips.map(ch =>
+    `<span class="chip">${ch}</span>`
+  ).join('');
+
+  document.getElementById('m-link').href = p.link;
   document.getElementById('overlay').classList.add('open');
-  document.body.style.overflow='hidden';
+  document.body.style.overflow = 'hidden';
 }
 
 function closeModal(){
@@ -488,12 +923,13 @@ function handleOverlayClick(e){
 }
 
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
-</script>
+  </script>
 </body>
+
 </html>
 
 <footer style="
-  margin-top:60px;
+  margin-top:0px;
   padding:20px 0 40px;
   border-top:1px solid #2a3a50;
   text-align:center;
@@ -503,9 +939,8 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
   opacity:0.75;
 ">
   <p style="margin:0;">
-    Munucrafts · All rights reserved · 
-    <a href="https://github.com/munucrafts" target="_blank"
-       style="color:#00e6ff; text-decoration:none;">
+    Munucrafts · All rights reserved ·
+    <a href="https://github.com/munucrafts" target="_blank" style="color:#00e6ff; text-decoration:none;">
       View more on GitHub
     </a>
   </p>
