@@ -774,18 +774,17 @@
     }
     frame();
 
-    /* ── PROJECT DATA ──
-       Each project now has an `images` array (can be 1 or many).
-       The first image is still used as the card thumbnail.
-    ── */
+    // Projects
     const PROJECTS = [
       {
         id: 'kofu',
         title: 'Kofu Engine',
+        thumbnailImage: 'images/kofu/thumbnail.png',
         images: [
-          'images/kofu.png',
-          'images/kofu2.png',
-          'images/kofu3.png'
+          'images/kofu/kofu.gif',
+          'images/kofu/kofu1.png',
+          'images/kofu/kofu2.png',
+          'images/kofu/kofu3.png'
         ],
         tag: 'Graphics Engine',
         tagClass: 'tag-graphics-engine',
@@ -812,9 +811,13 @@
       {
         id: 'raster',
         title: 'Rocken Raster',
+        thumbnailImage: 'images/rocken/thumbnail.png',
         images: [
-          'images/rocken.png',
-          'images/rocken2.png'
+          'images/rocken/rocken.gif',
+          'images/rocken/rocken1.png',
+          'images/rocken/rocken2.png',
+          'images/rocken/rocken3.png',
+          'images/rocken/rocken4.png'
         ],
         tag: 'Software Rasterizer',
         tagClass: 'tag-rasterizer',
@@ -840,9 +843,11 @@
       {
         id: 'rayzer',
         title: 'Rayzer',
+        thumbnailImage: 'images/rayzer/thumbnail.png',
         images: [
-          'images/rayzer.png',
-          'images/rayzer2.png'
+          'images/rayzer/rayzer1.png',
+          'images/rayzer/rayzer2.png',
+          'images/rayzer/rayzer3.png'
         ],
         tag: 'Ray Tracer',
         tagClass: 'tag-renderer',
@@ -863,12 +868,35 @@
       },
 
       {
+        id: 'thumbnails',
+        title: 'UE Thumbnail Extractor',
+        thumbnailImage: 'images/thumbnail-extractor/thumbnail.png',
+        images: [
+          'images/thumbnail-extractor/thumbnail-extractor1.png'
+        ],
+        tag: 'UE Tools',
+        tagClass: 'tag-tools',
+        icon: 'fa-solid fa-image',
+        subtitle: 'Asset Thumbnail Extraction in Unreal Engine',
+        desc: 'A plugin to extract Unreal Engine 5.3 and above asset thumbnails as PNGs and remove their background using Python and Rembg.',
+        features: [
+          { icon:'fa-solid fa-image',              text:'Thumbnail extraction' },
+          { icon:'fa-solid fa-file-export',        text:'PNG export' },
+          { icon:'fa-solid fa-wand-magic-sparkles',text:'Background removal pipeline' },
+          { icon:'fa-solid fa-toolbox',            text:'Editor integration' }
+        ],
+        chips: ['Unreal Engine', 'C++', 'Python', 'Rembg', 'Tools', 'Blueprints'],
+        link: 'https://github.com/munucrafts/CPP-UE-GetThumbnails'
+      },
+
+      {
         id: 'archviz',
         title: 'UE ArchViz Multiplayer',
+        thumbnailImage: 'images/archviz-multi/thumbnail.png',
         images: [
-          'images/archviz-multi.png',
-          'images/archviz-multi2.png',
-          'images/archviz-multi3.png'
+          'images/archviz-multi/archviz-multi1.png',
+          'images/archviz-multi/archviz-multi2.png',
+          'images/archviz-multi/archviz-multi3.png'
         ],
         tag: 'Unreal Engine',
         tagClass: 'tag-unreal',
@@ -890,32 +918,12 @@
       },
 
       {
-        id: 'thumbnails',
-        title: 'UE Thumbnail Extractor',
-        images: [
-          'images/thumbnail-extractor.png'
-        ],
-        tag: 'UE Tools',
-        tagClass: 'tag-tools',
-        icon: 'fa-solid fa-image',
-        subtitle: 'Asset Thumbnail Extraction in Unreal Engine',
-        desc: 'A plugin to extract Unreal Engine 5.3 and above asset thumbnails as PNGs and remove their background using Python and Rembg.',
-        features: [
-          { icon:'fa-solid fa-image',              text:'Thumbnail extraction' },
-          { icon:'fa-solid fa-file-export',        text:'PNG export' },
-          { icon:'fa-solid fa-wand-magic-sparkles',text:'Background removal pipeline' },
-          { icon:'fa-solid fa-toolbox',            text:'Editor integration' }
-        ],
-        chips: ['Unreal Engine', 'C++', 'Python', 'Rembg', 'Tools', 'Blueprints'],
-        link: 'https://github.com/munucrafts/CPP-UE-GetThumbnails'
-      },
-
-      {
         id: 'hoverboard',
         title: 'UE Hoverboard System',
+        thumbnailImage: 'images/hoverboard/thumbnail.png',
         images: [
-          'images/hoverboard.png',
-          'images/hoverboard2.png'
+          'images/hoverboard/hoverboard.gif',
+          'images/hoverboard/hoverboard1.png'
         ],
         tag: 'Gameplay',
         tagClass: 'tag-game-engine',
