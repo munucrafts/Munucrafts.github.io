@@ -32,7 +32,8 @@
       --card-hover: #182233;
     }
 
-    html, body {
+    html,
+    body {
       background: var(--bg);
       color: var(--text);
       font-family: 'Sora', sans-serif;
@@ -41,8 +42,10 @@
 
     #bg {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       z-index: 0;
       opacity: 1.0;
     }
@@ -136,7 +139,9 @@
       color: var(--accent);
     }
 
-    .btn i { font-size: 14px; }
+    .btn i {
+      font-size: 14px;
+    }
 
     .section-header {
       display: flex;
@@ -187,7 +192,9 @@
       transform: translateY(-3px);
     }
 
-    .card:hover .card-preview { opacity: 1.0; }
+    .card:hover .card-preview {
+      opacity: 1.0;
+    }
 
     .card-img {
       width: 100%;
@@ -208,7 +215,9 @@
       overflow: hidden;
     }
 
-    .card-body { padding: 16px; }
+    .card-body {
+      padding: 16px;
+    }
 
     .card-top {
       display: flex;
@@ -237,17 +246,60 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    .tag-systems    { background:#16261d; border:1px solid #2e5a3f; }
-    .tag-rendering  { background:#16202c; border:1px solid #2e4f73; }
-    .tag-tools      { background:#1c1726; border:1px solid #4b3a6b; }
-    .tag-engine     { background:#261c14; border:1px solid #6b4326; }
-    .tag-experimental { background:#261722; border:1px solid #6b2a45; }
-    .tag-graphics   { background:#172a2f; border:1px solid #2f5f66; }
-    .tag-rasterizer { background:#222a14; border:1px solid #556b2f; }
-    .tag-renderer   { background:#1a1d2a; border:1px solid #3c4370; }
-    .tag-game-engine { background:#2a1a12; border:1px solid #7a3f1d; }
-    .tag-graphics-engine { background:#201a2c; border:1px solid #4a3f7a; }
-    .tag-unreal     { background:#2a260f; border:1px solid #7a6a1d; }
+    .tag-systems {
+      background: #16261d;
+      border: 1px solid #2e5a3f;
+    }
+
+    .tag-rendering {
+      background: #16202c;
+      border: 1px solid #2e4f73;
+    }
+
+    .tag-tools {
+      background: #1c1726;
+      border: 1px solid #4b3a6b;
+    }
+
+    .tag-engine {
+      background: #261c14;
+      border: 1px solid #6b4326;
+    }
+
+    .tag-experimental {
+      background: #261722;
+      border: 1px solid #6b2a45;
+    }
+
+    .tag-graphics {
+      background: #172a2f;
+      border: 1px solid #2f5f66;
+    }
+
+    .tag-rasterizer {
+      background: #222a14;
+      border: 1px solid #556b2f;
+    }
+
+    .tag-renderer {
+      background: #1a1d2a;
+      border: 1px solid #3c4370;
+    }
+
+    .tag-game-engine {
+      background: #2a1a12;
+      border: 1px solid #7a3f1d;
+    }
+
+    .tag-graphics-engine {
+      background: #201a2c;
+      border: 1px solid #4a3f7a;
+    }
+
+    .tag-unreal {
+      background: #2a260f;
+      border: 1px solid #7a6a1d;
+    }
 
     .card-desc {
       font-size: 14px;
@@ -257,7 +309,9 @@
 
     .card-preview {
       position: absolute;
-      bottom: 0; left: 0; right: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
       height: 3px;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
       opacity: 0;
@@ -287,7 +341,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,.85);
+      background: rgba(0, 0, 0, .85);
       z-index: 1000;
       padding: 20px;
       overflow-y: auto;
@@ -296,7 +350,7 @@
 
     .overlay.open {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
     }
 
@@ -305,16 +359,19 @@
       border: 1px solid var(--border);
       border-radius: 0px;
       width: 100%;
-      max-width: 660px;
+      max-width: 1060px;
       overflow: hidden;
       margin: auto;
+      display: grid;
+      grid-template-columns: 420px 1fr;
     }
 
     /* ── CAROUSEL ── */
     .modal-carousel {
       position: relative;
       width: 100%;
-      aspect-ratio: 4 / 3;
+      height: 100%;
+      min-height: 360px;
       background: #000;
       overflow: hidden;
     }
@@ -384,8 +441,13 @@
       pointer-events: none;
     }
 
-    .carousel-prev { left: 10px; }
-    .carousel-next { right: 10px; }
+    .carousel-prev {
+      left: 10px;
+    }
+
+    .carousel-next {
+      right: 10px;
+    }
 
     /* dots */
     .carousel-dots {
@@ -402,8 +464,8 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.3);
-      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       cursor: pointer;
       transition: background .2s, transform .2s;
     }
@@ -421,7 +483,7 @@
       right: 12px;
       font-family: 'Space Mono', monospace;
       font-size: 10px;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255, 255, 255, 0.5);
       z-index: 10;
     }
 
@@ -439,7 +501,7 @@
       right: 14px;
       width: 30px;
       height: 30px;
-      background: rgba(0,0,0,.6);
+      background: rgba(0, 0, 0, .6);
       border: 1px solid var(--border);
       border-radius: 0px;
       display: flex;
@@ -451,9 +513,15 @@
       z-index: 10;
     }
 
-    .modal-close:hover { border-color: var(--accent); }
+    .modal-close:hover {
+      border-color: var(--accent);
+    }
 
-    .modal-body { padding: 24px; }
+    .modal-body {
+      padding: 24px;
+      overflow-y: auto;
+      max-height: 90vh;
+    }
 
     .modal-title {
       font-size: 22px;
@@ -471,7 +539,7 @@
     .modal-desc {
       font-size: 14px;
       line-height: 1.7;
-      color: rgba(232,237,245,.8);
+      color: rgba(232, 237, 245, .8);
       margin-bottom: 20px;
     }
 
@@ -501,10 +569,22 @@
       gap: 10px;
     }
 
-    .feat-item i { color: var(--accent); font-size: 15px; flex-shrink: 0; }
-    .feat-item span { font-size: 12.5px; color: var(--text); opacity: .85; }
+    .feat-item i {
+      color: var(--accent);
+      font-size: 15px;
+      flex-shrink: 0;
+    }
 
-    .modal-actions { display: flex; gap: 10px; }
+    .feat-item span {
+      font-size: 12.5px;
+      color: var(--text);
+      opacity: .85;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+    }
 
     .btn-primary {
       background: var(--accent);
@@ -513,13 +593,38 @@
       font-weight: 700;
     }
 
-    .btn-primary:hover { background: #00b8db; color: #080a0f; }
+    .btn-primary:hover {
+      background: #00b8db;
+      color: #080a0f;
+    }
 
-    @media(max-width:600px) {
-      .header { flex-direction: column; align-items: flex-start; gap: 16px; }
-      .feat-grid { grid-template-columns: 1fr; }
-      .site-title { font-size: 28px; }
-      .modal-carousel { aspect-ratio: 4 / 3; }
+    @media(max-width:760px) {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .feat-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .site-title {
+        font-size: 28px;
+      }
+
+      .modal {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-carousel {
+        min-height: unset;
+        aspect-ratio: 4 / 3;
+      }
+
+      .modal-body {
+        max-height: unset;
+      }
     }
   </style>
 </head>
@@ -542,7 +647,8 @@
           projects. I'm currently working on several projects. Feel free to check them out using the links below. You're
           welcome to connect with me anytime.</p>
         <div class="links">
-          <a class="btn resume" href="https://drive.google.com/file/d/1nTlIL2HIKtqSjpGZBsgVzfwGdotriTg5/view?usp=sharing" target="_blank">
+          <a class="btn resume"
+            href="https://drive.google.com/file/d/1nTlIL2HIKtqSjpGZBsgVzfwGdotriTg5/view?usp=sharing" target="_blank">
             <i class="fas fa-file"></i> Resume
           </a>
           <a class="btn" href="mailto:sarthakmishra520@gmail.com">
@@ -676,12 +782,10 @@
       {
         id: 'kofu',
         title: 'Kofu Engine',
-        thumbnailImage: 'images/kofu/thumbnail.png',
         images: [
-          'images/kofu/kofu.gif',
-          'images/kofu/kofu1.png',
-          'images/kofu/kofu2.png',
-          'images/kofu/kofu3.png'
+          'images/kofu.png',
+          'images/kofu2.png',
+          'images/kofu3.png'
         ],
         tag: 'Graphics Engine',
         tagClass: 'tag-graphics-engine',
@@ -708,13 +812,9 @@
       {
         id: 'raster',
         title: 'Rocken Raster',
-        thumbnailImage: 'images/rocken/thumbnail.png',
         images: [
-          'images/rocken/rocken.gif',
-          'images/rocken/rocken1.png',
-          'images/rocken/rocken2.png',
-          'images/rocken/rocken3.png',
-          'images/rocken/rocken4.png'
+          'images/rocken.png',
+          'images/rocken2.png'
         ],
         tag: 'Software Rasterizer',
         tagClass: 'tag-rasterizer',
@@ -740,11 +840,9 @@
       {
         id: 'rayzer',
         title: 'Rayzer',
-        thumbnailImage: 'images/rayzer/thumbnail.png',
         images: [
-          'images/rayzer/rayzer1.png',
-          'images/rayzer/rayzer2.png',
-          'images/rayzer/rayzer3.png'
+          'images/rayzer.png',
+          'images/rayzer2.png'
         ],
         tag: 'Ray Tracer',
         tagClass: 'tag-renderer',
@@ -765,35 +863,12 @@
       },
 
       {
-        id: 'thumbnails',
-        title: 'UE Thumbnail Extractor',
-        thumbnailImage: 'images/thumbnail-extractor/thumbnail.png',
-        images: [
-          'images/thumbnail-extractor/thumbnail-extractor1.png'
-        ],
-        tag: 'UE Tools',
-        tagClass: 'tag-tools',
-        icon: 'fa-solid fa-image',
-        subtitle: 'Asset Thumbnail Extraction in Unreal Engine',
-        desc: 'A plugin to extract Unreal Engine 5.3 and above asset thumbnails as PNGs and remove their background using Python and Rembg.',
-        features: [
-          { icon:'fa-solid fa-image',              text:'Thumbnail extraction' },
-          { icon:'fa-solid fa-file-export',        text:'PNG export' },
-          { icon:'fa-solid fa-wand-magic-sparkles',text:'Background removal pipeline' },
-          { icon:'fa-solid fa-toolbox',            text:'Editor integration' }
-        ],
-        chips: ['Unreal Engine', 'C++', 'Python', 'Rembg', 'Tools', 'Blueprints'],
-        link: 'https://github.com/munucrafts/CPP-UE-GetThumbnails'
-      },
-
-      {
         id: 'archviz',
         title: 'UE ArchViz Multiplayer',
-        thumbnailImage: 'images/archviz-multi/thumbnail.png',
         images: [
-          'images/archviz-multi/archviz-multi1.png',
-          'images/archviz-multi/archviz-multi2.png',
-          'images/archviz-multi/archviz-multi3.png'
+          'images/archviz-multi.png',
+          'images/archviz-multi2.png',
+          'images/archviz-multi3.png'
         ],
         tag: 'Unreal Engine',
         tagClass: 'tag-unreal',
@@ -815,12 +890,32 @@
       },
 
       {
+        id: 'thumbnails',
+        title: 'UE Thumbnail Extractor',
+        images: [
+          'images/thumbnail-extractor.png'
+        ],
+        tag: 'UE Tools',
+        tagClass: 'tag-tools',
+        icon: 'fa-solid fa-image',
+        subtitle: 'Asset Thumbnail Extraction in Unreal Engine',
+        desc: 'A plugin to extract Unreal Engine 5.3 and above asset thumbnails as PNGs and remove their background using Python and Rembg.',
+        features: [
+          { icon:'fa-solid fa-image',              text:'Thumbnail extraction' },
+          { icon:'fa-solid fa-file-export',        text:'PNG export' },
+          { icon:'fa-solid fa-wand-magic-sparkles',text:'Background removal pipeline' },
+          { icon:'fa-solid fa-toolbox',            text:'Editor integration' }
+        ],
+        chips: ['Unreal Engine', 'C++', 'Python', 'Rembg', 'Tools', 'Blueprints'],
+        link: 'https://github.com/munucrafts/CPP-UE-GetThumbnails'
+      },
+
+      {
         id: 'hoverboard',
         title: 'UE Hoverboard System',
-        thumbnailImage: 'images/hoverboard/thumbnail.png',
         images: [
-          'images/hoverboard/hoverboard.gif',
-          'images/hoverboard/hoverboard1.png'
+          'images/hoverboard.png',
+          'images/hoverboard2.png'
         ],
         tag: 'Gameplay',
         tagClass: 'tag-game-engine',
@@ -850,7 +945,7 @@
       const card = document.createElement('div');
       card.className = 'card';
       const thumb = (p.images && p.images.length)
-        ? `<img src="${p.thumbnailImage}" class="card-img" />`
+        ? `<img src="${p.images[0]}" class="card-img" />`
         : `<div class="card-img-placeholder"><i class="${p.icon} icon-big"></i></div>`;
 
       card.innerHTML = `
@@ -980,4 +1075,5 @@
     })();
   </script>
 </body>
+
 </html>
