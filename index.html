@@ -233,7 +233,7 @@
     }
 
     .card-tag {
-      font-family: 'Space Mono', Mono;
+      font-family: 'Space Mono', monospace;
       font-size: 10px;
       padding: 5px 10px;
       border-radius: 10px;
@@ -246,60 +246,17 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    .tag-systems {
-      background: #16261d;
-      border: 1px solid #2e5a3f;
-    }
-
-    .tag-rendering {
-      background: #16202c;
-      border: 1px solid #2e4f73;
-    }
-
-    .tag-tools {
-      background: #1c1726;
-      border: 1px solid #4b3a6b;
-    }
-
-    .tag-engine {
-      background: #261c14;
-      border: 1px solid #6b4326;
-    }
-
-    .tag-experimental {
-      background: #261722;
-      border: 1px solid #6b2a45;
-    }
-
-    .tag-graphics {
-      background: #172a2f;
-      border: 1px solid #2f5f66;
-    }
-
-    .tag-rasterizer {
-      background: #222a14;
-      border: 1px solid #556b2f;
-    }
-
-    .tag-renderer {
-      background: #1a1d2a;
-      border: 1px solid #3c4370;
-    }
-
-    .tag-game-engine {
-      background: #2a1a12;
-      border: 1px solid #7a3f1d;
-    }
-
-    .tag-graphics-engine {
-      background: #201a2c;
-      border: 1px solid #4a3f7a;
-    }
-
-    .tag-unreal {
-      background: #2a260f;
-      border: 1px solid #7a6a1d;
-    }
+    .tag-systems         { background:#0a1f14; border:1px solid #00e676; color:#00e676; }
+    .tag-rendering       { background:#0a1628; border:1px solid #29b6f6; color:#29b6f6; }
+    .tag-tools           { background:#160e2a; border:1px solid #ce93d8; color:#ce93d8; }
+    .tag-engine          { background:#261400; border:1px solid #ff9800; color:#ff9800; }
+    .tag-experimental    { background:#250a16; border:1px solid #f06292; color:#f06292; }
+    .tag-graphics        { background:#061e24; border:1px solid #00e5ff; color:#00e5ff; }
+    .tag-rasterizer      { background:#152200; border:1px solid #b2ff59; color:#b2ff59; }
+    .tag-renderer        { background:#0d0f28; border:1px solid #00e5ff; color:#00e5ff; }
+    .tag-game-engine     { background:#250e00; border:1px solid #ffb74d; color:#ffb74d; }
+    .tag-graphics-engine { background:#130828; border:1px solid #b388ff; color:#b388ff; }
+    .tag-unreal          { background:#1e1a00; border:1px solid #ffe57f; color:#ffe57f; }
 
     .card-desc {
       font-size: 14px;
@@ -396,7 +353,7 @@
     .carousel-slide img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
       opacity: 1;
     }
