@@ -22,19 +22,19 @@
 
     :root {
       /* ── color tokens ── */
-      --bg: #07090c;
-      --surface: #0c1015;
-      --surface2: #11161c;
-      --surface3: #161c23;
-      --border: #212a33;
-      --border-bright: #35424e;
-      --fg: #eef3f8;
-      --muted: #93a5b8;
-      --accent: #4ddcff;
-      --accent-dim: #4ddcff66;
-      --accent2: #a78bfa;
-      --warm: #ff9466;
-      --card-hover: #131a22;
+      --bg: #08090d;
+      --surface: #0d1016;
+      --surface2: #121620;
+      --surface3: #181d29;
+      --border: #262d3a;
+      --border-bright: #3d4759;
+      --fg: #f2f5fa;
+      --muted: #93a0b8;
+      --accent: #22e0c4;
+      --accent-dim: #22e0c455;
+      --accent2: #c084fc;
+      --warm: #ff9d4d;
+      --card-hover: #151a24;
 
       /* ── type tokens ── */
       --font-display: 'JetBrains Mono', monospace;
@@ -43,7 +43,11 @@
 
     html,
     body {
-      background: var(--bg);
+      background:
+        radial-gradient(ellipse 900px 500px at 10% -5%, #123a3a 0%, transparent 60%),
+        radial-gradient(ellipse 900px 600px at 95% 5%, #2e1a45 0%, transparent 55%),
+        radial-gradient(ellipse 800px 500px at 50% 105%, #3a2410 0%, transparent 55%),
+        var(--bg);
       color: var(--fg);
       font-family: var(--font-body);
       min-height: 100vh;
@@ -118,7 +122,7 @@
       font-size: clamp(28px, 5.5vw, 48px);
       font-weight: 800;
       letter-spacing: -0.02em;
-      background: linear-gradient(100deg, #f2f6fb 0%, var(--accent) 55%, var(--accent2) 100%);
+      background: linear-gradient(100deg, #f2f6fb 0%, var(--accent) 50%, var(--accent2) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -151,12 +155,12 @@
     }
 
     .bio {
-      font-size: 15px;
+      font-size: 15.5px;
       color: var(--fg);
       opacity: .82;
       margin-top: 16px;
       line-height: 1.75;
-      max-width: 620px;
+      max-width: 100%;
     }
 
     .links {
@@ -200,7 +204,7 @@
       object-fit: contain;
       border-radius: 8px;
       border: 1px solid var(--border);
-      background: var(--surface2);
+      background: linear-gradient(135deg, var(--accent-dim), var(--surface2));
       padding: 8px;
       flex-shrink: 0;
     }
@@ -253,12 +257,20 @@
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
       border-radius: 6px;
       overflow: hidden;
       cursor: pointer;
       transition: border-color .25s, background .25s, transform .25s;
       position: relative;
     }
+
+    .card:has(.tag-graphics-engine) { border-top-color: #c084fc; }
+    .card:has(.tag-rasterizer)      { border-top-color: #a3e635; }
+    .card:has(.tag-renderer)        { border-top-color: #818cf8; }
+    .card:has(.tag-tools)           { border-top-color: #d891f5; }
+    .card:has(.tag-unreal)          { border-top-color: #fbe157; }
+    .card:has(.tag-game-engine)     { border-top-color: #ffb454; }
 
     .card::before,
     .card::after {
@@ -288,7 +300,9 @@
     }
 
     .card:hover {
-      border-color: var(--border-bright);
+      border-left-color: var(--border-bright);
+      border-right-color: var(--border-bright);
+      border-bottom-color: var(--border-bright);
       background: var(--card-hover);
       transform: translateY(-4px);
     }
@@ -311,8 +325,8 @@
       height: 160px;
       background:
         linear-gradient(var(--surface2), var(--surface2)),
-        repeating-linear-gradient(90deg, rgba(77, 220, 255, .05) 0 1px, transparent 1px 24px),
-        repeating-linear-gradient(0deg, rgba(77, 220, 255, .05) 0 1px, transparent 1px 24px);
+        repeating-linear-gradient(90deg, rgba(34, 224, 196, .07) 0 1px, transparent 1px 24px),
+        repeating-linear-gradient(0deg, rgba(34, 224, 196, .07) 0 1px, transparent 1px 24px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -358,69 +372,69 @@
     }
 
     .tag-systems {
-      background: #0a1f14;
-      border: 1px solid #00e676;
-      color: #4dffa3;
+      background: #072118;
+      border: 1px solid #2be89a;
+      color: #6dffc0;
     }
 
     .tag-rendering {
-      background: #0a1628;
-      border: 1px solid #29b6f6;
-      color: #6fd1ff;
+      background: #07182b;
+      border: 1px solid #38bdf8;
+      color: #7dd8ff;
     }
 
     .tag-tools {
-      background: #160e2a;
-      border: 1px solid #ce93d8;
-      color: #e0aeea;
+      background: #1b0e2e;
+      border: 1px solid #d891f5;
+      color: #eab4ff;
     }
 
     .tag-engine {
-      background: #261400;
-      border: 1px solid #ff9800;
-      color: #ffb84d;
+      background: #2a1400;
+      border: 1px solid #ff9f2e;
+      color: #ffc172;
     }
 
     .tag-experimental {
-      background: #250a16;
-      border: 1px solid #f06292;
-      color: #f78bad;
+      background: #2a0a1c;
+      border: 1px solid #ff5c96;
+      color: #ff96bd;
     }
 
     .tag-graphics {
-      background: #061e24;
-      border: 1px solid #00e5ff;
-      color: #5cf0ff;
+      background: #061f28;
+      border: 1px solid #22e0c4;
+      color: #6dffe9;
     }
 
     .tag-rasterizer {
-      background: #152200;
-      border: 1px solid #b2ff59;
-      color: #cdff8f;
+      background: #17240a;
+      border: 1px solid #a3e635;
+      color: #cdfa7a;
     }
 
     .tag-renderer {
-      background: #0d0f28;
-      border: 1px solid #00e5ff;
-      color: #5cf0ff;
+      background: #12122e;
+      border: 1px solid #818cf8;
+      color: #b4bcff;
     }
 
     .tag-game-engine {
-      background: #250e00;
-      border: 1px solid #ffb74d;
-      color: #ffcd85;
+      background: #2a1200;
+      border: 1px solid #ffb454;
+      color: #ffd08a;
     }
 
     .tag-graphics-engine {
-      background: #130828;
-      border: 1px solid #b388ff;
-      color: #cbabff;
+      background: #1c0e30;
+      border: 1px solid #c084fc;
+      color: #ddaeff;
     }
 
     .tag-unreal {
-      background: #1e1a00;
-      border: 1px solid #ffe57f;
-      color: #fff0ad;
+      background: #241f00;
+      border: 1px solid #fbe157;
+      color: #fff09e;
     }
 
     .card-desc {
@@ -909,25 +923,27 @@
     function frame(t) {
       cx.clearRect(0, 0, W, H);
 
-      // distant vertices, gently twinkling
-      stars.forEach(s => {
-        const a = 0.25 + Math.sin(t * 0.0006 + s.tw) * 0.2;
+      // distant vertices, gently twinkling, alternating teal/purple
+      stars.forEach((s, i) => {
+        const a = 0.3 + Math.sin(t * 0.0006 + s.tw) * 0.22;
         cx.beginPath();
         cx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        cx.fillStyle = `rgba(77,220,255,${Math.max(a,0.05)})`;
+        cx.fillStyle = i % 2 === 0
+          ? `rgba(34,224,196,${Math.max(a,0.06)})`
+          : `rgba(192,132,252,${Math.max(a,0.06)})`;
         cx.fill();
       });
 
       // horizon glow
       const glow = cx.createLinearGradient(0, horizonY - 40, 0, horizonY + 10);
-      glow.addColorStop(0, 'rgba(77,220,255,0)');
-      glow.addColorStop(1, 'rgba(77,220,255,0.10)');
+      glow.addColorStop(0, 'rgba(34,224,196,0)');
+      glow.addColorStop(1, 'rgba(192,132,252,0.14)');
       cx.fillStyle = glow;
       cx.fillRect(0, horizonY - 40, W, 50);
 
       // converging vertical lines (floor perspective)
       const vpX = W / 2;
-      cx.strokeStyle = 'rgba(77,220,255,0.10)';
+      cx.strokeStyle = 'rgba(34,224,196,0.12)';
       cx.lineWidth = 1;
       for (let i = 0; i <= NUM_V_LINES; i++) {
         const spread = (i / NUM_V_LINES - 0.5) * W * 1.6;
@@ -944,8 +960,8 @@
         t2 = Math.pow(t2, 2.1);
         const y = horizonY + (H - horizonY) * t2;
         if (y > H) continue;
-        const alpha = 0.16 * t2;
-        cx.strokeStyle = `rgba(77,220,255,${alpha})`;
+        const alpha = 0.18 * t2;
+        cx.strokeStyle = `rgba(192,132,252,${alpha})`;
         cx.beginPath();
         cx.moveTo(0, y);
         cx.lineTo(W, y);
