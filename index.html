@@ -11,7 +11,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link
-    href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@300;400;600;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Sora:wght@300;400;500;600;800&display=swap"
     rel="stylesheet">
   <style>
     * {
@@ -21,25 +21,35 @@
     }
 
     :root {
-      --bg: #05070d;
-      --surface: #0a0f16;
-      --surface2: #0f1622;
-      --border: #2a3a50;
-      --accent: #00e6ff;
-      --accent2: #9b5cff;
-      --text: #ffffff;
-      --muted: #e6e6e6;
-      --card-hover: #182233;
+      /* ── color tokens ── */
+      --bg: #07090c;
+      --surface: #0c1015;
+      --surface2: #11161c;
+      --surface3: #161c23;
+      --border: #212a33;
+      --border-bright: #35424e;
+      --fg: #eef3f8;
+      --muted: #93a5b8;
+      --accent: #4ddcff;
+      --accent-dim: #4ddcff66;
+      --accent2: #a78bfa;
+      --warm: #ff9466;
+      --card-hover: #131a22;
+
+      /* ── type tokens ── */
+      --font-display: 'JetBrains Mono', monospace;
+      --font-body: 'Sora', sans-serif;
     }
 
     html,
     body {
       background: var(--bg);
-      color: var(--text);
-      font-family: 'Sora', sans-serif;
+      color: var(--fg);
+      font-family: var(--font-body);
       min-height: 100vh;
     }
 
+    /* ── background layers ── */
     #bg {
       position: fixed;
       top: 0;
@@ -47,7 +57,30 @@
       width: 100%;
       height: 100%;
       z-index: 0;
-      opacity: 1.0;
+    }
+
+    .scanlines {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(0deg,
+          rgba(255, 255, 255, 0.025) 0px,
+          rgba(255, 255, 255, 0.025) 1px,
+          transparent 1px,
+          transparent 3px);
+      mix-blend-mode: overlay;
+      opacity: .5;
+    }
+
+    .vignette {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 50% 30%, transparent 35%, rgba(3, 4, 6, 0.55) 100%),
+        linear-gradient(180deg, rgba(7, 9, 12, 0.15) 0%, rgba(7, 9, 12, 0) 20%, rgba(7, 9, 12, 0.5) 100%);
     }
 
     .site {
@@ -55,146 +88,214 @@
       z-index: 1;
       max-width: 1100px;
       margin: 0 auto;
-      padding: 40px 24px 80px;
+      padding: 56px 24px 90px;
     }
 
+    /* ── header ── */
     .header {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 28px;
-      padding-bottom: 36px;
+      padding-bottom: 40px;
       border-bottom: 1px solid var(--border);
-      margin-bottom: 24px;
+      margin-bottom: 28px;
       position: relative;
     }
 
-    .header-text {}
+    .header-text {
+      width: 100%;
+    }
 
     .name-row {
       display: flex;
       align-items: baseline;
-      gap: 12px;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
     .site-title {
-      font-family: 'Sora', sans-serif;
-      font-size: clamp(28px, 5vw, 46px);
+      font-family: var(--font-display);
+      font-size: clamp(28px, 5.5vw, 48px);
       font-weight: 800;
-      letter-spacing: -.02em;
-      background: linear-gradient(90deg, #e8edf5 0%, var(--accent) 60%, var(--accent2) 100%);
+      letter-spacing: -0.02em;
+      background: linear-gradient(100deg, #f2f6fb 0%, var(--accent) 55%, var(--accent2) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
     .version-tag {
-      font-family: 'Space Mono', mono;
-      font-size: 13px;
-      opacity: 0.7;
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      border: 1px solid var(--border-bright);
+      padding: 2px 8px;
+      border-radius: 20px;
+      letter-spacing: .04em;
     }
 
     .designation {
-      font-size: 18px;
-      color: var(--muted);
-      margin-top: 6px;
-      letter-spacing: .06em;
+      font-family: var(--font-display);
+      font-size: 13px;
+      color: var(--accent);
+      margin-top: 10px;
+      letter-spacing: .07em;
       text-transform: uppercase;
       font-weight: 500;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--border);
+    }
+
+    .designation::before {
+      content: '// ';
+      color: var(--muted);
     }
 
     .bio {
       font-size: 15px;
-      color: var(--text);
-      opacity: .9;
-      margin-top: 12px;
-      line-height: 1.7;
+      color: var(--fg);
+      opacity: .82;
+      margin-top: 16px;
+      line-height: 1.75;
+      max-width: 620px;
     }
 
     .links {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 18px;
+      margin-top: 22px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      padding: 8px 16px;
-      border-radius: 0px;
+      gap: 8px;
+      padding: 9px 16px;
+      border-radius: 3px;
       border: 1px solid var(--border);
       background: var(--surface2);
-      color: var(--text);
-      font-family: 'Space Mono', monospace;
-      font-size: 14px;
+      color: var(--fg);
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 500;
       text-decoration: none;
-      transition: .2s;
+      transition: border-color .2s, color .2s, background .2s, transform .15s;
       cursor: pointer;
     }
 
     .btn:hover {
       border-color: var(--accent);
       color: var(--accent);
+      background: var(--surface3);
+      transform: translateY(-1px);
     }
 
     .btn i {
-      font-size: 14px;
+      font-size: 13px;
     }
 
+    .header-logo {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      padding: 8px;
+      flex-shrink: 0;
+    }
+
+    /* ── section header ── */
     .section-header {
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin-bottom: 24px;
+      gap: 16px;
+      margin-bottom: 26px;
     }
 
     .section-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 21px;
-      color: var(--accent);
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--fg);
       letter-spacing: .12em;
       text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .section-label::before {
+      content: '// ';
+      color: var(--accent);
     }
 
     .section-line {
       flex: 1;
       height: 1px;
-      background: var(--border);
+      background: linear-gradient(90deg, var(--border) 0%, transparent 100%);
     }
 
     .section-count {
-      font-family: 'Space Mono', monospace;
-      font-size: px;
+      font-family: var(--font-display);
+      font-size: 12px;
       color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 3px 9px;
+      border-radius: 20px;
     }
 
+    /* ── grid / cards ── */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 18px;
+      gap: 20px;
     }
 
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 0px;
+      border-radius: 6px;
       overflow: hidden;
       cursor: pointer;
-      transition: .25s;
+      transition: border-color .25s, background .25s, transform .25s;
       position: relative;
     }
 
-    .card:hover {
-      border-color: var(--accent);
-      background: var(--card-hover);
-      transform: translateY(-3px);
+    .card::before,
+    .card::after {
+      content: '';
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border: 2px solid var(--accent);
+      opacity: 0;
+      transition: opacity .25s;
+      z-index: 3;
+      pointer-events: none;
     }
 
-    .card:hover .card-preview {
-      opacity: 1.0;
+    .card::before {
+      top: 8px;
+      left: 8px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .card::after {
+      bottom: 8px;
+      right: 8px;
+      border-left: none;
+      border-top: none;
+    }
+
+    .card:hover {
+      border-color: var(--border-bright);
+      background: var(--card-hover);
+      transform: translateY(-4px);
+    }
+
+    .card:hover::before,
+    .card:hover::after {
+      opacity: 1;
     }
 
     .card-img {
@@ -208,7 +309,10 @@
     .card-img-placeholder {
       width: 100%;
       height: 160px;
-      background: var(--surface2);
+      background:
+        linear-gradient(var(--surface2), var(--surface2)),
+        repeating-linear-gradient(90deg, rgba(77, 220, 255, .05) 0 1px, transparent 1px 24px),
+        repeating-linear-gradient(0deg, rgba(77, 220, 255, .05) 0 1px, transparent 1px 24px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -216,122 +320,117 @@
       overflow: hidden;
     }
 
+    .card-img-placeholder i {
+      font-size: 34px;
+      color: var(--accent-dim);
+    }
+
     .card-body {
-      padding: 16px;
+      padding: 16px 16px 14px;
     }
 
     .card-top {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      gap: 10px;
       margin-bottom: 10px;
     }
 
     .card-title {
-      font-size: 15px;
+      font-family: var(--font-body);
+      font-size: 15.5px;
       font-weight: 700;
-      color: var(--text);
+      color: var(--fg);
+      line-height: 1.3;
     }
 
     .card-tag {
-      font-family: 'Space Mono', monospace;
+      font-family: var(--font-display);
       font-size: 10px;
-      padding: 5px 10px;
-      border-radius: 10px;
-      font-weight: 100;
-      letter-spacing: .06em;
+      padding: 4px 9px;
+      border-radius: 20px;
+      font-weight: 600;
+      letter-spacing: .05em;
       text-transform: uppercase;
-      color: #ffffff;
-      background-clip: padding-box;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .tag-systems {
       background: #0a1f14;
       border: 1px solid #00e676;
-      color: #00e676;
+      color: #4dffa3;
     }
 
     .tag-rendering {
       background: #0a1628;
       border: 1px solid #29b6f6;
-      color: #29b6f6;
+      color: #6fd1ff;
     }
 
     .tag-tools {
       background: #160e2a;
       border: 1px solid #ce93d8;
-      color: #ce93d8;
+      color: #e0aeea;
     }
 
     .tag-engine {
       background: #261400;
       border: 1px solid #ff9800;
-      color: #ff9800;
+      color: #ffb84d;
     }
 
     .tag-experimental {
       background: #250a16;
       border: 1px solid #f06292;
-      color: #f06292;
+      color: #f78bad;
     }
 
     .tag-graphics {
       background: #061e24;
       border: 1px solid #00e5ff;
-      color: #00e5ff;
+      color: #5cf0ff;
     }
 
     .tag-rasterizer {
       background: #152200;
       border: 1px solid #b2ff59;
-      color: #b2ff59;
+      color: #cdff8f;
     }
 
     .tag-renderer {
       background: #0d0f28;
       border: 1px solid #00e5ff;
-      color: #00e5ff;
+      color: #5cf0ff;
     }
 
     .tag-game-engine {
       background: #250e00;
       border: 1px solid #ffb74d;
-      color: #ffb74d;
+      color: #ffcd85;
     }
 
     .tag-graphics-engine {
       background: #130828;
       border: 1px solid #b388ff;
-      color: #b388ff;
+      color: #cbabff;
     }
 
     .tag-unreal {
       background: #1e1a00;
       border: 1px solid #ffe57f;
-      color: #ffe57f;
+      color: #fff0ad;
     }
 
     .card-desc {
-      font-size: 14px;
+      font-size: 13.5px;
       color: var(--muted);
-      line-height: 1.55;
-    }
-
-    .card-preview {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      opacity: 0;
-      transition: .25s;
+      line-height: 1.6;
     }
 
     .card-footer {
-      padding: 10px 16px;
+      padding: 12px 16px;
       border-top: 1px solid var(--border);
       display: flex;
       gap: 6px;
@@ -339,10 +438,10 @@
     }
 
     .chip {
-      font-family: 'Space Mono', monospace;
-      font-size: 12px;
-      padding: 3px 8px;
-      border-radius: 10px;
+      font-family: var(--font-display);
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 20px;
       background: var(--surface2);
       border: 1px solid var(--border);
       color: var(--muted);
@@ -353,11 +452,11 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, .85);
+      background: rgba(3, 4, 6, .88);
       z-index: 1000;
       padding: 20px;
       overflow-y: auto;
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(6px);
     }
 
     .overlay.open {
@@ -368,14 +467,15 @@
 
     .modal {
       background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 0px;
+      border: 1px solid var(--border-bright);
+      border-radius: 8px;
       width: 100%;
       max-width: 1060px;
       overflow: hidden;
       margin: auto;
       display: grid;
       grid-template-columns: 420px 1fr;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .6);
     }
 
     /* ── CAROUSEL ── */
@@ -413,7 +513,6 @@
       opacity: 1;
     }
 
-    /* fallback icon slide */
     .carousel-slide.icon-slide {
       display: flex;
       align-items: center;
@@ -423,22 +522,22 @@
       opacity: .5;
     }
 
-    /* nav arrows */
     .carousel-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
       width: 36px;
       height: 36px;
-      background: rgba(5, 7, 13, 0.72);
-      border: 1px solid var(--border);
-      color: var(--text);
+      background: rgba(7, 9, 12, 0.75);
+      border: 1px solid var(--border-bright);
+      color: var(--fg);
       font-size: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       z-index: 10;
+      border-radius: 3px;
       transition: border-color .2s, color .2s, opacity .2s;
       user-select: none;
     }
@@ -461,10 +560,9 @@
       right: 10px;
     }
 
-    /* dots */
     .carousel-dots {
       position: absolute;
-      bottom: 10px;
+      bottom: 12px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -488,18 +586,16 @@
       transform: scale(1.3);
     }
 
-    /* counter */
     .carousel-counter {
       position: absolute;
-      bottom: 10px;
-      right: 12px;
-      font-family: 'Space Mono', monospace;
+      bottom: 12px;
+      right: 14px;
+      font-family: var(--font-display);
       font-size: 10px;
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(255, 255, 255, 0.55);
       z-index: 10;
     }
 
-    /* tag overlay on hero */
     .modal-hero-tag {
       position: absolute;
       top: 14px;
@@ -514,28 +610,31 @@
       width: 30px;
       height: 30px;
       background: rgba(0, 0, 0, .6);
-      border: 1px solid var(--border);
-      border-radius: 0px;
+      border: 1px solid var(--border-bright);
+      border-radius: 3px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      color: var(--text);
+      color: var(--fg);
       font-size: 16px;
       z-index: 10;
+      transition: border-color .2s, color .2s;
     }
 
     .modal-close:hover {
       border-color: var(--accent);
+      color: var(--accent);
     }
 
     .modal-body {
-      padding: 24px;
+      padding: 26px;
       overflow-y: auto;
       max-height: 90vh;
     }
 
     .modal-title {
+      font-family: var(--font-body);
       font-size: 22px;
       font-weight: 800;
       margin-bottom: 6px;
@@ -543,20 +642,20 @@
 
     .modal-sub {
       font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 16px;
-      font-family: 'Space Mono', monospace;
+      color: var(--accent);
+      margin-bottom: 18px;
+      font-family: var(--font-display);
     }
 
     .modal-desc {
       font-size: 14px;
-      line-height: 1.7;
-      color: rgba(232, 237, 245, .8);
-      margin-bottom: 20px;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 22px;
     }
 
     .feat-label {
-      font-family: 'Space Mono', monospace;
+      font-family: var(--font-display);
       font-size: 10px;
       letter-spacing: .1em;
       color: var(--accent);
@@ -568,13 +667,13 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 8px;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     .feat-item {
       background: var(--surface2);
       border: 1px solid var(--border);
-      border-radius: 7px;
+      border-radius: 6px;
       padding: 10px 12px;
       display: flex;
       align-items: center;
@@ -583,13 +682,15 @@
 
     .feat-item i {
       color: var(--accent);
-      font-size: 15px;
+      font-size: 14px;
       flex-shrink: 0;
+      width: 16px;
+      text-align: center;
     }
 
     .feat-item span {
       font-size: 12.5px;
-      color: var(--text);
+      color: var(--fg);
       opacity: .85;
     }
 
@@ -600,21 +701,49 @@
 
     .btn-primary {
       background: var(--accent);
-      color: #080a0f;
+      color: #061014;
       border-color: var(--accent);
       font-weight: 700;
     }
 
     .btn-primary:hover {
-      background: #00b8db;
-      color: #080a0f;
+      background: #7ee6ff;
+      color: #061014;
+      border-color: #7ee6ff;
+    }
+
+    /* ── footer ── */
+    .site-footer {
+      position: relative;
+      z-index: 1;
+      margin-top: 0;
+      padding: 26px 0 46px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .site-footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .site-footer a:hover {
+      text-decoration: underline;
     }
 
     @media(max-width:760px) {
       .header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 16px;
+        gap: 18px;
+      }
+
+      .header-logo {
+        width: 52px;
+        height: 52px;
       }
 
       .feat-grid {
@@ -638,31 +767,26 @@
         max-height: unset;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
   </style>
 </head>
 
 <body>
 
   <canvas id="bg"></canvas>
+  <div class="scanlines"></div>
+  <div class="vignette"></div>
 
   <div class="site">
 
     <header class="header">
-      <img
-  src="images/logo.png"
-  alt="Munucrafts logo"
-  style="
-    position:absolute;
-    top:0;
-    right:0;
-    width:80px;
-    height:80px;
-    object-fit:contain;
-    border:0px solid var(--border);
-    padding:0px;
-    border-radius:6px;
-  "
-/>
+      <img src="images/logo.png" alt="Munucrafts logo" class="header-logo" />
       <div class="header-text">
         <div class="name-row">
           <h1 class="site-title">MUNUCRAFTS</h1>
@@ -671,8 +795,8 @@
         <p class="designation">Graphics & Game Programmer · Unreal Engine Developer</p>
         <p class="bio">Hi, I'm Sarthak, also known as Munucrafts. I'm into Computer Graphics Programming, Game
           Programming and Unreal Engine. I love building graphics engines, renderers, video games, and experimental
-          projects. I'm currently working on several projects. Feel free to check them out using the links below. You're
-          Welcome to connect with me anytime.</p>
+          projects. I'm currently working on several projects. Feel free to check them out using the links below.
+          You're Welcome to connect with me anytime.</p>
         <div class="links">
           <a class="btn resume"
             href="https://drive.google.com/file/d/1nTlIL2HIKtqSjpGZBsgVzfwGdotriTg5/view?usp=sharing" target="_blank">
@@ -736,7 +860,7 @@
         <p class="modal-desc" id="m-desc"></p>
         <p class="feat-label">Key features</p>
         <div class="feat-grid" id="m-feats"></div>
-        <div style="margin-bottom:20px;">
+        <div style="margin-bottom:22px;">
           <p class="feat-label" style="margin-bottom:8px;">Technology</p>
           <div style="display:flex;gap:6px;flex-wrap:wrap;" id="m-chips"></div>
         </div>
@@ -750,56 +874,87 @@
     </div>
   </div>
 
-  <footer style="
-    position:relative;z-index:1;
-    margin-top:0px;
-    padding:20px 0 40px;
-    border-top:1px solid #2a3a50;
-    text-align:center;
-    font-family:'Space Mono',monospace;
-    font-size:12px;
-    color:#b8c7e0;
-    opacity:0.75;
-  ">
+  <footer class="site-footer">
     <p style="margin:0;">
       Munucrafts · All rights reserved ·
-      <a href="https://github.com/munucrafts" target="_blank" style="color:#00e6ff;text-decoration:none;">
+      <a href="https://github.com/munucrafts" target="_blank">
         View more on GitHub
       </a>
     </p>
   </footer>
 
   <script>
-    /* ── BG CANVAS ── */
+    /* ── BG CANVAS: perspective render-grid ── */
     const c = document.getElementById('bg'), cx = c.getContext('2d');
-    let W, H, pts = [];
+    let W, H, horizonY, stars = [];
     function resize() {
       W = c.width = window.innerWidth;
       H = c.height = window.innerHeight;
-      pts = [];
-      for (let i = 0; i < 60; i++)
-        pts.push({ x: Math.random()*W, y: Math.random()*H, vx:(Math.random()-.5)*.4, vy:(Math.random()-.5)*.4 });
+      horizonY = H * 0.4;
+      stars = [];
+      for (let i = 0; i < 45; i++)
+        stars.push({
+          x: Math.random() * W,
+          y: Math.random() * horizonY,
+          r: Math.random() * 1.3 + .3,
+          tw: Math.random() * Math.PI * 2
+        });
     }
     window.addEventListener('resize', resize); resize();
-    function frame() {
-      cx.clearRect(0,0,W,H);
-      pts.forEach(p => {
-        p.x+=p.vx; p.y+=p.vy;
-        if(p.x<0||p.x>W) p.vx*=-1;
-        if(p.y<0||p.y>H) p.vy*=-1;
-        cx.beginPath(); cx.arc(p.x,p.y,1.5,0,Math.PI*2);
-        cx.fillStyle='rgba(0,212,255,0.5)'; cx.fill();
+
+    let scroll = 0;
+    const NUM_H_LINES = 14;
+    const NUM_V_LINES = 18;
+
+    function frame(t) {
+      cx.clearRect(0, 0, W, H);
+
+      // distant vertices, gently twinkling
+      stars.forEach(s => {
+        const a = 0.25 + Math.sin(t * 0.0006 + s.tw) * 0.2;
+        cx.beginPath();
+        cx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        cx.fillStyle = `rgba(77,220,255,${Math.max(a,0.05)})`;
+        cx.fill();
       });
-      pts.forEach((a,i) => pts.slice(i+1).forEach(b => {
-        const d = Math.hypot(a.x-b.x, a.y-b.y);
-        if(d<120) {
-          cx.beginPath(); cx.moveTo(a.x,a.y); cx.lineTo(b.x,b.y);
-          cx.strokeStyle=`rgba(0,212,255,${0.25*(1-d/120)})`; cx.lineWidth=.5; cx.stroke();
-        }
-      }));
+
+      // horizon glow
+      const glow = cx.createLinearGradient(0, horizonY - 40, 0, horizonY + 10);
+      glow.addColorStop(0, 'rgba(77,220,255,0)');
+      glow.addColorStop(1, 'rgba(77,220,255,0.10)');
+      cx.fillStyle = glow;
+      cx.fillRect(0, horizonY - 40, W, 50);
+
+      // converging vertical lines (floor perspective)
+      const vpX = W / 2;
+      cx.strokeStyle = 'rgba(77,220,255,0.10)';
+      cx.lineWidth = 1;
+      for (let i = 0; i <= NUM_V_LINES; i++) {
+        const spread = (i / NUM_V_LINES - 0.5) * W * 1.6;
+        cx.beginPath();
+        cx.moveTo(vpX, horizonY);
+        cx.lineTo(vpX + spread, H);
+        cx.stroke();
+      }
+
+      // horizontal floor lines with ease-in spacing + slow scroll
+      scroll += 0.12;
+      for (let i = 0; i < NUM_H_LINES; i++) {
+        let t2 = (i + (scroll % 1)) / NUM_H_LINES;
+        t2 = Math.pow(t2, 2.1);
+        const y = horizonY + (H - horizonY) * t2;
+        if (y > H) continue;
+        const alpha = 0.16 * t2;
+        cx.strokeStyle = `rgba(77,220,255,${alpha})`;
+        cx.beginPath();
+        cx.moveTo(0, y);
+        cx.lineTo(W, y);
+        cx.stroke();
+      }
+
       requestAnimationFrame(frame);
     }
-    frame();
+    requestAnimationFrame(frame);
 
     // Projects
     const PROJECTS = [
@@ -819,17 +974,17 @@
         subtitle: 'OpenGL Powered Graphics Engine',
         desc: 'Kofu Engine is an OpenGL-powered real-time rendering graphics engine built in C++, focusing on low-level rendering systems and engine architecture.',
         features: [
-          { icon:'fa-solid fa-cube',              text:'OpenGL rendering pipeline' },
-          { icon:'fa-solid fa-window-maximize',   text:'GLFW windowing + GLAD (OpenGL 4.6)' },
-          { icon:'fa-solid fa-layer-group',        text:'VBO, VAO, EBO, FBO abstractions' },
-          { icon:'fa-solid fa-cubes',              text:'Static meshes, instancing, skybox, lights' },
-          { icon:'fa-solid fa-eye',                text:'LIT / UNLIT / DEPTH / NORMAL modes' },
-          { icon:'fa-solid fa-wand-magic-sparkles',text:'MSAA anti-aliasing' },
-          { icon:'fa-solid fa-file-code',          text:'GLTF + stb_image asset pipeline' },
-          { icon:'fa-solid fa-lightbulb',          text:'Directional, point, spot lights + shadows' },
-          { icon:'fa-solid fa-camera',             text:'Perspective camera with WASDQE controls' },
-          { icon:'fa-solid fa-sliders',            text:'Dear ImGui editor panels + gizmos' },
-          { icon:'fa-solid fa-volume-high',        text:'OpenAL audio system' }
+          { icon: 'fa-solid fa-cube', text: 'OpenGL rendering pipeline' },
+          { icon: 'fa-solid fa-window-maximize', text: 'GLFW windowing + GLAD (OpenGL 4.6)' },
+          { icon: 'fa-solid fa-layer-group', text: 'VBO, VAO, EBO, FBO abstractions' },
+          { icon: 'fa-solid fa-cubes', text: 'Static meshes, instancing, skybox, lights' },
+          { icon: 'fa-solid fa-eye', text: 'LIT / UNLIT / DEPTH / NORMAL modes' },
+          { icon: 'fa-solid fa-wand-magic-sparkles', text: 'MSAA anti-aliasing' },
+          { icon: 'fa-solid fa-file-code', text: 'GLTF + stb_image asset pipeline' },
+          { icon: 'fa-solid fa-lightbulb', text: 'Directional, point, spot lights + shadows' },
+          { icon: 'fa-solid fa-camera', text: 'Perspective camera with WASDQE controls' },
+          { icon: 'fa-solid fa-sliders', text: 'Dear ImGui editor panels + gizmos' },
+          { icon: 'fa-solid fa-volume-high', text: 'OpenAL audio system' }
         ],
         chips: ['C++', 'OpenGL', 'Rendering', 'Graphics Programming', 'Engine Development'],
         link: 'https://github.com/munucrafts/Kofu-Engine'
@@ -852,15 +1007,15 @@
         subtitle: 'CPU Software Rasterizer Written in C++',
         desc: 'A CPU-based software rasterizer implementing the full graphics pipeline including rasterization, culling, projection, and baking etc.',
         features: [
-          { icon:'fa-solid fa-draw-polygon', text:'Triangle rasterization' },
-          { icon:'fa-solid fa-scissors',     text:'Clip-space & backface culling' },
-          { icon:'fa-solid fa-camera',       text:'Full camera controls (move, pan, zoom)' },
-          { icon:'fa-solid fa-layer-group',  text:'Depth testing' },
-          { icon:'fa-solid fa-palette',      text:'Material system (texture + color)' },
-          { icon:'fa-solid fa-sun',          text:'Directional lighting' },
-          { icon:'fa-solid fa-cloud',        text:'Exponential fog' },
-          { icon:'fa-solid fa-code-branch',  text:'Transform + projection baking' },
-          { icon:'fa-solid fa-music',        text:'OpenAL audio system' }
+          { icon: 'fa-solid fa-draw-polygon', text: 'Triangle rasterization' },
+          { icon: 'fa-solid fa-scissors', text: 'Clip-space & backface culling' },
+          { icon: 'fa-solid fa-camera', text: 'Full camera controls (move, pan, zoom)' },
+          { icon: 'fa-solid fa-layer-group', text: 'Depth testing' },
+          { icon: 'fa-solid fa-palette', text: 'Material system (texture + color)' },
+          { icon: 'fa-solid fa-sun', text: 'Directional lighting' },
+          { icon: 'fa-solid fa-cloud', text: 'Exponential fog' },
+          { icon: 'fa-solid fa-code-branch', text: 'Transform + projection baking' },
+          { icon: 'fa-solid fa-music', text: 'OpenAL audio system' }
         ],
         chips: ['C++', 'Software Rasterization', 'Rendering', 'Graphics Programming'],
         link: 'https://github.com/munucrafts/Rocken-Raster'
@@ -881,12 +1036,12 @@
         subtitle: 'Ray Tracing Renderer Written in C++',
         desc: 'A CPU-based ray tracer exploring ray tracing fundamentals including intersections, reflections, materials, and recursive light transport.',
         features: [
-          { icon:'fa-solid fa-lightbulb',   text:'Ray tracing pipeline' },
-          { icon:'fa-solid fa-circle',      text:'Ray-object intersection' },
-          { icon:'fa-solid fa-arrows-spin', text:'Recursive ray bouncing' },
-          { icon:'fa-solid fa-fill-drip',   text:'Material system (roughness, emission)' },
-          { icon:'fa-solid fa-layer-group', text:'Accumulation buffer' },
-          { icon:'fa-solid fa-shuffle',     text:'Randomized scattering' }
+          { icon: 'fa-solid fa-lightbulb', text: 'Ray tracing pipeline' },
+          { icon: 'fa-solid fa-circle', text: 'Ray-object intersection' },
+          { icon: 'fa-solid fa-arrows-spin', text: 'Recursive ray bouncing' },
+          { icon: 'fa-solid fa-fill-drip', text: 'Material system (roughness, emission)' },
+          { icon: 'fa-solid fa-layer-group', text: 'Accumulation buffer' },
+          { icon: 'fa-solid fa-shuffle', text: 'Randomized scattering' }
         ],
         chips: ['C++', 'Ray Tracing', 'Path Tracing', 'Rendering', 'Graphics Programming'],
         link: 'https://github.com/munucrafts/Rayzer'
@@ -905,10 +1060,10 @@
         subtitle: 'Asset Thumbnail Extraction in Unreal Engine',
         desc: 'A plugin to extract Unreal Engine 5.3 and above asset thumbnails as PNGs and remove their background using Python and Rembg.',
         features: [
-          { icon:'fa-solid fa-image',              text:'Thumbnail extraction' },
-          { icon:'fa-solid fa-file-export',        text:'PNG export' },
-          { icon:'fa-solid fa-wand-magic-sparkles',text:'Background removal pipeline' },
-          { icon:'fa-solid fa-toolbox',            text:'Editor integration' }
+          { icon: 'fa-solid fa-image', text: 'Thumbnail extraction' },
+          { icon: 'fa-solid fa-file-export', text: 'PNG export' },
+          { icon: 'fa-solid fa-wand-magic-sparkles', text: 'Background removal pipeline' },
+          { icon: 'fa-solid fa-toolbox', text: 'Editor integration' }
         ],
         chips: ['Unreal Engine', 'C++', 'Python', 'Tools', 'UE Blueprints'],
         link: 'https://github.com/munucrafts/CPP-UE-GetThumbnails'
@@ -929,14 +1084,14 @@
         subtitle: 'Session Based Multiplayer Architectural Visualization.',
         desc: 'A multiplayer architectural visualization project enabling collaborative walkthroughs with customizable environments for Unreal Engine 5.4 and above.',
         features: [
-          { icon:'fa-solid fa-users',         text:'Multiplayer sessions + lobby system' },
-          { icon:'fa-solid fa-user',          text:'First-person & orbital pawns' },
-          { icon:'fa-solid fa-sliders',       text:'UI control system' },
-          { icon:'fa-solid fa-palette',       text:'Material configurators' },
-          { icon:'fa-solid fa-layer-group',   text:'Streaming level modifiers' },
-          { icon:'fa-solid fa-car',           text:'Spline-based car system' },
-          { icon:'fa-solid fa-sun',           text:'Day-night cycle' },
-          { icon:'fa-solid fa-network-wired', text:'Replicated movement + avatars' }
+          { icon: 'fa-solid fa-users', text: 'Multiplayer sessions + lobby system' },
+          { icon: 'fa-solid fa-user', text: 'First-person & orbital pawns' },
+          { icon: 'fa-solid fa-sliders', text: 'UI control system' },
+          { icon: 'fa-solid fa-palette', text: 'Material configurators' },
+          { icon: 'fa-solid fa-layer-group', text: 'Streaming level modifiers' },
+          { icon: 'fa-solid fa-car', text: 'Spline-based car system' },
+          { icon: 'fa-solid fa-sun', text: 'Day-night cycle' },
+          { icon: 'fa-solid fa-network-wired', text: 'Replicated movement + avatars' }
         ],
         chips: ['Unreal Engine', 'Multiplayer', 'C++', 'UE Blueprints'],
         link: 'https://github.com/munucrafts/UE-ArchViz-Multiplayer'
@@ -956,10 +1111,10 @@
         subtitle: 'Hoverboard Gameplay System in Unreal Engine',
         desc: 'A hoverboard gameplay system with custom hoverboard physics, movement, jump, boost, and more player controls.',
         features: [
-          { icon:'fa-solid fa-person-running', text:'Custom movement system' },
-          { icon:'fa-solid fa-wind',           text:'Tick based hoverboard physics' },
-          { icon:'fa-solid fa-gamepad',        text:'Player controls' },
-          { icon:'fa-solid fa-gears',          text:'Gameplay framework' }
+          { icon: 'fa-solid fa-person-running', text: 'Custom movement system' },
+          { icon: 'fa-solid fa-wind', text: 'Tick based hoverboard physics' },
+          { icon: 'fa-solid fa-gamepad', text: 'Player controls' },
+          { icon: 'fa-solid fa-gears', text: 'Gameplay framework' }
         ],
         chips: ['Unreal Engine', 'Gameplay Programming', 'C++', 'Physics Programming', 'UE Blueprints'],
         link: 'https://github.com/munucrafts/CPP-UE-Hoverboard'
@@ -981,7 +1136,7 @@
         ? `<img src="${p.thumbnailImage}" class="card-img" />`
         : (p.images && p.images.length)
           ? `<img src="${p.images[1]}" class="card-img" />`
-          : `<div class="card-img-placeholder"><i class="${p.icon} icon-big"></i></div>`;
+          : `<div class="card-img-placeholder"><i class="${p.icon}"></i></div>`;
 
       card.innerHTML = `
         ${thumb}
@@ -995,7 +1150,6 @@
         <div class="card-footer">
           ${p.chips.map(ch => `<span class="chip">${ch}</span>`).join('')}
         </div>
-        <div class="card-preview"></div>
       `;
       card.addEventListener('click', () => openModal(p));
       grid.appendChild(card);
@@ -1009,16 +1163,13 @@
       _carouselIndex = Math.max(0, Math.min(idx, _carouselTotal - 1));
       document.getElementById('m-track').style.transform = `translateX(-${_carouselIndex * 100}%)`;
 
-      // arrows
       document.getElementById('m-prev').classList.toggle('hidden', _carouselIndex === 0);
       document.getElementById('m-next').classList.toggle('hidden', _carouselIndex === _carouselTotal - 1);
 
-      // dots
       document.querySelectorAll('.carousel-dot').forEach((d, i) =>
         d.classList.toggle('active', i === _carouselIndex)
       );
 
-      // counter
       if (_carouselTotal > 1) {
         document.getElementById('m-counter').textContent = `${_carouselIndex + 1} / ${_carouselTotal}`;
       }
@@ -1034,7 +1185,6 @@
       _carouselTotal = images.length || 1;
       _carouselIndex = 0;
 
-      // build slides
       const track = document.getElementById('m-track');
       track.style.transition = 'none';
       track.style.transform = 'translateX(0)';
@@ -1045,11 +1195,9 @@
             </div>`).join('')
         : `<div class="carousel-slide icon-slide"><i class="${p.icon}"></i></div>`;
 
-      // force reflow so transition reset takes effect
       track.getBoundingClientRect();
       track.style.transition = '';
 
-      // dots
       const dotsEl = document.getElementById('m-dots');
       dotsEl.innerHTML = _carouselTotal > 1
         ? images.map((_, i) =>
@@ -1057,16 +1205,14 @@
           ).join('')
         : '';
 
-      // counter + arrows initial state
       document.getElementById('m-counter').textContent = _carouselTotal > 1 ? `1 / ${_carouselTotal}` : '';
       document.getElementById('m-prev').classList.add('hidden');
       document.getElementById('m-next').classList.toggle('hidden', _carouselTotal <= 1);
 
-      // rest of modal fields
       document.getElementById('m-tag-wrap').innerHTML = tagHTML(p.tagClass, p.tag);
-      document.getElementById('m-title').textContent  = p.title;
-      document.getElementById('m-sub').textContent    = p.subtitle;
-      document.getElementById('m-desc').textContent   = p.desc;
+      document.getElementById('m-title').textContent = p.title;
+      document.getElementById('m-sub').textContent = p.subtitle;
+      document.getElementById('m-desc').textContent = p.desc;
 
       document.getElementById('m-feats').innerHTML = p.features.map(f =>
         `<div class="feat-item"><i class="${f.icon}"></i><span>${f.text}</span></div>`
@@ -1092,7 +1238,7 @@
 
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') closeModal();
-      if (e.key === 'ArrowLeft')  carouselStep(-1);
+      if (e.key === 'ArrowLeft') carouselStep(-1);
       if (e.key === 'ArrowRight') carouselStep(1);
     });
 
