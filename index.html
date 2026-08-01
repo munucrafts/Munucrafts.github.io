@@ -22,17 +22,17 @@
 
     :root {
       /* deep indigo, not near-black — lets the accents read brighter */
-      --bg: #131a30;
-      --bg2: #1a2444;
-      --surface: #1b2547;
-      --surface2: #232f59;
-      --border: #3d4d80;
-      --accent: #3fd0ff;      /* bright azure */
-      --accent2: #c084ff;     /* bright violet */
-      --accent3: #6dffb8;     /* mint, used sparingly for signature glow */
-      --text: #f2f5ff;        /* soft off-white, never pure white */
-      --muted: #b7c2e6;
-      --card-hover: #26305c;
+      --bg: #eef1f7;
+      --bg2: #e4e9f3;
+      --surface: #ffffff;
+      --surface2: #f4f6fb;
+      --border: #d9dfec;
+      --ink: #101828;         /* near-black navy, used for text */
+      --accent: #2f5df5;      /* vivid blue */
+      --accent2: #059669;     /* rich emerald */
+      --text: #101828;
+      --muted: #3d465c;
+      --card-hover: #f2f6ff;
     }
 
     html,
@@ -61,13 +61,19 @@
     }
 
     .header {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      align-items: start;
-      gap: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
       padding-bottom: 36px;
       border-bottom: 1px solid var(--border);
       margin-bottom: 28px;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      width: 100%;
     }
 
     .logo-wrap {
@@ -100,16 +106,13 @@
       font-size: clamp(28px, 5vw, 46px);
       font-weight: 800;
       letter-spacing: -.02em;
-      background: linear-gradient(90deg, var(--text) 0%, var(--accent) 55%, var(--accent2) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--accent);
     }
 
     .version-tag {
       font-family: 'Space Mono', monospace;
       font-size: 13px;
-      color: var(--accent3);
+      color: var(--accent);
       opacity: 0.85;
     }
 
@@ -127,16 +130,20 @@
     .bio {
       font-size: 15px;
       color: var(--muted);
-      margin-top: 14px;
       line-height: 1.75;
-      max-width: 72ch;
+      width: 100%;
     }
 
     .links {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 20px;
+      width: 100%;
+    }
+
+    .links .btn {
+      flex: 1 1 140px;
+      justify-content: center;
     }
 
     .btn {
@@ -213,7 +220,7 @@
       border-color: var(--accent);
       background: var(--card-hover);
       transform: translateY(-4px);
-      box-shadow: 0 12px 28px -12px rgba(63, 208, 255, .35);
+      box-shadow: 0 12px 28px -14px rgba(47, 93, 245, .28);
     }
 
     .card:hover .card-preview {
@@ -268,17 +275,17 @@
       white-space: nowrap;
     }
 
-    .tag-systems       { background: #0f3324; border: 1px solid #3ff0a0; color: #3ff0a0; }
-    .tag-rendering     { background: #10263f; border: 1px solid #4cc9ff; color: #4cc9ff; }
-    .tag-tools         { background: #2a1b45; border: 1px solid #d6a8ff; color: #d6a8ff; }
-    .tag-engine        { background: #3a2200; border: 1px solid #ffb02e; color: #ffb02e; }
-    .tag-experimental  { background: #3a1024; border: 1px solid #ff7ab0; color: #ff7ab0; }
-    .tag-graphics      { background: #0e2f38; border: 1px solid #3fe6ff; color: #3fe6ff; }
-    .tag-rasterizer    { background: #24390a; border: 1px solid #b7ff5e; color: #b7ff5e; }
-    .tag-renderer      { background: #171c45; border: 1px solid #4cc9ff; color: #4cc9ff; }
-    .tag-game-engine   { background: #3a2200; border: 1px solid #ffc266; color: #ffc266; }
-    .tag-graphics-engine { background: #241546; border: 1px solid #c39bff; color: #c39bff; }
-    .tag-unreal        { background: #3a3000; border: 1px solid #ffe066; color: #ffe066; }
+    .tag-systems       { background: #eaf0ff; border: 1px solid #2f5df5; color: #1d4ed8; }
+    .tag-rendering     { background: #eaf0ff; border: 1px solid #2f5df5; color: #1d4ed8; }
+    .tag-tools         { background: #eef0f4; border: 1px solid #b9c0d1; color: #4b5568; }
+    .tag-engine        { background: #eaf0ff; border: 1px solid #2f5df5; color: #1d4ed8; }
+    .tag-experimental  { background: #eafcf5; border: 1px solid #059669; color: #047a56; }
+    .tag-graphics      { background: #eaf0ff; border: 1px solid #2f5df5; color: #1d4ed8; }
+    .tag-rasterizer    { background: #eaf0ff; border: 1px solid #2f5df5; color: #1d4ed8; }
+    .tag-renderer      { background: #eaf0ff; border: 1px solid #2f5df5; color: #1d4ed8; }
+    .tag-game-engine   { background: #eafcf5; border: 1px solid #059669; color: #047a56; }
+    .tag-graphics-engine { background: #eaf0ff; border: 1px solid #2f5df5; color: #1d4ed8; }
+    .tag-unreal        { background: #eafcf5; border: 1px solid #059669; color: #047a56; }
 
     .card-desc {
       font-size: 14px;
@@ -570,8 +577,12 @@
     }
 
     @media(max-width:760px) {
-      .header {
-        grid-template-columns: 1fr;
+      .header-top {
+        flex-wrap: wrap;
+      }
+
+      .links .btn {
+        flex: 1 1 100%;
       }
 
       .feat-grid {
@@ -605,43 +616,45 @@
   <div class="site">
 
     <header class="header">
-      <div class="logo-wrap">
-        <img src="images/logo.png" alt="Munucrafts logo" />
+      <div class="header-top">
+        <div class="logo-wrap">
+          <img src="images/logo.png" alt="Munucrafts logo" />
+        </div>
+        <div class="header-text">
+          <div class="name-row">
+            <h1 class="site-title">MUNUCRAFTS</h1>
+            <span class="version-tag">v2.0</span>
+          </div>
+          <p class="designation">Graphics & Game Programmer · Unreal Engine Developer</p>
+        </div>
       </div>
-      <div class="header-text">
-        <div class="name-row">
-          <h1 class="site-title">MUNUCRAFTS</h1>
-          <span class="version-tag">v2.0</span>
-        </div>
-        <p class="designation">Graphics & Game Programmer · Unreal Engine Developer</p>
-        <p class="bio">Hi, I'm Sarthak, also known as Munucrafts. I'm into Computer Graphics Programming, Game
-          Programming and Unreal Engine. I love building graphics engines, renderers, video games, and experimental
-          projects. I'm currently working on several projects. Feel free to check them out using the links below. You're
-          Welcome to connect with me anytime.</p>
-        <div class="links">
-          <a class="btn resume"
-            href="https://drive.google.com/file/d/1nTlIL2HIKtqSjpGZBsgVzfwGdotriTg5/view?usp=sharing" target="_blank">
-            <i class="fas fa-file"></i> Resume
-          </a>
-          <a class="btn" href="mailto:sarthakmishra520@gmail.com">
-            <i class="fas fa-envelope"></i> Email
-          </a>
-          <a class="btn" href="https://github.com/munucrafts" target="_blank">
-            <i class="fab fa-github"></i> GitHub
-          </a>
-          <a class="btn" href="https://www.linkedin.com/in/munucrafts/" target="_blank">
-            <i class="fab fa-linkedin"></i> LinkedIn
-          </a>
-          <a class="btn" href="https://www.youtube.com/@munucrafts" target="_blank">
-            <i class="fab fa-youtube"></i> YouTube
-          </a>
-          <a class="btn" href="https://munucrafts.itch.io" target="_blank">
-            <i class="fas fa-gamepad"></i> Itch.io
-          </a>
-          <a class="btn" href="https://www.shadertoy.com/user/Munucrafts/sort=newest" target="_blank">
-            <i class="fas fa-code"></i> Shadertoy
-          </a>
-        </div>
+      <p class="bio">Hi, I'm Sarthak, also known as Munucrafts. I'm into Computer Graphics Programming, Game
+        Programming and Unreal Engine. I love building graphics engines, renderers, video games, and experimental
+        projects. I'm currently working on several projects. Feel free to check them out using the links below. You're
+        Welcome to connect with me anytime.</p>
+      <div class="links">
+        <a class="btn resume"
+          href="https://drive.google.com/file/d/1nTlIL2HIKtqSjpGZBsgVzfwGdotriTg5/view?usp=sharing" target="_blank">
+          <i class="fas fa-file"></i> Resume
+        </a>
+        <a class="btn" href="mailto:sarthakmishra520@gmail.com">
+          <i class="fas fa-envelope"></i> Email
+        </a>
+        <a class="btn" href="https://github.com/munucrafts" target="_blank">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a class="btn" href="https://www.linkedin.com/in/munucrafts/" target="_blank">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a class="btn" href="https://www.youtube.com/@munucrafts" target="_blank">
+          <i class="fas fa-youtube"></i> YouTube
+        </a>
+        <a class="btn" href="https://munucrafts.itch.io" target="_blank">
+          <i class="fas fa-gamepad"></i> Itch.io
+        </a>
+        <a class="btn" href="https://www.shadertoy.com/user/Munucrafts/sort=newest" target="_blank">
+          <i class="fas fa-code"></i> Shadertoy
+        </a>
       </div>
     </header>
 
@@ -699,16 +712,15 @@
     position:relative;z-index:1;
     margin-top:0px;
     padding:20px 0 40px;
-    border-top:1px solid #3d4d80;
     text-align:center;
     font-family:'Space Mono',monospace;
     font-size:12px;
-    color:#b7c2e6;
+    color:#3d465c;
     opacity:0.9;
   ">
     <p style="margin:0;">
       Munucrafts · All rights reserved ·
-      <a href="https://github.com/munucrafts" target="_blank" style="color:#3fd0ff;text-decoration:none;">
+      <a href="https://github.com/munucrafts" target="_blank" style="color:#2f5df5;text-decoration:none;">
         View more on GitHub
       </a>
     </p>
@@ -725,16 +737,15 @@
       for (let i = 0; i < 55; i++)
         pts.push({ x: Math.random()*W, y: Math.random()*H, vx:(Math.random()-.5)*.35, vy:(Math.random()-.5)*.35 });
       blobs = [
-        { x: W*0.2, y: H*0.25, r: Math.max(W,H)*0.35, hue: '63,208,255',  a: 0.16, vx:.15, vy:.08 },
-        { x: W*0.8, y: H*0.75, r: Math.max(W,H)*0.4,  hue: '192,132,255', a: 0.14, vx:-.1, vy:-.12 },
-        { x: W*0.6, y: H*0.15, r: Math.max(W,H)*0.28, hue: '109,255,184', a: 0.07, vx:.08, vy:.1 }
+        { x: W*0.15, y: H*0.2, r: Math.max(W,H)*0.4,  hue: '47,93,245',  a: 0.10, vx:.12, vy:.07 },
+        { x: W*0.85, y: H*0.8, r: Math.max(W,H)*0.42, hue: '5,150,105',   a: 0.08, vx:-.09, vy:-.1 }
       ];
     }
     window.addEventListener('resize', resize); resize();
 
     function drawGrid() {
       const step = 64;
-      cx.strokeStyle = 'rgba(120,150,220,0.05)';
+      cx.strokeStyle = 'rgba(90,100,130,0.06)';
       cx.lineWidth = 1;
       for (let x = 0; x < W; x += step) {
         cx.beginPath(); cx.moveTo(x, 0); cx.lineTo(x, H); cx.stroke();
@@ -749,8 +760,8 @@
 
       // base gradient wash
       const g = cx.createLinearGradient(0,0,W,H);
-      g.addColorStop(0, '#131a30');
-      g.addColorStop(1, '#1a2444');
+      g.addColorStop(0, '#eef1f7');
+      g.addColorStop(1, '#e4e9f3');
       cx.fillStyle = g;
       cx.fillRect(0,0,W,H);
 
@@ -774,13 +785,13 @@
         if(p.x<0||p.x>W) p.vx*=-1;
         if(p.y<0||p.y>H) p.vy*=-1;
         cx.beginPath(); cx.arc(p.x,p.y,1.6,0,Math.PI*2);
-        cx.fillStyle='rgba(63,208,255,0.65)'; cx.fill();
+        cx.fillStyle='rgba(47,93,245,0.45)'; cx.fill();
       });
       pts.forEach((a,i) => pts.slice(i+1).forEach(b => {
         const d = Math.hypot(a.x-b.x, a.y-b.y);
         if(d<120) {
           cx.beginPath(); cx.moveTo(a.x,a.y); cx.lineTo(b.x,b.y);
-          cx.strokeStyle=`rgba(63,208,255,${0.22*(1-d/120)})`; cx.lineWidth=.6; cx.stroke();
+          cx.strokeStyle=`rgba(47,93,245,${0.14*(1-d/120)})`; cx.lineWidth=.6; cx.stroke();
         }
       }));
       requestAnimationFrame(frame);
