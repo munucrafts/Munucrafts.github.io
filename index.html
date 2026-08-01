@@ -98,9 +98,7 @@
 
     /* ── header ── */
     .header {
-      display: flex;
-      align-items: flex-start;
-      gap: 28px;
+      display: block;
       padding-bottom: 40px;
       border-bottom: 1px solid var(--border);
       margin-bottom: 28px;
@@ -116,7 +114,14 @@
       }
     }
 
-    .header-text {
+    .header-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+      margin-bottom: 16px;
+    }
+
+    .header-top-text {
       width: 100%;
     }
 
@@ -264,12 +269,13 @@
 
     .card {
       background: var(--surface);
-      border: 1px solid var(--border);
+      border: 1.5px solid rgba(77, 220, 255, 0.4);
       border-radius: 6px;
       overflow: hidden;
       cursor: pointer;
-      transition: border-color .25s, background .25s, transform .25s;
+      transition: border-color .25s, background .25s, transform .25s, box-shadow .25s;
       position: relative;
+      box-shadow: 0 0 0 1px rgba(77, 220, 255, 0.06) inset;
     }
 
     .card::before,
@@ -300,9 +306,10 @@
     }
 
     .card:hover {
-      border-color: var(--border-bright);
+      border-color: var(--accent);
       background: var(--card-hover);
       transform: translateY(-4px);
+      box-shadow: 0 0 0 1px rgba(77, 220, 255, 0.15) inset, 0 8px 24px rgba(77, 220, 255, 0.12);
     }
 
     .card:hover::before,
@@ -747,10 +754,10 @@
     }
 
     @media(max-width:760px) {
-      .header {
+      .header-top {
         flex-direction: column;
         align-items: flex-start;
-        gap: 18px;
+        gap: 14px;
       }
 
       .header-logo {
@@ -798,18 +805,21 @@
   <div class="site">
 
     <header class="header">
-      <img src="images/logo.png" alt="Munucrafts logo" class="header-logo" />
-      <div class="header-text">
-        <div class="name-row">
-          <h1 class="site-title">MUNUCRAFTS</h1>
-          <span class="version-tag">v2.0</span>
+      <div class="header-top">
+        <img src="images/logo.png" alt="Munucrafts logo" class="header-logo" />
+        <div class="header-top-text">
+          <div class="name-row">
+            <h1 class="site-title">MUNUCRAFTS</h1>
+            <span class="version-tag">v2.0</span>
+          </div>
+          <p class="designation">Graphics & Game Programmer · Unreal Engine Developer</p>
         </div>
-        <p class="designation">Graphics & Game Programmer · Unreal Engine Developer</p>
-        <p class="bio">Hi, I'm Sarthak, also known as Munucrafts. I'm into Computer Graphics Programming, Game
-          Programming and Unreal Engine. I love building graphics engines, renderers, video games, and experimental
-          projects. I'm currently working on several projects. Feel free to check them out using the links below.
-          You're Welcome to connect with me anytime.</p>
-        <div class="links">
+      </div>
+      <p class="bio">Hi, I'm Sarthak, also known as Munucrafts. I'm into Computer Graphics Programming, Game
+        Programming and Unreal Engine. I love building graphics engines, renderers, video games, and experimental
+        projects. I'm currently working on several projects. Feel free to check them out using the links below.
+        You're Welcome to connect with me anytime.</p>
+      <div class="links">
           <a class="btn resume"
             href="https://drive.google.com/file/d/1nTlIL2HIKtqSjpGZBsgVzfwGdotriTg5/view?usp=sharing" target="_blank">
             <i class="fas fa-file"></i> Resume
@@ -833,7 +843,6 @@
             <i class="fas fa-code"></i> Shadertoy
           </a>
         </div>
-      </div>
     </header>
 
     <section>
