@@ -116,7 +116,7 @@
 
     .header-top {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       gap: 28px;
       margin-bottom: 16px;
     }
@@ -136,6 +136,7 @@
       font-family: var(--font-display);
       font-size: clamp(28px, 5.5vw, 48px);
       font-weight: 800;
+      line-height: 1;
       letter-spacing: -0.02em;
       background: linear-gradient(100deg, #f2f6fb 0%, var(--accent) 55%, var(--accent2) 100%);
       -webkit-background-clip: text;
@@ -143,29 +144,18 @@
       background-clip: text;
     }
 
-    .version-tag {
-      font-family: var(--font-display);
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--muted);
-      border: 1px solid var(--border-bright);
-      padding: 2px 8px;
-      border-radius: 20px;
-      letter-spacing: .04em;
-    }
-
     .designation {
       font-family: var(--font-display);
-      font-size: 13px;
+      font-size: 16px;
       color: var(--accent);
       margin-top: 10px;
-      letter-spacing: .07em;
+      letter-spacing: .06em;
       text-transform: uppercase;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .designation::before {
-      content: '// ';
+      content: '';
       color: var(--muted);
     }
 
@@ -212,13 +202,14 @@
     }
 
     .header-logo {
-      width: 64px;
-      height: 64px;
+      width: 92px;
+      height: 92px;
       object-fit: contain;
-      border-radius: 8px;
+      border-radius: 10px;
       border: 1px solid var(--border);
       background: var(--surface2);
-      padding: 8px;
+      padding: 10px;
+      margin-top: 6px;
       flex-shrink: 0;
     }
 
@@ -761,8 +752,8 @@
       }
 
       .header-logo {
-        width: 52px;
-        height: 52px;
+        width: 64px;
+        height: 64px;
       }
 
       .feat-grid {
@@ -810,9 +801,8 @@
         <div class="header-top-text">
           <div class="name-row">
             <h1 class="site-title">MUNUCRAFTS</h1>
-            <span class="version-tag">v2.0</span>
           </div>
-          <p class="designation">Graphics & Game Programmer · Unreal Engine Developer</p>
+          <p class="designation">Graphics Software Engineer · Unreal Engine Developer</p>
         </div>
       </div>
       <p class="bio">Hi, I'm Sarthak, also known as Munucrafts. I'm into Computer Graphics Programming, Game
@@ -820,29 +810,29 @@
         projects. I'm currently working on several projects. Feel free to check them out using the links below.
         You're Welcome to connect with me anytime.</p>
       <div class="links">
-          <a class="btn resume"
-            href="https://drive.google.com/file/d/1nTlIL2HIKtqSjpGZBsgVzfwGdotriTg5/view?usp=sharing" target="_blank">
-            <i class="fas fa-file"></i> Resume
-          </a>
-          <a class="btn" href="mailto:sarthakmishra520@gmail.com">
-            <i class="fas fa-envelope"></i> Email
-          </a>
-          <a class="btn" href="https://github.com/munucrafts" target="_blank">
-            <i class="fab fa-github"></i> GitHub
-          </a>
-          <a class="btn" href="https://www.linkedin.com/in/munucrafts/" target="_blank">
-            <i class="fab fa-linkedin"></i> LinkedIn
-          </a>
-          <a class="btn" href="https://www.youtube.com/@munucrafts" target="_blank">
-            <i class="fab fa-youtube"></i> YouTube
-          </a>
-          <a class="btn" href="https://munucrafts.itch.io" target="_blank">
-            <i class="fas fa-gamepad"></i> Itch.io
-          </a>
-          <a class="btn" href="https://www.shadertoy.com/user/Munucrafts/sort=newest" target="_blank">
-            <i class="fas fa-code"></i> Shadertoy
-          </a>
-        </div>
+        <a class="btn resume" href="https://drive.google.com/file/d/1nTlIL2HIKtqSjpGZBsgVzfwGdotriTg5/view?usp=sharing"
+          target="_blank">
+          <i class="fas fa-file"></i> Resume
+        </a>
+        <a class="btn" href="mailto:sarthakmishra520@gmail.com">
+          <i class="fas fa-envelope"></i> Email
+        </a>
+        <a class="btn" href="https://github.com/munucrafts" target="_blank">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a class="btn" href="https://www.linkedin.com/in/munucrafts/" target="_blank">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a class="btn" href="https://www.youtube.com/@munucrafts" target="_blank">
+          <i class="fab fa-youtube"></i> YouTube
+        </a>
+        <a class="btn" href="https://munucrafts.itch.io" target="_blank">
+          <i class="fas fa-gamepad"></i> Itch.io
+        </a>
+        <a class="btn" href="https://www.shadertoy.com/user/Munucrafts/sort=newest" target="_blank">
+          <i class="fas fa-code"></i> Shadertoy
+        </a>
+      </div>
     </header>
 
     <section>
