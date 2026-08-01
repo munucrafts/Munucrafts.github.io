@@ -28,8 +28,8 @@
       --surface3: #161c23;
       --border: #212a33;
       --border-bright: #35424e;
-      --fg: #eef3f8;
-      --muted: #93a5b8;
+      --fg: #ffffff;
+      --muted: #dce7f2;
       --accent: #4ddcff;
       --accent-dim: #4ddcff66;
       --accent2: #a78bfa;
@@ -43,7 +43,12 @@
 
     html,
     body {
-      background: var(--bg);
+      background:
+        radial-gradient(ellipse 900px 600px at 18% -10%, rgba(167, 139, 250, 0.16), transparent 60%),
+        radial-gradient(ellipse 1100px 700px at 100% 0%, rgba(77, 220, 255, 0.14), transparent 55%),
+        radial-gradient(ellipse 1200px 800px at 50% 100%, rgba(77, 220, 255, 0.08), transparent 60%),
+        linear-gradient(160deg, #0a1622 0%, #0a0e18 32%, #090b12 62%, #050608 100%);
+      background-attachment: fixed;
       color: var(--fg);
       font-family: var(--font-body);
       min-height: 100vh;
@@ -102,6 +107,15 @@
       position: relative;
     }
 
+    @media (min-width: 761px) {
+      .header {
+        margin-left: -70px;
+        margin-right: -70px;
+        padding-left: 70px;
+        padding-right: 70px;
+      }
+    }
+
     .header-text {
       width: 100%;
     }
@@ -153,10 +167,8 @@
     .bio {
       font-size: 15px;
       color: var(--fg);
-      opacity: .82;
       margin-top: 16px;
       line-height: 1.75;
-      max-width: 620px;
     }
 
     .links {
@@ -574,8 +586,8 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.3);
       cursor: pointer;
       transition: background .2s, transform .2s;
     }
@@ -592,7 +604,7 @@
       right: 14px;
       font-family: var(--font-display);
       font-size: 10px;
-      color: rgba(255, 255, 255, 0.55);
+      color: rgba(255, 255, 255, 0.8);
       z-index: 10;
     }
 
@@ -691,7 +703,7 @@
     .feat-item span {
       font-size: 12.5px;
       color: var(--fg);
-      opacity: .85;
+      opacity: 1;
     }
 
     .modal-actions {
@@ -884,72 +896,71 @@
   </footer>
 
   <script>
-    /* ── BG CANVAS: perspective render-grid ── */
+    /* ── BG CANVAS: drifting particle network ── */
     const c = document.getElementById('bg'), cx = c.getContext('2d');
-    let W, H, horizonY, stars = [];
+    let W, H, particles = [];
+
+    const DENSITY = 14000;    // px^2 per particle
+    const LINK_DIST = 150;    // px, lines drawn between particles closer than this
+    const SPEED = 0.18;
+
     function resize() {
       W = c.width = window.innerWidth;
       H = c.height = window.innerHeight;
-      horizonY = H * 0.4;
-      stars = [];
-      for (let i = 0; i < 45; i++)
-        stars.push({
+      const count = Math.round((W * H) / DENSITY);
+      particles = [];
+      for (let i = 0; i < count; i++) {
+        particles.push({
           x: Math.random() * W,
-          y: Math.random() * horizonY,
-          r: Math.random() * 1.3 + .3,
+          y: Math.random() * H,
+          vx: (Math.random() - 0.5) * SPEED,
+          vy: (Math.random() - 0.5) * SPEED,
+          r: Math.random() * 1.4 + 0.9,
           tw: Math.random() * Math.PI * 2
         });
+      }
     }
     window.addEventListener('resize', resize); resize();
-
-    let scroll = 0;
-    const NUM_H_LINES = 14;
-    const NUM_V_LINES = 18;
 
     function frame(t) {
       cx.clearRect(0, 0, W, H);
 
-      // distant vertices, gently twinkling
-      stars.forEach(s => {
-        const a = 0.25 + Math.sin(t * 0.0006 + s.tw) * 0.2;
-        cx.beginPath();
-        cx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        cx.fillStyle = `rgba(77,220,255,${Math.max(a,0.05)})`;
-        cx.fill();
-      });
-
-      // horizon glow
-      const glow = cx.createLinearGradient(0, horizonY - 40, 0, horizonY + 10);
-      glow.addColorStop(0, 'rgba(77,220,255,0)');
-      glow.addColorStop(1, 'rgba(77,220,255,0.10)');
-      cx.fillStyle = glow;
-      cx.fillRect(0, horizonY - 40, W, 50);
-
-      // converging vertical lines (floor perspective)
-      const vpX = W / 2;
-      cx.strokeStyle = 'rgba(77,220,255,0.10)';
-      cx.lineWidth = 1;
-      for (let i = 0; i <= NUM_V_LINES; i++) {
-        const spread = (i / NUM_V_LINES - 0.5) * W * 1.6;
-        cx.beginPath();
-        cx.moveTo(vpX, horizonY);
-        cx.lineTo(vpX + spread, H);
-        cx.stroke();
+      // move + wrap particles
+      for (const p of particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < -10) p.x = W + 10;
+        if (p.x > W + 10) p.x = -10;
+        if (p.y < -10) p.y = H + 10;
+        if (p.y > H + 10) p.y = -10;
       }
 
-      // horizontal floor lines with ease-in spacing + slow scroll
-      scroll += 0.12;
-      for (let i = 0; i < NUM_H_LINES; i++) {
-        let t2 = (i + (scroll % 1)) / NUM_H_LINES;
-        t2 = Math.pow(t2, 2.1);
-        const y = horizonY + (H - horizonY) * t2;
-        if (y > H) continue;
-        const alpha = 0.16 * t2;
-        cx.strokeStyle = `rgba(77,220,255,${alpha})`;
+      // connecting lines between nearby particles
+      for (let i = 0; i < particles.length; i++) {
+        const a = particles[i];
+        for (let j = i + 1; j < particles.length; j++) {
+          const b = particles[j];
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < LINK_DIST) {
+            const alpha = (1 - dist / LINK_DIST) * 0.22;
+            cx.strokeStyle = `rgba(120,225,255,${alpha})`;
+            cx.lineWidth = 1;
+            cx.beginPath();
+            cx.moveTo(a.x, a.y);
+            cx.lineTo(b.x, b.y);
+            cx.stroke();
+          }
+        }
+      }
+
+      // dots, gently twinkling
+      for (const p of particles) {
+        const tw = 0.55 + Math.sin(t * 0.0007 + p.tw) * 0.35;
         cx.beginPath();
-        cx.moveTo(0, y);
-        cx.lineTo(W, y);
-        cx.stroke();
+        cx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        cx.fillStyle = `rgba(140,230,255,${Math.max(tw, 0.15)})`;
+        cx.fill();
       }
 
       requestAnimationFrame(frame);
