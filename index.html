@@ -966,6 +966,21 @@
     // Projects
     const PROJECTS = [
       {
+        id: 'Planetx',
+        title: 'Planet-X',
+        thumbnailImage: 'images/planetX/thumbnail.png',
+        images: [],
+        tag: 'Planet Configurator',
+        tagClass: 'tag-graphics-engine',
+        icon: 'fa-solid fa-cube',
+        subtitle: 'DirectX 12 Powered Planet Configurator for Fun',
+        desc: 'Planet-X is a DirectX 12 powered planet creator and configurator currently being built using C++ to explore and create planetary art in a fun interactive way.',
+        features: [],
+        chips: ['C++', 'DirectX 12', 'Rendering', 'Graphics Programming', 'Engine Development', 'Planetary Art'],
+        link: ''
+      },
+
+      {
         id: 'kofu',
         title: 'Kofu Engine',
         thumbnailImage: 'images/kofu/thumbnail.png',
@@ -1158,7 +1173,12 @@
           ${p.chips.map(ch => `<span class="chip">${ch}</span>`).join('')}
         </div>
       `;
-      card.addEventListener('click', () => openModal(p));
+      
+      if (p.id !== 'Planetx') 
+      {
+        card.addEventListener('click', () => openModal(p));
+      }
+
       grid.appendChild(card);
     });
 
