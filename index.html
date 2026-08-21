@@ -141,13 +141,50 @@
       color: var(--accent);
       margin-top: 10px;
       letter-spacing: .06em;
-      /* text-transform: uppercase; */
       font-weight: 600;
     }
 
     .designation::before {
       content: '';
       color: var(--muted);
+    }
+
+    .designation {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 600;
+      color: #E5E7EB;
+      /* Soft white */
+      margin-top: 12px;
+      letter-spacing: 0.03em;
+      line-height: 1.4;
+    }
+
+    .company-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+      position: relative;
+      transition: color 0.25s ease;
+    }
+
+    .company-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.25s ease;
+    }
+
+    .company-link:hover {
+      color: #FFFFFF;
+    }
+
+    .company-link:hover::after {
+      width: 100%;
     }
 
     .bio {
@@ -799,7 +836,12 @@
           <div class="name-row">
             <h1 class="site-title">MUNUCRAFTS</h1>
           </div>
-          <p class="designation">Graphics Software Engineer at SONY</p>
+          <p class="designation">
+            Graphics Software Engineer at
+            <a href="https://www.sony.com/" target="_blank" class="company-link">
+              SONY
+            </a>
+          </p>
         </div>
       </div>
       <p class="bio">Hi, I'm Sarthak, also known as Munucrafts. I'm into Computer Graphics Programming, Game
