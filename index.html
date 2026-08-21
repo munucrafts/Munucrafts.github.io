@@ -99,27 +99,32 @@
     /* ── header ── */
     .header {
       display: block;
-      padding-bottom: 40px;
+      padding-bottom: 32px;
       border-bottom: 1px solid var(--border);
-      margin-bottom: 28px;
+      margin-bottom: 32px;
       position: relative;
     }
 
     .header-top {
       display: flex;
       align-items: center;
-      gap: 28px;
-      margin-bottom: 16px;
+      gap: 24px;
+      margin-bottom: 12px;
     }
 
     .header-top-text {
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      text-align: left;
     }
 
     .name-row {
       display: flex;
       align-items: baseline;
-      gap: 14px;
+      justify-content: left;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
@@ -127,9 +132,9 @@
       font-family: var(--font-display);
       font-size: clamp(28px, 5.5vw, 48px);
       font-weight: 700;
-      line-height: 1;
+      line-height: 1.05;
       letter-spacing: 0.02em;
-      background: linear-gradient(100deg, #f2f6fb 0%, var(--accent) 50%, var(--accent2) 100%);
+      background: linear-gradient(100deg, #f2f6fb 0%, var(--accent) 55%, var(--accent2) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -137,26 +142,11 @@
 
     .designation {
       font-family: var(--font-display);
-      font-size: 22px;
-      color: var(--accent);
-      margin-top: 10px;
-      letter-spacing: .06em;
+      font-size: 26px;
       font-weight: 600;
-    }
-
-    .designation::before {
-      content: '';
-      color: var(--muted);
-    }
-
-    .designation {
-      font-family: var(--font-display);
-      font-size: 24px;
-      font-weight: 600;
-      color: #E5E7EB;
-      /* Soft white */
-      margin-top: 12px;
-      letter-spacing: 0.03em;
+      color: #cbd5e1;
+      margin-top: 2px;
+      letter-spacing: 0.04em;
       line-height: 1.4;
     }
 
@@ -172,15 +162,15 @@
       content: "";
       position: absolute;
       left: 0;
-      bottom: -3px;
+      bottom: -2px;
       width: 0%;
       height: 2px;
-      background: var(--accent);
+      background: var(--accent2);
       transition: width 0.25s ease;
     }
 
     .company-link:hover {
-      color: #FFFFFF;
+      color: #ffffff;
     }
 
     .company-link:hover::after {
