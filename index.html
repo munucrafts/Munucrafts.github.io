@@ -20,14 +20,6 @@
       padding: 0;
     }
 
-    /*
-      Palette: a single tonal family instead of six saturated primaries.
-      Base is a cool graphite (matches a renderer viewport / dark editor).
-      One warm signal accent (amber, like an exposure/emissive readout)
-      carries all interactive state. Category colors below are all pulled
-      to the same muted saturation/lightness band so a new tab or a new
-      project type can slot in without breaking the palette.
-    */
     :root {
       --void: #0a0c12;
       --panel: #161a24;
@@ -38,26 +30,27 @@
       --ink-body: #e7e9ee;
       --ink-dim: #ced2db;
 
-      --signal: #eba53a;       /* saturated amber — primary accent, used generously */
+      --signal: #eba53a;
       --signal-soft: #eba53a1f;
-      --accent-cool: #3f8fd1;  /* saturated blue — secondary accent */
+      
+      --accent-cool: #3f8fd1;
 
-      /* category colors — real, distinct hues, jewel-toned rather than neon */
-      --cat-engine:   #eba53a;
-      --cat-raster:   #33ad7f;
-      --cat-render:   #3f8fd1;
-      --cat-tools:    #b667cf;
-      --cat-unreal:   #e06f38;
+      --cat-engine: #eba53a;
+      --cat-raster: #33ad7f;
+      --cat-render: #3f8fd1;
+      --cat-tools: #b667cf;
+      --cat-unreal: #e06f38;
       --cat-gameplay: #e0524f;
 
       --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
       --font-sans: 'IBM Plex Sans', sans-serif;
     }
 
-    html, body {
+    html,
+    body {
       background:
-        radial-gradient(ellipse 1100px 700px at 8% -8%, rgba(208,162,77,0.06), transparent 55%),
-        radial-gradient(ellipse 1000px 650px at 100% 0%, rgba(92,135,173,0.07), transparent 55%),
+        radial-gradient(ellipse 1100px 700px at 8% -8%, rgba(208, 162, 77, 0.06), transparent 55%),
+        radial-gradient(ellipse 1000px 650px at 100% 0%, rgba(92, 135, 173, 0.07), transparent 55%),
         var(--void);
       background-attachment: fixed;
       color: var(--ink);
@@ -69,7 +62,8 @@
       min-height: 100vh;
     }
 
-    #bg, #vignette {
+    #bg,
+    #vignette {
       position: fixed;
       inset: 0;
       z-index: 0;
@@ -77,7 +71,7 @@
     }
 
     #vignette {
-      background: radial-gradient(ellipse at 50% 20%, transparent 45%, rgba(0,0,0,0.4) 100%);
+      background: radial-gradient(ellipse at 50% 20%, transparent 45%, rgba(0, 0, 0, 0.4) 100%);
     }
 
     .site {
@@ -162,8 +156,8 @@
     }
 
     .links {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 8px;
     }
 
@@ -192,19 +186,38 @@
       background: var(--panel-2);
     }
 
-    .btn i { font-size: 13.5px; }
+    .btn i {
+      font-size: 13.5px;
+    }
 
-    .links .btn:nth-child(1) i { color: var(--signal); }
-    .links .btn:nth-child(2) i { color: var(--accent-cool); }
-    .links .btn:nth-child(3) i { color: var(--cat-tools); }
-    .links .btn:nth-child(4) i { color: var(--accent-cool); }
-    .links .btn:nth-child(5) i { color: var(--cat-gameplay); }
-    .links .btn:nth-child(6) i { color: var(--cat-raster); }
-    .links .btn:nth-child(7) i { color: var(--cat-unreal); }
+    .links .btn:nth-child(1) i {
+      color: var(--signal);
+    }
 
-    /* ── section header / tab bar ──
-       Built as a tab row so future sections (About, Writing, Shaders, ...)
-       can be added as siblings of .tab-btn without touching the palette. */
+    .links .btn:nth-child(2) i {
+      color: var(--accent-cool);
+    }
+
+    .links .btn:nth-child(3) i {
+      color: var(--cat-tools);
+    }
+
+    .links .btn:nth-child(4) i {
+      color: var(--accent-cool);
+    }
+
+    .links .btn:nth-child(5) i {
+      color: var(--cat-gameplay);
+    }
+
+    .links .btn:nth-child(6) i {
+      color: var(--cat-raster);
+    }
+
+    .links .btn:nth-child(7) i {
+      color: var(--cat-unreal);
+    }
+
     .section-header {
       display: flex;
       align-items: flex-end;
@@ -260,8 +273,12 @@
     .section-count {
       font-family: var(--font-mono);
       font-size: 13.5px;
-      color: var(--ink-dim);
-      padding-bottom: 12px;
+      color: var(--ink);
+      padding: 6px 12px;
+      border: 1px solid #ffff;
+      //border-radius: 999px;
+      background: rgba(20, 25, 35, 0.85);
+      //box-shadow: 0 0 10px rgba(63, 240, 255, 0.25);
     }
 
     /* ── grid / cards ── */
@@ -286,7 +303,7 @@
       border-color: var(--signal);
       border-top-color: var(--swatch, var(--signal));
       transform: translateY(-3px);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.28);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
     }
 
     .tick {
@@ -300,10 +317,23 @@
       pointer-events: none;
     }
 
-    .tick.tl { top: 6px; left: 6px; border-right: none; border-bottom: none; }
-    .tick.br { bottom: 6px; right: 6px; border-left: none; border-top: none; }
+    .tick.tl {
+      top: 6px;
+      left: 6px;
+      border-right: none;
+      border-bottom: none;
+    }
 
-    .card:hover .tick { opacity: 1; }
+    .tick.br {
+      bottom: 6px;
+      right: 6px;
+      border-left: none;
+      border-top: none;
+    }
+
+    .card:hover .tick {
+      opacity: 1;
+    }
 
     .card-thumb {
       position: relative;
@@ -325,8 +355,8 @@
       position: absolute;
       inset: 0;
       background:
-        repeating-linear-gradient(90deg, rgba(140,150,165,.05) 0 1px, transparent 1px 22px),
-        repeating-linear-gradient(0deg, rgba(140,150,165,.05) 0 1px, transparent 1px 22px);
+        repeating-linear-gradient(90deg, rgba(140, 150, 165, .05) 0 1px, transparent 1px 22px),
+        repeating-linear-gradient(0deg, rgba(140, 150, 165, .05) 0 1px, transparent 1px 22px);
       pointer-events: none;
     }
 
@@ -394,12 +424,29 @@
     }
 
     /* category swatches — all drawn from the same muted tonal band */
-    .tag-graphics-engine { --swatch: var(--cat-engine); }
-    .tag-rasterizer      { --swatch: var(--cat-raster); }
-    .tag-renderer        { --swatch: var(--cat-render); }
-    .tag-tools           { --swatch: var(--cat-tools); }
-    .tag-unreal          { --swatch: var(--cat-unreal); }
-    .tag-game-engine     { --swatch: var(--cat-gameplay); }
+    .tag-graphics-engine {
+      --swatch: var(--cat-engine);
+    }
+
+    .tag-rasterizer {
+      --swatch: var(--cat-raster);
+    }
+
+    .tag-renderer {
+      --swatch: var(--cat-render);
+    }
+
+    .tag-tools {
+      --swatch: var(--cat-tools);
+    }
+
+    .tag-unreal {
+      --swatch: var(--cat-unreal);
+    }
+
+    .tag-game-engine {
+      --swatch: var(--cat-gameplay);
+    }
 
     /* ── MODAL ── */
     .overlay {
@@ -428,7 +475,7 @@
       margin: auto;
       display: grid;
       grid-template-columns: 420px 1fr;
-      box-shadow: 0 30px 80px rgba(0,0,0,.55);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .55);
     }
 
     .modal-carousel {
@@ -443,7 +490,7 @@
     .carousel-track {
       display: flex;
       height: 100%;
-      transition: transform .38s cubic-bezier(.4,0,.2,1);
+      transition: transform .38s cubic-bezier(.4, 0, .2, 1);
       will-change: transform;
     }
 
@@ -474,7 +521,7 @@
       transform: translateY(-50%);
       width: 34px;
       height: 34px;
-      background: rgba(13,15,19,.8);
+      background: rgba(13, 15, 19, .8);
       border: 1px solid var(--line-bright);
       color: var(--ink);
       display: flex;
@@ -485,10 +532,23 @@
       transition: border-color .2s, color .2s, opacity .2s;
     }
 
-    .carousel-btn:hover { border-color: var(--signal); color: var(--signal); }
-    .carousel-btn.hidden { opacity: 0; pointer-events: none; }
-    .carousel-prev { left: 10px; }
-    .carousel-next { right: 10px; }
+    .carousel-btn:hover {
+      border-color: var(--signal);
+      color: var(--signal);
+    }
+
+    .carousel-btn.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .carousel-prev {
+      left: 10px;
+    }
+
+    .carousel-next {
+      right: 10px;
+    }
 
     .carousel-dots {
       position: absolute;
@@ -504,11 +564,13 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: rgba(255,255,255,.3);
+      background: rgba(255, 255, 255, .3);
       cursor: pointer;
     }
 
-    .carousel-dot.active { background: var(--signal); }
+    .carousel-dot.active {
+      background: var(--signal);
+    }
 
     .carousel-counter {
       position: absolute;
@@ -516,11 +578,16 @@
       right: 14px;
       font-family: var(--font-mono);
       font-size: 11.5px;
-      color: rgba(255,255,255,.75);
+      color: rgba(255, 255, 255, .75);
       z-index: 10;
     }
 
-    .modal-hero-tag { position: absolute; top: 12px; left: 12px; z-index: 10; }
+    .modal-hero-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 10;
+    }
 
     .modal-close {
       position: absolute;
@@ -528,7 +595,7 @@
       right: 12px;
       width: 28px;
       height: 28px;
-      background: rgba(13,15,19,.7);
+      background: rgba(13, 15, 19, .7);
       border: 1px solid var(--line-bright);
       display: flex;
       align-items: center;
@@ -539,7 +606,10 @@
       transition: border-color .2s, color .2s;
     }
 
-    .modal-close:hover { border-color: var(--signal); color: var(--signal); }
+    .modal-close:hover {
+      border-color: var(--signal);
+      color: var(--signal);
+    }
 
     .modal-body {
       padding: 26px;
@@ -591,10 +661,23 @@
       gap: 10px;
     }
 
-    .feat-item i { color: var(--accent-cool); font-size: 14px; width: 16px; text-align: center; flex-shrink: 0; }
-    .feat-item span { font-size: 14.5px; color: var(--ink-body); }
+    .feat-item i {
+      color: var(--accent-cool);
+      font-size: 14px;
+      width: 16px;
+      text-align: center;
+      flex-shrink: 0;
+    }
 
-    .modal-actions { display: flex; gap: 10px; }
+    .feat-item span {
+      font-size: 14.5px;
+      color: var(--ink-body);
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+    }
 
     .btn-primary {
       background: var(--signal);
@@ -620,10 +703,21 @@
       color: var(--ink-dim);
     }
 
-    .site-footer a { color: var(--signal); text-decoration: none; }
-    .site-footer a:hover { text-decoration: underline; }
+    .site-footer a {
+      color: var(--signal);
+      text-decoration: none;
+    }
 
-    .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .site-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
 
     .attribution-link {
       display: inline-flex;
@@ -638,36 +732,60 @@
       transition: border-color .2s, color .2s;
     }
 
-    .attribution-link:hover { border-color: var(--signal); color: var(--signal); }
+    .attribution-link:hover {
+      border-color: var(--signal);
+      color: var(--signal);
+    }
 
     @media (max-width: 900px) {
       .layout {
         grid-template-columns: 1fr;
       }
+
       .sidebar {
         position: static;
         border-bottom: 1px solid var(--line);
         padding-bottom: 28px;
       }
+
       .links {
         flex-direction: row;
         flex-wrap: wrap;
       }
+
       .links .btn {
         width: auto;
       }
     }
 
     @media (max-width: 760px) {
-      .header-top { flex-wrap: wrap; }
-      .feat-grid { grid-template-columns: 1fr; }
-      .modal { grid-template-columns: 1fr; }
-      .modal-carousel { min-height: unset; aspect-ratio: 4/3; }
-      .modal-body { max-height: unset; }
+      .header-top {
+        flex-wrap: wrap;
+      }
+
+      .feat-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .modal {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-carousel {
+        min-height: unset;
+        aspect-ratio: 4/3;
+      }
+
+      .modal-body {
+        max-height: unset;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      * { animation: none !important; transition: none !important; }
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
     }
   </style>
 </head>
@@ -686,7 +804,8 @@
           <div class="name-block">
             <h1 class="site-title">MUNUCRAFTS</h1>
             <p class="status-line">
-              Graphics Software Engineer @ <a href="https://www.sonyindiasoftware.co.in/" target="_blank" class="company-link">SONY</a>
+              Graphics Software Engineer @ <a href="https://www.sonyindiasoftware.co.in/" target="_blank"
+                class="company-link">SONY</a>
             </p>
           </div>
         </div>
@@ -695,8 +814,8 @@
           projects. I'm currently working on several projects. Feel free to check those out using the links below.
           You're Welcome to connect with me anytime.</p>
         <div class="links">
-          <a class="btn resume" href="https://drive.google.com/file/d/1nTlIL2HIKtqSjpGZBsgVzfwGdotriTg5/view?usp=sharing"
-            target="_blank">
+          <a class="btn resume"
+            href="https://drive.google.com/file/d/1nTlIL2HIKtqSjpGZBsgVzfwGdotriTg5/view?usp=sharing" target="_blank">
             <i class="fas fa-file"></i> Resume
           </a>
           <a class="btn" href="mailto:sarthakmishra520@gmail.com">
@@ -723,11 +842,6 @@
       <main class="main-col">
         <div class="section-header">
           <nav class="tab-nav">
-            <!-- Add future sections here, e.g.
-                 <button class="tab-btn" data-tab="about">About</button>
-                 <button class="tab-btn" data-tab="writing">Writing</button>
-                 Keep them unstyled beyond .tab-btn — the active underline
-                 and color states already handle new tabs automatically. -->
             <button class="tab-btn active" data-tab="projects">Projects</button>
           </nav>
           <span class="section-count" id="proj-count">06 entries</span>
@@ -1042,7 +1156,7 @@
       }
     ];
 
-    document.getElementById('proj-count').textContent = `0${PROJECTS.length} entries`;
+    document.getElementById('proj-count').textContent = `0${PROJECTS.length} Entries`;
 
     function tagHTML(tagClass, tag) {
       return `<span class="card-tag ${tagClass}">${tag}</span>`;
