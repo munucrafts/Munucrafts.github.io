@@ -448,6 +448,85 @@
       --swatch: var(--cat-gameplay);
     }
 
+    /* ── CONTACT ── */
+    .contact-intro {
+      font-size: 15.5px;
+      color: var(--ink-body);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background: var(--panel);
+      border: 1.5px solid #6b7385;
+      border-top: 5px solid var(--signal);
+      padding: 24px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .form-field label {
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink-dim);
+      letter-spacing: 0.02em;
+    }
+
+    .form-field input,
+    .form-field textarea {
+      background: var(--panel-2);
+      border: 1px solid var(--line-bright);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      padding: 10px 12px;
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .form-field textarea {
+      resize: vertical;
+      min-height: 110px;
+      font-family: var(--font-sans);
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: var(--signal);
+    }
+
+    .form-field input::placeholder,
+    .form-field textarea::placeholder {
+      color: #7b8291;
+    }
+
+    .form-status {
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      color: var(--ink-dim);
+      min-height: 18px;
+    }
+
+    .form-status.ok {
+      color: var(--cat-raster);
+    }
+
+    .form-status.err {
+      color: var(--cat-gameplay);
+    }
+
+    .contact-form button[type="submit"] {
+      align-self: flex-start;
+    }
+
     /* ── MODAL ── */
     .overlay {
       display: none;
@@ -818,7 +897,7 @@
             href="https://drive.google.com/file/d/1nTlIL2HIKtqSjpGZBsgVzfwGdotriTg5/view?usp=sharing" target="_blank">
             <i class="fas fa-file"></i> Resume
           </a>
-          <a class="btn" href="mailto:sarthakmishra520@gmail.com">
+          <a class="btn" href="#" id="sidebar-email-link">
             <i class="fas fa-envelope"></i> Email
           </a>
           <a class="btn" href="https://github.com/munucrafts" target="_blank">
@@ -842,11 +921,36 @@
       <main class="main-col">
         <div class="section-header">
           <nav class="tab-nav">
-            <button class="tab-btn active" data-tab="projects">Projects</button>
+            <button class="tab-btn active" data-tab="projects" onclick="switchTab('projects')">Projects</button>
+            <button class="tab-btn" data-tab="contact" onclick="switchTab('contact')">Contact</button>
           </nav>
           <span class="section-count" id="proj-count">x entries</span>
         </div>
         <div class="grid" id="grid"></div>
+
+        <div class="contact-wrap" id="contact-panel" style="display:none;">
+          <p class="contact-intro">
+            Got a project, a question, or just want to talk Computer Graphics, Video Games, Engines, or anything else? Send a message below. It opens directly in your own email app, addressed straight to me.
+          </p>
+          <form class="contact-form" id="contact-form">
+            <div class="form-field">
+              <label for="c-email">Your Email</label>
+              <input type="email" id="c-email" name="email" placeholder="you@example.com" required />
+            </div>
+            <div class="form-field">
+              <label for="c-topic">Topic</label>
+              <input type="text" id="c-topic" name="topic" placeholder="e.g. Collaboration, Job Opportunity, Question" required />
+            </div>
+            <div class="form-field">
+              <label for="c-desc">Description</label>
+              <textarea id="c-desc" name="message" placeholder="Tell me a bit more..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" id="c-submit">
+              <i class="fa-solid fa-paper-plane"></i> Send Message
+            </button>
+            <p class="form-status" id="c-status"></p>
+          </form>
+        </div>
       </main>
 
     </div>
@@ -989,6 +1093,67 @@
       requestAnimationFrame(bgFrame);
     }
     requestAnimationFrame(bgFrame);
+
+    /* ── obfuscated email (avoids plaintext mailto: in page source) ── */
+    let OBFUSCATED_EMAIL = '';
+    (function () {
+      const user = ['s', 'a', 'r', 't', 'h', 'a', 'k', 'm', 'i', 's', 'h', 'r', 'a', '5', '2', '0'].join('');
+      const domain = ['g', 'm', 'a', 'i', 'l', '.', 'c', 'o', 'm'].join('');
+      OBFUSCATED_EMAIL = user + '@' + domain;
+      const mailtoLink = 'mailto:' + OBFUSCATED_EMAIL;
+
+      const sidebarLink = document.getElementById('sidebar-email-link');
+      if (sidebarLink) sidebarLink.href = mailtoLink;
+    })();
+
+    /* ── tab switching ── */
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.tab === tab);
+      });
+
+      const gridEl = document.getElementById('grid');
+      const contactEl = document.getElementById('contact-panel');
+      const countEl = document.getElementById('proj-count');
+
+      if (tab === 'projects') {
+        gridEl.style.display = '';
+        contactEl.style.display = 'none';
+        countEl.style.display = '';
+        countEl.textContent = `0${PROJECTS.length} Entries`;
+      } else {
+        gridEl.style.display = 'none';
+        contactEl.style.display = '';
+        countEl.style.display = 'none';
+      }
+    }
+
+    /* ── contact form (mailto:, no third party) ── */
+    const contactForm = document.getElementById('contact-form');
+    const statusEl = document.getElementById('c-status');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById('c-email').value.trim();
+      const topic = document.getElementById('c-topic').value.trim();
+      const message = document.getElementById('c-desc').value.trim();
+
+      if (!email || !topic || !message) {
+        statusEl.textContent = 'Please fill out all fields.';
+        statusEl.className = 'form-status err';
+        return;
+      }
+
+      const subject = encodeURIComponent(`[Portfolio Contact] ${topic}`);
+      const body = encodeURIComponent(`From: ${email}\nTopic: ${topic}\n\n${message}`);
+      const mailtoLink = `mailto:${OBFUSCATED_EMAIL}?subject=${subject}&body=${body}`;
+
+      statusEl.textContent = 'Opening your email app...';
+      statusEl.className = 'form-status ok';
+
+      window.location.href = mailtoLink;
+    });
 
     // Projects
     const PROJECTS = [
