@@ -449,6 +449,10 @@
     }
 
     /* ── CONTACT ── */
+    .contact-wrap {
+      max-width: max;
+    }
+
     .contact-intro {
       font-size: 15.5px;
       color: var(--ink-body);
@@ -480,51 +484,23 @@
       letter-spacing: 0.02em;
     }
 
-    .form-field input,
-    .form-field textarea {
-      background: var(--panel-2);
-      border: 1px solid var(--line-bright);
-      color: var(--ink);
-      font-family: var(--font-sans);
-      font-size: 15px;
-      padding: 10px 12px;
-      outline: none;
-      transition: border-color .2s;
-    }
-
-    .form-field textarea {
-      resize: vertical;
-      min-height: 110px;
-      font-family: var(--font-sans);
-    }
-
-    .form-field input:focus,
-    .form-field textarea:focus {
-      border-color: var(--signal);
-    }
-
-    .form-field input::placeholder,
-    .form-field textarea::placeholder {
-      color: #7b8291;
-    }
-
-    .form-status {
+    .compose-row-value {
       font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--ink);
+      user-select: all;
+      word-break: break-word;
+    }
+
+    .compose-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .compose-actions .btn {
       font-size: 13.5px;
-      color: var(--ink-dim);
-      min-height: 18px;
-    }
-
-    .form-status.ok {
-      color: var(--cat-raster);
-    }
-
-    .form-status.err {
-      color: var(--cat-gameplay);
-    }
-
-    .contact-form button[type="submit"] {
-      align-self: flex-start;
+      padding: 7px 12px;
     }
 
     /* ── MODAL ── */
@@ -930,26 +906,19 @@
 
         <div class="contact-wrap" id="contact-panel" style="display:none;">
           <p class="contact-intro">
-            Got a project, a question, or just want to talk Computer Graphics, Video Games, Engines, or anything else? Send a message below. It opens directly in your own email app, addressed straight to me.
+            Got a project, a question, or just want to talk graphics, games, engines, or anything else? Reach out directly. Copy the address below and drop it into whatever you use, Gmail, Outlook, or your phone's mail app.
           </p>
-          <form class="contact-form" id="contact-form">
+          <div class="contact-form">
             <div class="form-field">
-              <label for="c-email">Your Email</label>
-              <input type="email" id="c-email" name="email" placeholder="you@example.com" required />
+              <label for="contact-email-display">Email</label>
+              <div class="compose-actions" style="align-items:center; gap:10px;">
+                <span class="compose-row-value" id="contact-email-display" style="font-size:16px; padding:8px 0;">Loading...</span>
+                <button type="button" class="btn btn-primary" id="copy-email-btn">
+                  <i class="fa-solid fa-copy"></i> Copy Email
+                </button>
+              </div>
             </div>
-            <div class="form-field">
-              <label for="c-topic">Topic</label>
-              <input type="text" id="c-topic" name="topic" placeholder="e.g. Collaboration, Job Opportunity, Question" required />
-            </div>
-            <div class="form-field">
-              <label for="c-desc">Description</label>
-              <textarea id="c-desc" name="message" placeholder="Tell me a bit more..." required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary" id="c-submit">
-              <i class="fa-solid fa-paper-plane"></i> Send Message
-            </button>
-            <p class="form-status" id="c-status"></p>
-          </form>
+          </div>
         </div>
       </main>
 
@@ -1128,32 +1097,37 @@
       }
     }
 
-    /* ── contact form (mailto:, no third party) ── */
-    const contactForm = document.getElementById('contact-form');
-    const statusEl = document.getElementById('c-status');
+    /* ── contact tab: plain copyable email, no form, no third party ── */
+    const emailDisplay = document.getElementById('contact-email-display');
+    const copyEmailBtn = document.getElementById('copy-email-btn');
+    if (emailDisplay) emailDisplay.textContent = OBFUSCATED_EMAIL;
 
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const email = document.getElementById('c-email').value.trim();
-      const topic = document.getElementById('c-topic').value.trim();
-      const message = document.getElementById('c-desc').value.trim();
-
-      if (!email || !topic || !message) {
-        statusEl.textContent = 'Please fill out all fields.';
-        statusEl.className = 'form-status err';
-        return;
+    async function copyText(text, btn) {
+      const original = btn.innerHTML;
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.innerHTML = `<i class="fa-solid fa-check"></i> Copied!`;
+      } catch (err) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand('copy');
+          btn.innerHTML = `<i class="fa-solid fa-check"></i> Copied!`;
+        } catch (err2) {
+          btn.innerHTML = `<i class="fa-solid fa-xmark"></i> Select manually`;
+        }
+        document.body.removeChild(ta);
       }
+      setTimeout(() => { btn.innerHTML = original; }, 2000);
+    }
 
-      const subject = encodeURIComponent(`[Portfolio Contact] ${topic}`);
-      const body = encodeURIComponent(`From: ${email}\nTopic: ${topic}\n\n${message}`);
-      const mailtoLink = `mailto:${OBFUSCATED_EMAIL}?subject=${subject}&body=${body}`;
-
-      statusEl.textContent = 'Opening your email app...';
-      statusEl.className = 'form-status ok';
-
-      window.location.href = mailtoLink;
-    });
+    if (copyEmailBtn) {
+      copyEmailBtn.addEventListener('click', () => copyText(OBFUSCATED_EMAIL, copyEmailBtn));
+    }
 
     // Projects
     const PROJECTS = [
