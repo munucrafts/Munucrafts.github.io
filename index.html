@@ -98,7 +98,7 @@
       display: flex;
       flex-direction: column;
       gap: 18px;
-      margin-bottom: 30px;
+      margin-bottom: 18px;
     }
 
     .hero-top {
@@ -171,6 +171,13 @@
       line-height: 1.65;
       max-width: full;
       margin-bottom: -0px;
+    }
+
+    .hero-rule {
+      height: 1px;
+      background: var(--line);
+      border: none;
+      margin: 0;
     }
 
     .links {
@@ -922,6 +929,7 @@
         Programming and Unreal Engine. I love building graphics engines, renderers, video games, and experimental
         projects. I'm currently working on several projects. Feel free to check those out using the links below.
         You're Welcome to connect with me anytime.</p>
+      <hr class="hero-rule" />
     </header>
 
     <main class="main-col">
@@ -1059,8 +1067,8 @@
     ];
 
     const SHAPES = [
-      { side: 'right', yr: 0.22, scale: 130, speedY: 0.00016, speedX: 0.00010, phaseY: 0,   phaseX: 1.2, focal: 520 },
-      { side: 'left',  yr: 0.72, scale: 95,  speedY: -0.00012, speedX: 0.00014, phaseY: 2.4, phaseX: 0.4, focal: 520 }
+      { side: 'right', yr: 0.4, scale: 130, speedY: 0.0002, speedX: 0.0002, phaseY: 2.0,   phaseX: 1.2, focal: 520 },
+      { side: 'left',  yr: 0.8, scale: 100,  speedY: -0.00012, speedX: 0.00001, phaseY: 2.4, phaseX: 0.4, focal: 520 }
     ];
 
     function bgFrame(t) {
@@ -1071,7 +1079,7 @@
       SHAPES.forEach(shape => {
         const margin = shape.side === 'right' ? (bgW - siteRight) : siteLeft;
         if (margin < 90) return; // not enough safe space on this screen — skip rather than risk overlap
-        const scale = Math.min(shape.scale, margin / 2.4);
+        const scale = Math.min(shape.scale, margin);
         const cx = shape.side === 'right' ? siteRight + margin / 2 : margin / 2;
         const cy = bgH * shape.yr;
         const rotY = t * shape.speedY + shape.phaseY;
@@ -1098,7 +1106,7 @@
         ICO_EDGES.forEach(([a, b]) => {
           const pa = projected[a], pb = projected[b];
           const avgZ = (pa.z + pb.z) / 2;
-          const alpha = 0.25 + Math.max(0, (avgZ + 1.6) / 3.2) * 1.0;
+          const alpha = 0.25 + Math.max(0, (avgZ + 1.6) / 3.2) * 0.75;
           bgCx.strokeStyle = `rgba(180,188,200,${alpha.toFixed(1)})`;
           bgCx.lineWidth = 1;
           bgCx.beginPath();
