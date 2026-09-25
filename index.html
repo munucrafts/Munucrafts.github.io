@@ -93,32 +93,32 @@
       }
     }
 
-    .layout {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 34px;
-      align-items: start;
-    }
-
-    /* ── sidebar ── */
-    .sidebar {
-      position: sticky;
-      top: 28px;
+    /* ── hero ── */
+    .hero {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 18px;
+      margin-bottom: 30px;
     }
 
-    .header-top {
+    .hero-top {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .hero-id {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-shrink: 0;
     }
 
     .header-logo {
-      width: 56px;
-      height: 56px;
+      width: 76px;
+      height: 76px;
       object-fit: contain;
       border: 1px solid rgba(255, 255, 255, 0.5);
       background: var(--panel);
@@ -129,22 +129,27 @@
     .name-block {
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 6px;
+      flex-shrink: 0;
     }
 
     .site-title {
       font-family: var(--font-mono);
-      font-size: clamp(22px, 4.2vw, 32px);
+      font-size: 30px;
       font-weight: 700;
       letter-spacing: 0.01em;
       color: var(--ink);
+      line-height: 1.15;
+      white-space: nowrap;
     }
 
     .status-line {
       font-family: var(--font-mono);
-      font-size: 14.5px;
+      font-size: 17px;
       color: var(--ink-dim);
       letter-spacing: 0.01em;
+      line-height: 1.2;
+      white-space: nowrap;
     }
 
     .company-link {
@@ -163,25 +168,23 @@
       font-size: 15.5px;
       color: var(--ink-body);
       opacity: 1;
-      line-height: 1.72;
-      max-width: 46ch;
+      line-height: 1.65;
+      max-width: full;
+      margin-bottom: -0px;
     }
 
     .links {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 6px;
-    }
-
-    .links .btn {
-      width: 100%;
+      grid-template-columns: repeat(4, minmax(110px, auto));
+      gap: 8px;
+      flex-shrink: 0;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      padding: 7px 13px;
+      gap: 10px;
+      padding: 8px 9px;
       border: 1px solid var(--line-bright);
       background: var(--panel-2);
       color: var(--ink);
@@ -200,6 +203,15 @@
 
     .btn i {
       font-size: 13.5px;
+    }
+
+    .links .btn {
+      font-size: 13.5px;
+      width: 100%;
+    }
+
+    .links .btn i {
+      font-size: 13px;
     }
 
     .links .btn:nth-child(1) i {
@@ -296,8 +308,8 @@
     /* ── grid / cards ── */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(248px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
     }
 
     .card {
@@ -350,7 +362,7 @@
     .card-thumb {
       position: relative;
       width: 100%;
-      height: 134px;
+      height: 172px;
       background: var(--panel-2);
       overflow: hidden;
     }
@@ -390,10 +402,10 @@
     }
 
     .card-title {
-      font-size: 17px;
+      font-size: 18px;
       font-weight: 700;
       color: var(--ink);
-      margin-bottom: 5px;
+      margin-bottom: 6px;
     }
 
     .card-tag {
@@ -804,32 +816,35 @@
       color: var(--signal);
     }
 
-    @media (max-width: 900px) {
-      .layout {
+    @media (max-width: 1180px) {
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 860px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .grid {
         grid-template-columns: 1fr;
       }
+    }
 
-      .sidebar {
-        position: static;
-        border-bottom: 1px solid var(--line);
-        padding-bottom: 24px;
+    @media (max-width: 640px) {
+      .hero-top {
+        flex-direction: column;
       }
 
       .links {
-        flex-direction: row;
-        flex-wrap: wrap;
-      }
-
-      .links .btn {
-        width: auto;
+        grid-template-columns: repeat(2, minmax(110px, auto));
       }
     }
 
     @media (max-width: 760px) {
-      .header-top {
-        flex-wrap: wrap;
-      }
-
       .feat-grid {
         grid-template-columns: 1fr;
       }
@@ -863,10 +878,10 @@
   <div id="vignette"></div>
 
   <div class="site">
-    <div class="layout">
 
-      <aside class="sidebar">
-        <div class="header-top">
+    <header class="hero">
+      <div class="hero-top">
+        <div class="hero-id">
           <img src="images/logo.png" alt="Munucrafts logo" class="header-logo" />
           <div class="name-block">
             <h1 class="site-title">MUNUCRAFTS</h1>
@@ -876,13 +891,10 @@
             </p>
           </div>
         </div>
-        <p class="bio">Hi, I'm Sarthak, also known as Munucrafts. I'm into Computer Graphics Programming, Game
-          Programming and Unreal Engine. I love building graphics engines, renderers, video games, and experimental
-          projects. I'm currently working on several projects. Feel free to check those out using the links below.
-          You're Welcome to connect with me anytime.</p>
-        <div class="links">
-          <a class="btn resume"
-            href="https://drive.google.com/file/d/1nTlIL2HIKtqSjpGZBsgVzfwGdotriTg5/view?usp=sharing" target="_blank">
+
+        <nav class="links">
+          <a class="btn resume" href="https://drive.google.com/file/d/1nTlIL2HIKtqSjpGZBsgVzfwGdotriTg5/view?usp=sharing"
+            target="_blank">
             <i class="fas fa-file"></i> Resume
           </a>
           <a class="btn" href="#" id="sidebar-email-link">
@@ -903,38 +915,44 @@
           <a class="btn" href="https://www.shadertoy.com/user/Munucrafts/sort=newest" target="_blank">
             <i class="fas fa-code"></i> Shadertoy
           </a>
-        </div>
-      </aside>
+        </nav>
+      </div>
 
-      <main class="main-col">
-        <div class="section-header">
-          <nav class="tab-nav">
-            <button class="tab-btn active" data-tab="projects" onclick="switchTab('projects')">Projects</button>
-            <button class="tab-btn" data-tab="contact" onclick="switchTab('contact')">Contact</button>
-          </nav>
-          <span class="section-count" id="proj-count">x entries</span>
-        </div>
-        <div class="grid" id="grid"></div>
+      <p class="bio">Hi, I'm Sarthak, also known as Munucrafts. I'm into Computer Graphics Programming, Game
+        Programming and Unreal Engine. I love building graphics engines, renderers, video games, and experimental
+        projects. I'm currently working on several projects. Feel free to check those out using the links below.
+        You're Welcome to connect with me anytime.</p>
+    </header>
 
-        <div class="contact-wrap" id="contact-panel" style="display:none;">
-          <p class="contact-intro">
-            Got a project, a question, or just want to talk graphics, games, engines, or anything else? Reach out directly. Copy the address below and drop it into whatever you use, Gmail, Outlook, or your phone's mail app.
-          </p>
-          <div class="contact-form">
-            <div class="form-field">
-              <label for="contact-email-display">Email</label>
-              <div class="compose-actions" style="align-items:center; gap:10px;">
-                <span class="compose-row-value" id="contact-email-display" style="font-size:16px; padding:8px 0;">Loading...</span>
-                <button type="button" class="btn btn-primary" id="copy-email-btn">
-                  <i class="fa-solid fa-copy"></i> Copy Email
-                </button>
-              </div>
+    <main class="main-col">
+      <div class="section-header">
+        <nav class="tab-nav">
+          <button class="tab-btn active" data-tab="projects" onclick="switchTab('projects')">Projects</button>
+          <button class="tab-btn" data-tab="contact" onclick="switchTab('contact')">Contact</button>
+        </nav>
+        <span class="section-count" id="proj-count">x entries</span>
+      </div>
+      <div class="grid" id="grid"></div>
+
+      <div class="contact-wrap" id="contact-panel" style="display:none;">
+        <p class="contact-intro">
+          Got a project, a question, or just want to talk graphics, games, engines, or anything else? Reach out
+          directly. Copy the address below and drop it into whatever you use, Gmail, Outlook, or your phone's mail app.
+        </p>
+        <div class="contact-form">
+          <div class="form-field">
+            <label for="contact-email-display">Email</label>
+            <div class="compose-actions" style="align-items:center; gap:10px;">
+              <span class="compose-row-value" id="contact-email-display" style="font-size:16px; padding:8px 0;">Loading...</span>
+              <button type="button" class="btn btn-primary" id="copy-email-btn">
+                <i class="fa-solid fa-copy"></i> Copy Email
+              </button>
             </div>
           </div>
         </div>
-      </main>
+      </div>
+    </main>
 
-    </div>
   </div>
 
   <!-- MODAL -->
@@ -1006,6 +1024,20 @@
     window.addEventListener('resize', resizeBg);
     resizeBg();
 
+    // Keep the wireframe shapes confined to the empty margin outside the
+    // content column, so they can never sit behind header, tabs, or cards —
+    // regardless of scroll position or how the layout below changes.
+    let siteLeft = 0, siteRight = 0;
+    function measureSite() {
+      const siteEl = document.querySelector('.site');
+      if (!siteEl) return;
+      const r = siteEl.getBoundingClientRect();
+      siteLeft = r.left;
+      siteRight = r.right;
+    }
+    window.addEventListener('resize', measureSite);
+    window.addEventListener('load', measureSite);
+
     // icosahedron: 12 vertices, 30 edges
     const PHI = (1 + Math.sqrt(5)) / 2;
     const ICO_VERTS = [
@@ -1027,15 +1059,20 @@
     ];
 
     const SHAPES = [
-      { xr: 0.82, yr: 0.16, scale: 130, speedY: 0.00016, speedX: 0.00010, phaseY: 0,    phaseX: 1.2, focal: 520 },
-      { xr: 0.08, yr: 0.78, scale: 95,  speedY: -0.00012, speedX: 0.00014, phaseY: 2.4,  phaseX: 0.4, focal: 520 }
+      { side: 'right', yr: 0.22, scale: 130, speedY: 0.00016, speedX: 0.00010, phaseY: 0,   phaseX: 1.2, focal: 520 },
+      { side: 'left',  yr: 0.72, scale: 95,  speedY: -0.00012, speedX: 0.00014, phaseY: 2.4, phaseX: 0.4, focal: 520 }
     ];
 
     function bgFrame(t) {
       bgCx.clearRect(0, 0, bgW, bgH);
 
+      measureSite();
+
       SHAPES.forEach(shape => {
-        const cx = bgW * shape.xr;
+        const margin = shape.side === 'right' ? (bgW - siteRight) : siteLeft;
+        if (margin < 90) return; // not enough safe space on this screen — skip rather than risk overlap
+        const scale = Math.min(shape.scale, margin / 2.4);
+        const cx = shape.side === 'right' ? siteRight + margin / 2 : margin / 2;
         const cy = bgH * shape.yr;
         const rotY = t * shape.speedY + shape.phaseY;
         const rotX = t * shape.speedX + shape.phaseX;
@@ -1050,10 +1087,10 @@
           const y2 = y1 * cosX - z1 * sinX;
           const z2 = y1 * sinX + z1 * cosX;
 
-          const pf = shape.focal / (shape.focal + z2 * shape.scale * 0.5);
+          const pf = shape.focal / (shape.focal + z2 * scale * 0.5);
           return {
-            x: cx + x1 * shape.scale * pf,
-            y: cy + y2 * shape.scale * pf,
+            x: cx + x1 * scale * pf,
+            y: cy + y2 * scale * pf,
             z: z2
           };
         });
