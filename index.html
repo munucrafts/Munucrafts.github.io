@@ -82,37 +82,43 @@
     .site {
       position: relative;
       z-index: 1;
-      max-width: 1240px;
+      max-width: 1320px;
       margin: 0 auto;
-      padding: 64px 24px 90px;
+      padding: 44px 24px 64px;
+    }
+
+    @media (min-width: 1600px) {
+      .site {
+        max-width: 1560px;
+      }
     }
 
     .layout {
       display: grid;
       grid-template-columns: 300px 1fr;
-      gap: 42px;
+      gap: 34px;
       align-items: start;
     }
 
     /* ── sidebar ── */
     .sidebar {
       position: sticky;
-      top: 40px;
+      top: 28px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 16px;
     }
 
     .header-top {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 14px;
+      gap: 12px;
     }
 
     .header-logo {
-      width: 60px;
-      height: 60px;
+      width: 56px;
+      height: 56px;
       object-fit: contain;
       border: 1px solid rgba(255, 255, 255, 0.5);
       background: var(--panel);
@@ -128,7 +134,7 @@
 
     .site-title {
       font-family: var(--font-mono);
-      font-size: clamp(24px, 4.5vw, 34px);
+      font-size: clamp(22px, 4.2vw, 32px);
       font-weight: 700;
       letter-spacing: 0.01em;
       color: var(--ink);
@@ -136,7 +142,7 @@
 
     .status-line {
       font-family: var(--font-mono);
-      font-size: 15px;
+      font-size: 14.5px;
       color: var(--ink-dim);
       letter-spacing: 0.01em;
     }
@@ -154,16 +160,17 @@
     }
 
     .bio {
-      font-size: 16px;
-      color: var(--ink);
+      font-size: 15.5px;
+      color: var(--ink-body);
       opacity: 1;
-      line-height: 1.7;
+      line-height: 1.72;
+      max-width: 46ch;
     }
 
     .links {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 7px;
+      gap: 6px;
     }
 
     .links .btn {
@@ -174,12 +181,12 @@
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      padding: 8px 14px;
+      padding: 7px 13px;
       border: 1px solid var(--line-bright);
       background: var(--panel-2);
       color: var(--ink);
       font-family: var(--font-mono);
-      font-size: 14.5px;
+      font-size: 14px;
       text-decoration: none;
       transition: border-color .2s, color .2s, background .2s;
       cursor: pointer;
@@ -228,7 +235,7 @@
       align-items: flex-end;
       justify-content: space-between;
       gap: 6px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       padding-bottom: 0;
     }
 
@@ -245,7 +252,7 @@
       font-size: 15.5px;
       font-weight: 600;
       color: var(--ink-dim);
-      padding: 0 0 12px;
+      padding: 0 0 10px;
       cursor: pointer;
       position: relative;
       transition: color .2s;
@@ -289,8 +296,8 @@
     /* ── grid / cards ── */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(auto-fill, minmax(248px, 1fr));
+      gap: 12px;
     }
 
     .card {
@@ -343,7 +350,7 @@
     .card-thumb {
       position: relative;
       width: 100%;
-      height: 156px;
+      height: 134px;
       background: var(--panel-2);
       overflow: hidden;
     }
@@ -379,14 +386,14 @@
     }
 
     .card-body {
-      padding: 14px 16px 12px;
+      padding: 12px 14px 10px;
     }
 
     .card-title {
-      font-size: 17.5px;
+      font-size: 17px;
       font-weight: 700;
       color: var(--ink);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .card-tag {
@@ -398,20 +405,20 @@
       color: var(--void);
       background: var(--swatch, var(--signal));
       padding: 3px 9px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       letter-spacing: 0.02em;
     }
 
     .card-desc {
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 400;
       color: var(--ink-body);
       opacity: 1;
-      line-height: 1.6;
+      line-height: 1.55;
     }
 
     .card-footer {
-      padding: 11px 16px;
+      padding: 10px 14px;
       border-top: 1px solid var(--line);
       display: flex;
       gap: 6px;
@@ -462,7 +469,7 @@
       font-size: 15.5px;
       color: var(--ink-body);
       line-height: 1.7;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .contact-form {
@@ -472,7 +479,7 @@
       background: var(--panel);
       border: 1.5px solid #6b7385;
       border-top: 5px solid var(--signal);
-      padding: 24px;
+      padding: 22px;
     }
 
     .form-field {
@@ -534,7 +541,7 @@
       overflow: hidden;
       margin: auto;
       display: grid;
-      grid-template-columns: 420px 1fr;
+      grid-template-columns: 380px 1fr;
       box-shadow: 0 30px 80px rgba(0, 0, 0, .55);
     }
 
@@ -672,44 +679,44 @@
     }
 
     .modal-body {
-      padding: 26px;
+      padding: 22px;
       overflow-y: auto;
       max-height: 90vh;
     }
 
     .modal-title {
-      font-size: 24px;
+      font-size: 23px;
       font-weight: 700;
       color: var(--ink);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .modal-sub {
       font-family: var(--font-mono);
-      font-size: 14.5px;
+      font-size: 14px;
       color: var(--signal);
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .modal-desc {
-      font-size: 16px;
-      line-height: 1.75;
+      font-size: 15.5px;
+      line-height: 1.7;
       color: var(--ink-body);
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
     .feat-label {
       font-family: var(--font-mono);
       font-size: 12.5px;
       color: var(--ink-dim);
-      margin-bottom: 10px;
+      margin-bottom: 9px;
     }
 
     .feat-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 8px;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
     .feat-item {
@@ -756,7 +763,7 @@
     .site-footer {
       position: relative;
       z-index: 1;
-      padding: 24px 0;
+      padding: 20px 0;
       text-align: center;
       font-family: var(--font-mono);
       font-size: 14.5px;
@@ -805,7 +812,7 @@
       .sidebar {
         position: static;
         border-bottom: 1px solid var(--line);
-        padding-bottom: 28px;
+        padding-bottom: 24px;
       }
 
       .links {
