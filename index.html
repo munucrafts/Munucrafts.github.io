@@ -30,17 +30,22 @@
       --ink-body: #e7e9ee;
       --ink-dim: #ced2db;
 
-      --signal: #eba53a;
-      --signal-soft: #eba53a1f;
+      --signal: #7cc4ff;
+      --signal-soft: #7cc4ff1f;
+      --signal-hover: #a9dbff;
 
-      --accent-cool: #3f8fd1;
+      --accent-cool: #4aa3e8;
 
-      --cat-engine: #eba53a;
+      --cat-engine: #8bd3ff;
       --cat-raster: #33ad7f;
-      --cat-render: #3f8fd1;
+      --cat-render: #5b8def;
       --cat-tools: #b667cf;
       --cat-unreal: #e06f38;
       --cat-gameplay: #e0524f;
+
+      --grad-bottom: #1f3a5f;
+      --grad-mid: #121b2e;
+      --grad-top: #0a0c12;
 
       --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
       --font-sans: 'IBM Plex Sans', sans-serif;
@@ -49,9 +54,9 @@
     html,
     body {
       background:
-        radial-gradient(ellipse 1100px 700px at 8% -8%, rgba(208, 162, 77, 0.06), transparent 55%),
-        radial-gradient(ellipse 1000px 650px at 100% 0%, rgba(92, 135, 173, 0.07), transparent 55%),
-        var(--void);
+        radial-gradient(ellipse 1100px 700px at 8% -8%, rgba(124, 196, 255, 0.07), transparent 55%),
+        radial-gradient(ellipse 1000px 650px at 100% 0%, rgba(91, 141, 239, 0.08), transparent 55%),
+        linear-gradient(to top, var(--grad-bottom) 0%, var(--grad-mid) 45%, var(--grad-top) 100%);
       background-attachment: fixed;
       color: var(--ink);
       font-family: var(--font-sans);
@@ -76,7 +81,7 @@
     }
 
     #vignette {
-      background: radial-gradient(ellipse at 50% 20%, transparent 45%, rgba(0, 0, 0, 0.4) 100%);
+      background: radial-gradient(ellipse at 50% 20%, transparent 45%, rgba(0, 0, 0, 0.22) 100%);
     }
 
     .site {
@@ -307,9 +312,7 @@
       color: var(--ink);
       padding: 6px 12px;
       border: 1px solid rgba(255, 255, 255, 0.5);
-      /* border-radius: 999px; */
       background: rgba(20, 25, 35, 0.85);
-      /* box-shadow: 0 0 10px rgba(63, 240, 255, 0.25); */
     }
 
     /* ── grid / cards ── */
@@ -454,7 +457,6 @@
       color: var(--ink-dim);
     }
 
-    /* category swatches — all drawn from the same muted tonal band */
     .tag-graphics-engine {
       --swatch: var(--cat-engine);
     }
@@ -773,9 +775,9 @@
     }
 
     .btn-primary:hover {
-      background: #e0b15c;
+      background: var(--signal-hover);
       color: var(--void);
-      border-color: #e0b15c;
+      border-color: var(--signal-hover);
     }
 
     /* ── footer ── */
@@ -1033,8 +1035,7 @@
     resizeBg();
 
     // Keep the wireframe shapes confined to the empty margin outside the
-    // content column, so they can never sit behind header, tabs, or cards —
-    // regardless of scroll position or how the layout below changes.
+    // content column, so they can never sit behind header, tabs, or cards.
     let siteLeft = 0, siteRight = 0;
     function measureSite() {
       const siteEl = document.querySelector('.site');
@@ -1067,7 +1068,7 @@
     ];
 
     const SHAPES = [
-      { side: 'right', yr: 0.4, scale: 130, speedY: 0.0002, speedX: 0.0002, phaseY: 2.0,   phaseX: 1.2, focal: 520 },
+      { side: 'right', yr: 0.6, scale: 130, speedY: 0.0002, speedX: 0.0002, phaseY: 2.0,   phaseX: 1.2, focal: 520 },
       { side: 'left',  yr: 0.8, scale: 100,  speedY: -0.00012, speedX: 0.00001, phaseY: 2.4, phaseX: 0.4, focal: 520 }
     ];
 
@@ -1078,7 +1079,7 @@
 
       SHAPES.forEach(shape => {
         const margin = shape.side === 'right' ? (bgW - siteRight) : siteLeft;
-        if (margin < 90) return; // not enough safe space on this screen — skip rather than risk overlap
+        if (margin < 90) return;
         const scale = Math.min(shape.scale, margin);
         const cx = shape.side === 'right' ? siteRight + margin / 2 : margin / 2;
         const cy = bgH * shape.yr;
@@ -1107,7 +1108,7 @@
           const pa = projected[a], pb = projected[b];
           const avgZ = (pa.z + pb.z) / 2;
           const alpha = 0.25 + Math.max(0, (avgZ + 1.6) / 3.2) * 0.75;
-          bgCx.strokeStyle = `rgba(180,188,200,${alpha.toFixed(1)})`;
+          bgCx.strokeStyle = `rgba(150,200,240,${alpha.toFixed(1)})`;
           bgCx.lineWidth = 1;
           bgCx.beginPath();
           bgCx.moveTo(pa.x, pa.y);
