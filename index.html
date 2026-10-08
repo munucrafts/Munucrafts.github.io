@@ -152,7 +152,7 @@
     .status-line {
       font-family: var(--font-mono);
       font-size: 17px;
-      color: var(--ink-dim);
+      color: var(--ink-body);
       letter-spacing: 0.01em;
       line-height: 1.2;
       white-space: nowrap;
@@ -198,7 +198,7 @@
       align-items: center;
       gap: 12px;
       padding: 8px 14px;
-      border: 1px solid rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.3);
       background: var(--panel-2);
       color: var(--ink);
       font-family: var(--font-mono);
@@ -905,8 +905,8 @@
         </div>
 
         <nav class="links">
-          <a class="btn resume" href="https://drive.google.com/file/d/1nTlIL2HIKtqSjpGZBsgVzfwGdotriTg5/view?usp=sharing"
-            target="_blank">
+          <a class="btn resume"
+            href="https://drive.google.com/file/d/1nTlIL2HIKtqSjpGZBsgVzfwGdotriTg5/view?usp=sharing" target="_blank">
             <i class="fas fa-file"></i> Resume
           </a>
           <a class="btn" href="#" id="sidebar-email-link">
@@ -940,7 +940,7 @@
     <main class="main-col">
       <div class="section-header">
         <nav class="tab-nav">
-          <button class="tab-btn active" data-tab="projects" onclick="switchTab('projects')">Projects</button>
+          <button class="tab-btn active" data-tab="projects" onclick="switchTab('projects')">Software</button>
           <button class="tab-btn" data-tab="contact" onclick="switchTab('contact')">Contact</button>
         </nav>
         <span class="section-count" id="proj-count">x entries</span>
