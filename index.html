@@ -546,7 +546,7 @@
       inset: 0;
       background: rgba(6, 7, 9, .85);
       z-index: 1000;
-      padding: 24px;           
+      padding: 24px;
       overflow-y: auto;
       backdrop-filter: blur(4px);
     }
@@ -561,11 +561,11 @@
       background: var(--panel);
       border: 1.5px solid #6b7385;
       width: 100%;
-      max-width: 1272px;          
+      max-width: 1272px;          /* same as the projects grid */
       overflow: hidden;
       margin: auto;
       display: grid;
-      grid-template-columns: minmax(0, 1.7fr) minmax(340px, 1fr); 
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);  /* images / details */
       box-shadow: 0 30px 80px rgba(0, 0, 0, .55);
     }
 
@@ -738,7 +738,7 @@
 
     .feat-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 8px;
       margin-bottom: 20px;
     }
@@ -837,6 +837,12 @@
     @media (max-width: 1180px) {
       .grid {
         grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 1000px) {
+      .feat-grid {
+        grid-template-columns: 1fr 1fr;
       }
     }
 
